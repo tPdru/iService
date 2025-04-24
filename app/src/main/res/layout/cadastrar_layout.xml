@@ -26,9 +26,7 @@
                     android:id="@+id/appBarCadastrar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:navigationIcon="@drawable/baseline_arrow_back"
-
-                    />
+                    app:navigationIcon="@drawable/baseline_arrow_back" />
             </com.google.android.material.appbar.AppBarLayout>
 
             <ImageView
@@ -46,19 +44,19 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
                 android:hint="Nome"
-                android:textColorHint="@color/cor_preto"
+                android:textColorHint="@color/cor_texto"
                 android:textSize="25sp"
                 app:boxBackgroundColor="#C5E8FF"
-                app:boxStrokeColor="@color/cor_preto"
-                app:cursorColor="@color/cor_preto"
+                app:boxStrokeColor="@color/cor_texto"
+                app:cursorColor="@color/cor_texto"
                 app:endIconMode="clear_text"
-                app:hintTextColor="@color/cor_preto">
+                app:hintTextColor="@color/cor_texto">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/txtNomeUsuario"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textColor="@color/cor_preto"
+                    android:textColor="@color/cor_texto"
                     android:textSize="25sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -69,19 +67,19 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
                 android:hint="E-mail"
-                android:textColorHint="@color/cor_preto"
+                android:textColorHint="@color/cor_texto"
                 android:textSize="25sp"
                 app:boxBackgroundColor="#C5E8FF"
-                app:boxStrokeColor="@color/cor_preto"
-                app:cursorColor="@color/cor_preto"
+                app:boxStrokeColor="@color/cor_texto"
+                app:cursorColor="@color/cor_texto"
                 app:endIconMode="clear_text"
-                app:hintTextColor="@color/cor_preto">
+                app:hintTextColor="@color/cor_texto">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/txtEmailUsuario"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textColor="@color/cor_preto"
+                    android:textColor="@color/cor_texto"
                     android:textSize="25sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -92,20 +90,20 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
                 android:hint="Senha"
-                android:textColorHint="@color/cor_preto"
+                android:textColorHint="@color/cor_texto"
                 android:textSize="25sp"
                 app:boxBackgroundColor="#C5E8FF"
-                app:boxStrokeColor="@color/cor_preto"
-                app:cursorColor="@color/cor_preto"
+                app:boxStrokeColor="@color/cor_texto"
+                app:cursorColor="@color/cor_texto"
                 app:endIconMode="password_toggle"
-                app:hintTextColor="@color/cor_preto">
+                app:hintTextColor="@color/cor_texto">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/txtSenhaUsuario"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:inputType="textPassword"
-                    android:textColor="@color/cor_preto"
+                    android:textColor="@color/cor_texto"
                     android:textSize="25sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -116,20 +114,20 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
                 android:hint="Confirmar Senha"
-                android:textColorHint="@color/cor_preto"
+                android:textColorHint="@color/cor_texto"
                 android:textSize="25sp"
                 app:boxBackgroundColor="#C5E8FF"
-                app:boxStrokeColor="@color/cor_preto"
-                app:cursorColor="@color/cor_preto"
+                app:boxStrokeColor="@color/cor_texto"
+                app:cursorColor="@color/cor_texto"
                 app:endIconMode="password_toggle"
-                app:hintTextColor="@color/cor_preto">
+                app:hintTextColor="@color/cor_texto">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/txtConfirmarSenhaUsuario"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:inputType="textPassword"
-                    android:textColor="@color/cor_preto"
+                    android:textColor="@color/cor_texto"
                     android:textSize="25sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
