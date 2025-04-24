@@ -1,10 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    android:orientation="vertical" xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DetalhesServicosActivity">
+    
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.core.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+       android:background="#2196F3"
+        android:layout_marginTop="25dp">
+
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="60dp"
+           android:text="Adicionando serviços"
+           android:textAlignment="center"
+           android:textSize="19dp"
+           android:layout_marginTop="14dp"
+           android:textColor="@color/white">
+
+       </TextView>
+    </com.google.android.material.appbar.MaterialToolbar>
+
+    <ImageView
+        android:layout_width="225dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="40dp"
+        android:background="#2196F3"
+        android:layout_gravity="center">
+    </ImageView>
+
+
+    <com.google.android.material.button.MaterialButton
+    android:layout_width="225dp"
+    android:layout_height="47dp"
+    android:layout_gravity="center"
+    android:layout_marginTop="37dp"
+    android:text="Serviço"
+    android:backgroundTint="#2196F3"
+    app:cornerRadius="10dp">
+
+</com.google.android.material.button.MaterialButton>
+
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="225dp"
+        android:layout_height="47dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="19dp"
+        android:text="Valor"
+        android:backgroundTint="#2196F3"
+        app:cornerRadius="10dp">
+
+    </com.google.android.material.button.MaterialButton>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:layout_width="225dp"
+        android:layout_height="110dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/white"
+        android:layout_marginTop="29dp"
+        android:text="Explicação do Serviço"
+        android:textSize="16dp"
+        android:textColor="#8C8C8C"
+        android:textAlignment="center">
+
+    </com.google.android.material.textfield.TextInputEditText>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="225dp"
+        android:layout_height="47dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="59dp"
+        android:text="Salvar"
+        android:backgroundTint="#2BAD33"
+        app:cornerRadius="10dp">
+
+    </com.google.android.material.button.MaterialButton>
+
+</LinearLayout>
+
+
+
+
+
+    </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
