@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
+    android:background="@color/cor_fundo"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -40,13 +41,13 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="375dp"
-                android:layout_height="75dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
                 android:hint="Nome"
                 android:textColorHint="@color/cor_texto"
                 android:textSize="25sp"
-                app:boxBackgroundColor="#C5E8FF"
+                app:boxBackgroundColor="@color/cor_detalhes"
                 app:boxStrokeColor="@color/cor_texto"
                 app:cursorColor="@color/cor_texto"
                 app:endIconMode="clear_text"
@@ -55,9 +56,10 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/txtNomeUsuario"
                     android:layout_width="match_parent"
+                    android:fontFamily="@font/textos"
                     android:layout_height="match_parent"
                     android:textColor="@color/cor_texto"
-                    android:textSize="25sp" />
+                    android:textSize="@dimen/tamanho_medio" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
