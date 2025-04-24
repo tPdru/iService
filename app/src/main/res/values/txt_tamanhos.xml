@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="textoPequeno">12sp</dimen>
-    <dimen name="textoMedio">22sp</dimen>
-    <dimen name="textoGrande">32sp</dimen>
+    <dimen name="tamanho_pequeno">10sp</dimen>
+    <dimen name="tamanho_medio">20sp</dimen>
+    <dimen name="tamanho_grande">30sp</dimen>
+    <dimen name="tamanho_maior">40sp</dimen>
+
 </resources>

@@ -1,10 +1,222 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/cor_fundo"
+    android:orientation="vertical"
     tools:context=".CadastrarActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/cor_principal">
+
+                <com.google.android.material.appbar.MaterialToolbar
+                    android:id="@+id/appBarCadastrar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:navigationIcon="@drawable/baseline_arrow_back" />
+
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="25dp">
+
+                <androidx.coordinatorlayout.widget.CoordinatorLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal">
+
+                    <ImageView
+                        android:id="@+id/imgUsuario"
+                        android:layout_width="215dp"
+                        android:layout_height="215dp"
+                        android:padding="15dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_margin=""
+                        android:src="@drawable/foto_usuario" />
+
+                    <Button
+                        android:id="@+id/btnAdicionarFoto"
+                        style="@style/ThemeOverlay.Material3.Button.ElevatedButton"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="right|bottom"
+                        android:backgroundTint="@color/cor_principal"
+                        android:fontFamily="@font/titulos"
+                        android:text="+"
+                        android:textSize="25sp">
+
+                    </Button>
+
+                </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:hint="Nome"
+                    android:textColorHint="@color/cor_texto"
+                    android:textSize="@dimen/tamanho_medio"
+                    app:boxBackgroundColor="@color/cor_detalhes"
+                    app:boxStrokeColor="@color/cor_texto"
+                    app:cursorColor="@color/cor_texto"
+                    app:endIconMode="clear_text"
+                    app:hintTextColor="@color/cor_texto">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtNomeUsuario"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/textos"
+                        android:textColor="@color/cor_texto"
+                        android:textSize="@dimen/tamanho_medio" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:hint="E-mail"
+                    android:textColorHint="@color/cor_texto"
+                    android:textSize="@dimen/tamanho_medio"
+                    app:boxBackgroundColor="@color/cor_detalhes"
+                    app:boxStrokeColor="@color/cor_texto"
+                    app:cursorColor="@color/cor_texto"
+                    app:endIconMode="clear_text"
+                    app:hintTextColor="@color/cor_texto">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtEmailUsuario"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/textos"
+                        android:textColor="@color/cor_texto"
+                        android:textSize="@dimen/tamanho_medio" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:hint="Senha"
+                    android:textColorHint="@color/cor_texto"
+                    android:textSize="@dimen/tamanho_medio"
+                    app:boxBackgroundColor="@color/cor_detalhes"
+                    app:boxStrokeColor="@color/cor_texto"
+                    app:cursorColor="@color/cor_texto"
+                    app:endIconMode="password_toggle"
+                    app:hintTextColor="@color/cor_texto">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtSenhaUsuario"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/textos"
+                        android:inputType="textPassword"
+                        android:textColor="@color/cor_texto"
+                        android:textSize="@dimen/tamanho_medio" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:hint="Confirmar Senha"
+                    android:textColorHint="@color/cor_texto"
+                    android:textSize="@dimen/tamanho_medio"
+                    app:boxBackgroundColor="@color/cor_detalhes"
+                    app:boxStrokeColor="@color/cor_texto"
+                    app:cursorColor="@color/cor_texto"
+                    app:endIconMode="password_toggle"
+                    app:hintTextColor="@color/cor_texto">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtConfirmarSenhaUsuario"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/textos"
+                        android:inputType="textPassword"
+                        android:textColor="@color/cor_texto"
+                        android:textSize="@dimen/tamanho_medio" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:hint="Endereço"
+                    android:textColorHint="@color/cor_texto"
+                    android:textSize="@dimen/tamanho_medio"
+                    app:boxBackgroundColor="@color/cor_detalhes"
+                    app:boxStrokeColor="@color/cor_texto"
+                    app:cursorColor="@color/cor_texto"
+                    app:endIconMode="clear_text"
+                    app:hintTextColor="@color/cor_texto">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtEnderecoUsuario"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/textos"
+                        android:textColor="@color/cor_texto"
+                        android:textSize="@dimen/tamanho_medio" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="30dp"
+                    android:background="@color/cor_principal">
+
+                    <Button
+                        android:id="@+id/btnCriarConta"
+                        style="@style/ThemeOverlay.Material3.Button.ElevatedButton"
+                        android:layout_width="200dp"
+                        android:layout_height="75dp"
+                        android:layout_gravity="center_horizontal"
+                        android:backgroundTint="@color/cor_principal"
+                        android:text="Criar conta"
+                        android:textSize="25sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>
