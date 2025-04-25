@@ -4,7 +4,9 @@
     <color name="cor_principal">#3289D1</color>
     <color name="cor_secundaria">#0D4871</color>
     <color name="cor_detalhes">#D1D1D1</color>
+    <color name="cor_detalhes_secundarios">#494949</color>
     <color name="cor_texto">#000000</color>
     <color name="cor_texto_claro">#FFFFFF</color>
-
+    <color name="cor_confirmar">#54C158</color>
+    <color name="cor_recusar">#FF4242</color>
 </resources>

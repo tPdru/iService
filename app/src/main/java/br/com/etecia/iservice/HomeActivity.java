@@ -1,12 +1,15 @@
 package br.com.etecia.iservice;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.FrameLayout;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -41,7 +44,25 @@ public class HomeActivity extends AppCompatActivity {
         materialToolbar = findViewById(R.id.matTooBarActivtHome);
         bottomNavigationView = findViewById(R.id.botNavgationTelaPrincipal);
 
+        //Informações iniciais --------------------------------
         getSupportFragmentManager().beginTransaction().replace(R.id.frmLayoutConteiner,new FragmentHome()).commit();
+
+
+
+        //Botões ---------------------
+
+        //Botão perfil
+        materialToolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                if(item.getItemId() == R.id.itemMenuTopPerfil){
+                    startActivity(new Intent(getApplicationContext(), PerfilActivity.class));
+                    return true;
+                }
+                return true;
+            }
+        });
+
 
         //Controle bot navigation
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
