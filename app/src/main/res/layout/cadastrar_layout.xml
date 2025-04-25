@@ -18,8 +18,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:padding="">
+            android:orientation="vertical">
 
             <com.google.android.material.appbar.AppBarLayout
                 android:layout_width="match_parent"
@@ -49,9 +48,8 @@
                         android:id="@+id/imgUsuario"
                         android:layout_width="215dp"
                         android:layout_height="215dp"
-                        android:padding="15dp"
                         android:layout_gravity="center_horizontal"
-                        android:layout_margin=""
+                        android:padding="15dp"
                         android:src="@drawable/foto_usuario" />
 
                     <Button
