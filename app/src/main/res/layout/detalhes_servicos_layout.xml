@@ -8,7 +8,6 @@
     android:orientation="vertical"
     tools:context=".DetalhesServicosActivity">
 
-
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -17,84 +16,103 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/cor_fundo"
             android:orientation="vertical">
 
-            <com.google.android.material.appbar.MaterialToolbar
+            <com.google.android.material.appbar.AppBarLayout
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginTop="25dp"
-                android:background="#2196F3">
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.appbar.MaterialToolbar
+                    android:id="@+id/topAppBarServico"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/cor_principal"
+                    android:minHeight="?actionBarSize"
+                    android:padding="@dimen/tamanho_pequeno"
+                    app:navigationIcon="@drawable/baseline_arrow_back"
+                    />
+
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="20dp"
+                android:background="@color/cor_fundo"
+                >
+
+                <ImageView
+                    android:id="@+id/imgServico"
+                    android:layout_width="250dp"
+                    android:layout_height="250dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="50dp"
+                    android:src="@drawable/foto_imagem" />
 
                 <TextView
+                    android:id="@+id/txtTituloServico"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginTop="14dp"
-                    android:text="Adicionando serviços"
-                    android:textAlignment="center"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:hint="TITULO DO SERVIÇO"
+                    android:padding="5dp"
                     android:textColor="@color/cor_texto_claro"
-                    android:textSize="19dp">
+                    android:textSize="@dimen/tamanho_medio"
+                    android:fontFamily="@font/textos"
+                    />
 
-                </TextView>
-            </com.google.android.material.appbar.MaterialToolbar>
+                <TextView
+                    android:id="@+id/txtPreco"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:hint="Preço : "
+                    android:padding="5dp"
+                    android:textColor="@color/cor_texto_claro"
+                    android:fontFamily="@font/textos"
+                    android:textSize="@dimen/tamanho_medio"
+                    />
 
-            <ImageView
-                android:layout_width="225dp"
-                android:layout_height="150dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="40dp"
-                android:background="#2196F3"></ImageView>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/txtInputEditTextDescServico"
+                        android:hint="Descrição"
+                        android:padding="10dp"
+                        android:textColor="@color/cor_texto"
+                        android:textSize="@dimen/tamanho_medio"
+                        android:fontFamily="@font/textos"
+                        android:background="@color/cor_detalhes"
+                        />
 
-            <com.google.android.material.button.MaterialButton
-                android:layout_width="225dp"
-                android:layout_height="47dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="37dp"
-                android:backgroundTint="#2196F3"
-                android:text="Serviço"
-                app:cornerRadius="10dp">
+                </com.google.android.material.textfield.TextInputLayout>
 
-            </com.google.android.material.button.MaterialButton>
+                <Button
+                    android:id="@+id/btnEntrarEmContato"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/cor_principal"
+                    android:textColor="@color/cor_texto"
+                    android:fontFamily="@font/textos"
+                    android:hint="ENTRAR EM CONTATO"
+                    android:textSize="@dimen/tamanho_medio"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="40dp"
 
+                    />
 
-            <com.google.android.material.button.MaterialButton
-                android:layout_width="225dp"
-                android:layout_height="47dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="19dp"
-                android:backgroundTint="#2196F3"
-                android:text="Valor"
-                app:cornerRadius="10dp">
-
-            </com.google.android.material.button.MaterialButton>
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="225dp"
-                android:layout_height="110dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="29dp"
-                android:background="@color/cor_texto_claro"
-                android:text="Explicação do Serviço"
-                android:textAlignment="center"
-                android:textColor="#8C8C8C"
-                android:textSize="16dp">
-
-            </com.google.android.material.textfield.TextInputEditText>
-
-            <com.google.android.material.button.MaterialButton
-                android:layout_width="225dp"
-                android:layout_height="47dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="59dp"
-                android:backgroundTint="#2BAD33"
-                android:text="Salvar"
-                app:cornerRadius="10dp">
-
-            </com.google.android.material.button.MaterialButton>
+            </LinearLayout>
 
         </LinearLayout>
 
 
     </androidx.core.widget.NestedScrollView>
+
+
 </LinearLayout>
