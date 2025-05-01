@@ -3,6 +3,7 @@ package br.com.etecia.iservice;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Spinner;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,7 +28,6 @@ public class CadastrarActivity extends AppCompatActivity implements DialogOpcaoC
 
         // Apresentação Java + XML----------------------------------------------------------
         btnCriarConta = findViewById(R.id.btnCriarConta);
-
 
 
         //Botões----------------------------------------------------------------------------

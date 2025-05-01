@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_width="370dp"
+    android:layout_height="wrap_content"
+    android:background="@color/cor_detalhes"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="15dp">
 
     <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="370dp"
+        android:layout_height="wrap_content"
         android:fillViewport="true">
 
 
@@ -16,32 +19,52 @@
             android:orientation="vertical">
 
             <TextView
-                android:textAlignment="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:fontFamily="@font/textos"
                 android:text="Deseja realizar o cadastro de uma loja agora?"
-                android:textSize="@dimen/tamanho_grande"/>
+                android:textAlignment="center"
+                android:textSize="@dimen/tamanho_grande" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <Button
-                    android:id="@+id/btnDialogNaoCadastrar"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:backgroundTint="@color/cor_recusar"
-                    android:text="Agora não" />
+                    android:layout_gravity="center_horizontal"
+                    android:background="@color/cor_recusar">
 
-                <Button
-                    android:id="@+id/btnDialogSimCadastrar"
+                    <Button
+                        android:id="@+id/btnDialogNaoCadastrar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/cor_recusar"
+                        android:fontFamily="@font/textos"
+                        android:text="Agora não"
+                        android:textSize="@dimen/tamanho_medio" />
+
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:layout_marginRight="20dp"
-                    android:backgroundTint="@color/cor_confirmar"
-                    android:text="Cadastrar loja" />
+                    android:layout_gravity="center_horizontal"
+                    android:background="@color/cor_confirmar">
+
+                    <Button
+                        android:id="@+id/btnDialogSimCadastrar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/cor_confirmar"
+                        android:fontFamily="@font/textos"
+                        android:text="Cadastrar loja"
+                        android:textSize="@dimen/tamanho_medio" />
+                </LinearLayout>
+
             </RelativeLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

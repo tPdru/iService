@@ -73,12 +73,12 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="30dp"
+                        android:layout_marginTop="10dp"
                         android:orientation="vertical">
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="match_parent"
-                            android:layout_height="45sp"
+                            android:layout_height="60sp"
                             android:layout_gravity="center_horizontal"
                             android:hint="Usuário"
                             android:textColorHint="@color/cor_texto"
@@ -103,9 +103,9 @@
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="match_parent"
-                            android:layout_height="45sp"
+                            android:layout_height="60sp"
                             android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="25dp"
+                            android:layout_marginTop="10dp"
                             android:hint="Nome Completo"
                             android:textColorHint="@color/cor_texto"
                             android:textSize="@dimen/tamanho_medio"
@@ -134,7 +134,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="45sp"
+                    android:layout_height="60sp"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="15dp"
                     android:hint="E-mail"
@@ -144,7 +144,8 @@
                     app:boxStrokeColor="@color/cor_texto"
                     app:cursorColor="@color/cor_texto"
                     app:endIconMode="clear_text"
-                    app:hintTextColor="@color/cor_texto">
+                    app:hintTextColor="@color/cor_texto"
+                   >
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/txtEmailUsuario"
@@ -158,7 +159,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="45sp"
+                    android:layout_height="60sp"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="15dp"
                     android:hint="Senha"
@@ -183,7 +184,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="45sp"
+                    android:layout_height="60sp"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="15dp"
                     android:hint="Confirmar Senha"
@@ -215,7 +216,7 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="170dp"
-                        android:layout_height="45sp"
+                        android:layout_height="60sp"
                         android:layout_gravity="center_horizontal"
                         android:hint="Celular"
                         android:textColorHint="@color/cor_texto"
@@ -238,7 +239,7 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="170dp"
-                        android:layout_height="45sp"
+                        android:layout_height="60sp"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginLeft="30dp"
                         android:hint="Telefone"
@@ -280,9 +281,10 @@
                     android:orientation="horizontal">
 
 
+
                     <TextView
                         android:layout_width="75dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="60dp"
                         android:layout_marginTop="45dp"
                         android:background="@color/cor_detalhes"
                         android:fontFamily="@font/titulos"
@@ -293,7 +295,7 @@
 
                     <TextView
                         android:layout_width="175dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="60dp"
                         android:layout_marginTop="45dp"
                         android:layout_marginLeft="15dp"
                         android:background="@color/cor_detalhes"
@@ -305,7 +307,7 @@
 
                     <TextView
                         android:layout_width="100dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="60dp"
                         android:layout_marginTop="45dp"
                         android:layout_marginLeft="15dp"
                         android:background="@color/cor_detalhes"
@@ -330,10 +332,11 @@
                         style="@style/ThemeOverlay.Material3.Button.ElevatedButton"
                         android:layout_width="200dp"
                         android:layout_height="75dp"
+                        android:fontFamily="@font/titulos"
                         android:layout_gravity="center_horizontal"
                         android:backgroundTint="@color/cor_principal"
                         android:text="Criar conta"
-                        android:textSize="25sp" />
+                        android:textSize="@dimen/tamanho_grande" />
 
                 </LinearLayout>
 
