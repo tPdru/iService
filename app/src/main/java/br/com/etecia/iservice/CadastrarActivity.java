@@ -1,9 +1,10 @@
 package br.com.etecia.iservice;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -38,6 +39,7 @@ public class CadastrarActivity extends AppCompatActivity implements DialogOpcaoC
             public void onClick(View v) {
                 DialogOpcaoCadastrarLoja dialog = new DialogOpcaoCadastrarLoja();
                 dialog.show(getSupportFragmentManager(),"Cadastrar loja?");
+
             }
         });
 
@@ -45,6 +47,5 @@ public class CadastrarActivity extends AppCompatActivity implements DialogOpcaoC
 
     @Override
     public void dialogPassarDados() {
-
     }
 }

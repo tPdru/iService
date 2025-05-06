@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".CadastrarLojaActivity">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/txtLayoutCadastrarLojaNome"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:hint="Nome da loja"
+                        android:textColorHint="@color/cor_texto"
+                        android:textSize="@dimen/tamanho_medio"
+                        app:boxBackgroundColor="@color/cor_detalhes"
+                        app:boxStrokeColor="@color/cor_texto"
+                        app:cursorColor="@color/cor_texto"
+                        app:endIconMode="clear_text"
+                        app:hintTextColor="@color/cor_texto">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/txtCadastrarLojaNome"
+                            android:layout_width="wrap_content"
+                            android:layout_height="60sp"
+                            android:hint="Nome da loja"
+                            android:fontFamily="@font/textos"
+                            android:textColor="@color/cor_texto"
+                            android:textSize="@dimen/tamanho_medio" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/txtLayoutCadastrarLojaDescricao"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:hint="Nome da loja"
+                        android:textColorHint="@color/cor_texto"
+                        android:textSize="@dimen/tamanho_medio"
+                        app:boxBackgroundColor="@color/cor_detalhes"
+                        app:boxStrokeColor="@color/cor_texto"
+                        app:cursorColor="@color/cor_texto"
+                        app:endIconMode="clear_text"
+                        app:hintTextColor="@color/cor_texto">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/txtCadastrarLojaDescricao"
+                            android:layout_width="wrap_content"
+                            android:hint="Nome da loja"
+                            android:layout_height="60sp"
+                            android:fontFamily="@font/textos"
+                            android:textColor="@color/cor_texto"
+                            android:textSize="@dimen/tamanho_medio" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+
+                <ImageView
+                    android:layout_alignParentRight="true"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:id="@+id/imgCadastrarLoja"
+                    android:src="@drawable/foto_imagem"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/txtLayoutCadastrarLojaCnpj"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/imgCadastrarLoja"
+                    android:hint="Nome da loja"
+                    android:textColorHint="@color/cor_texto"
+                    android:textSize="@dimen/tamanho_medio"
+                    app:boxBackgroundColor="@color/cor_detalhes"
+                    app:boxStrokeColor="@color/cor_texto"
+                    app:cursorColor="@color/cor_texto"
+                    app:endIconMode="clear_text"
+                    app:hintTextColor="@color/cor_texto">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtCadastrarLojaCnpj"
+                        android:layout_width="250sp"
+                        android:layout_height="60sp"
+                        android:fontFamily="@font/textos"
+                        android:textColor="@color/cor_texto"
+                        android:textSize="@dimen/tamanho_medio" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:id="@+id/lnlAreaEndereco"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtLayoutCadastrarLojaCnpj">
+                    <TextView
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ativar endereço Loja fisica"
+                        android:textSize="@dimen/tamanho_medio"/>
+                    <CheckBox
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/cbxCadastroLojaEndereco"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:id="@+id/lnlCadastroLojaAreaEndereco">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:hint="Nome da loja"
+                            android:textColorHint="@color/cor_texto"
+                            android:textSize="@dimen/tamanho_medio"
+                            app:boxBackgroundColor="@color/cor_detalhes"
+                            app:boxStrokeColor="@color/cor_texto"
+                            app:cursorColor="@color/cor_texto"
+                            app:endIconMode="clear_text"
+                            app:hintTextColor="@color/cor_texto">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="250sp"
+                                android:layout_height="60sp"
+                                android:fontFamily="@font/textos"
+                                android:textColor="@color/cor_texto"
+                                android:textSize="@dimen/tamanho_medio" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <Button
+                    android:layout_margin="10dp"
+                    android:id="@+id/btnFinalizarCadLoja"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Finalizar cadastro"
+                    android:textSize="@dimen/tamanho_grande"
+                    android:layout_below="@id/lnlAreaEndereco"
+                    android:layout_centerHorizontal="true"/>
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>
