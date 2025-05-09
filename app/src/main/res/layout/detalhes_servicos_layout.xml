@@ -44,68 +44,69 @@
 
                 <ImageView
                     android:id="@+id/imgServico"
-                    android:layout_width="250dp"
+                    android:layout_width="match_parent"
                     android:layout_height="250dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="50dp"
                     android:src="@drawable/foto_imagem" />
 
                 <TextView
-                    android:id="@+id/txtTituloServico"
+                    android:id="@+id/txtNomeServico"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:gravity="center"
-                    android:hint="TITULO DO SERVIÇO"
-                    android:padding="5dp"
-                    android:textColor="@color/cor_texto_claro"
-                    android:textSize="@dimen/tamanho_medio"
-                    android:fontFamily="@font/textos"
+                    android:text="Serviço Tal"
+                    android:textSize="@dimen/tamanho_maior"
+                    android:fontFamily="@font/titulos"
+                    android:textColor="@color/cor_detalhes"
                     />
+
 
                 <TextView
                     android:id="@+id/txtPreco"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="15dp"
-                    android:hint="Preço : "
-                    android:padding="5dp"
-                    android:textColor="@color/cor_texto_claro"
-                    android:fontFamily="@font/textos"
-                    android:textSize="@dimen/tamanho_medio"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center"
+                    android:text="R$ 500.00"
+                    android:textSize="@dimen/tamanho_maior"
+                    android:fontFamily="@font/titulos"
+                    android:textColor="@color/cor_detalhes"
                     />
 
-                <com.google.android.material.textfield.TextInputLayout
+                <TextView
+                    android:id="@+id/txtDescrição"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center"
+                    android:text="Descrição: Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor "
+                    android:textSize="@dimen/tamanho_grande"
+                    android:fontFamily="@font/textos"
+                    android:textColor="@color/cor_detalhes"
+                    />
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:layout_gravity="center"
+                    android:background="@color/cor_principal"
                     android:layout_height="wrap_content">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/txtInputEditTextDescServico"
-                        android:hint="Descrição"
-                        android:padding="10dp"
-                        android:textColor="@color/cor_texto"
-                        android:textSize="@dimen/tamanho_medio"
-                        android:fontFamily="@font/textos"
-                        android:background="@color/cor_detalhes"
-                        />
-
-                </com.google.android.material.textfield.TextInputLayout>
 
                 <Button
                     android:id="@+id/btnEntrarEmContato"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/cor_principal"
-                    android:textColor="@color/cor_texto"
+                    android:textColor="@color/cor_texto_claro"
                     android:fontFamily="@font/textos"
-                    android:hint="ENTRAR EM CONTATO"
-                    android:textSize="@dimen/tamanho_medio"
+                    android:text="Entrar em Contato"
+                    android:textSize="@dimen/tamanho_grande"
                     android:layout_gravity="center"
-                    android:layout_marginTop="40dp"
-
                     />
+                </LinearLayout>
 
             </LinearLayout>
 

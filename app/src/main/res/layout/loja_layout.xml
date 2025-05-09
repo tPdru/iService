@@ -1,10 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LojaActivity">
+    android:orientation="vertical"
+    tools:context=".DetalhesServicosActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.appbar.MaterialToolbar
+                    android:id="@+id/topAppBarLoja"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/cor_principal"
+                    android:minHeight="?actionBarSize"
+                    android:padding="@dimen/tamanho_pequeno"
+                    app:navigationIcon="@drawable/baseline_arrow_back"
+                    />
+
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="20dp"
+                android:background="@color/cor_fundo"
+                >
+
+                <ImageView
+                    android:id="@+id/imgServico"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="25dp"
+                    android:src="@drawable/foto_imagem" />
+
+                <TextView
+                    android:id="@+id/txtNomeLoja"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:text="(Nome da Loja)"
+                    android:textSize="@dimen/tamanho_maior"
+                    android:fontFamily="@font/titulos"
+                    android:textColor="@color/cor_texto_claro"
+                    />
+
+                <TextView
+                    android:id="@+id/txtDescrição"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center"
+                    android:text="Descrição: Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor "
+                    android:textSize="@dimen/tamanho_grande"
+                    android:fontFamily="@font/textos"
+                    android:textColor="@color/cor_detalhes"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="30dp"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content">
+
+                    <ImageButton
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/ic_android_black"
+                        />
+
+                    <TextView
+                        android:id="@+id/txtEnderecoLoja"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rua Bobo Alegre"
+                        android:fontFamily="@font/textos"
+                        android:textSize="@dimen/tamanho_grande"
+                        android:textColor="@color/cor_texto_claro"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/cor_detalhes_secundarios"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recServicosLoja"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:layout_gravity="center"
+                    android:background="@color/cor_principal"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/btnEntrarEmContato"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/cor_principal"
+                        android:textColor="@color/cor_texto_claro"
+                        android:fontFamily="@font/textos"
+                        android:text="Entrar em Contato"
+                        android:textSize="@dimen/tamanho_grande"
+                        android:layout_gravity="center"
+                        />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</LinearLayout>

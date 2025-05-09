@@ -1,52 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:layout_marginBottom="15dp"
     android:layout_height="300dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:background="@color/cor_fundo"
+        android:orientation="vertical"
         android:padding="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="107dp"
             android:orientation="horizontal"
+            android:layout_marginBottom="5dp"
             android:padding="4dp">
+
             <ImageView
+                android:id="@+id/imgModeloCardLoja"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
-                android:src="@drawable/foto_imagem"
-                android:id="@+id/imgModeloCardLoja"/>
+                android:src="@drawable/foto_imagem" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
                 <TextView
+                    android:id="@+id/txtModeloCardLojaNomLoja"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/tamanho_medio"
-                    android:id="@+id/txtModeloCardLojaNomLoja"
-                    android:text="Barbearia"/>
+                    android:text="Barbearia"
+                    android:fontFamily="@font/textos"
+                    android:textColor="@color/cor_texto_claro"
+                    android:textSize="@dimen/tamanho_grande" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
                     android:padding="3dp">
+
                     <ImageView
                         android:layout_width="35dp"
                         android:layout_height="35dp"
-                        android:src="@drawable/ic_android_black"/>
-                    <TextView
+                        android:src="@drawable/ic_android_black" />
 
+                    <TextView
+                        android:id="@+id/txtModeloCardLojaNota"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="4.7"
-                        android:id="@+id/txtModeloCardLojaNota"
-                        android:textSize="@dimen/tamanho_grande"/>
+                        android:fontFamily="@font/textos"
+                        android:textColor="@color/cor_texto_claro"
+                        android:textSize="@dimen/tamanho_grande" />
 
                 </LinearLayout>
 
@@ -58,13 +68,14 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/cor_detalhes_secundarios"
             android:orientation="horizontal"
-            android:padding="5dp"
-            android:background="@color/cor_detalhes">
+            android:padding="5dp">
+
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recModeloCardsLojas"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/recModeloCardsLojas"/>
+                android:layout_height="match_parent" />
 
         </LinearLayout>
 
