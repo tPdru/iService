@@ -19,9 +19,10 @@ public class DialogOpcaoCadastrarLoja extends DialogFragment {
     //Variáveis de controle
     DialogListerCadastro escutar;
     boolean cadastrarLoja;
+    Button btnSair, btnCadastrar;
 
     //Variáveis de informação
-    Button btnSair, btnCadastrar;
+
 
 
     @Override
@@ -51,6 +52,9 @@ public class DialogOpcaoCadastrarLoja extends DialogFragment {
 
         //Instancias
 
+        //Impede o cancelamento sem cricando fora
+        setCancelable(false);
+
         //Botões---------------------------------------------------------------------------
         //Botão cadastrar loja
         btnCadastrar.setOnClickListener(new View.OnClickListener() {
@@ -66,6 +70,8 @@ public class DialogOpcaoCadastrarLoja extends DialogFragment {
         btnSair.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
                 startActivity(new Intent(getContext(), HomeActivity.class));
                 requireActivity().finish();
                 dialog.dismiss();

@@ -56,7 +56,11 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 if(item.getItemId() == R.id.itemMenuTopPerfil){
-                    startActivity(new Intent(getApplicationContext(), PerfilActivity.class));
+                    if (ControllerMaster.getControllerMaster().getLoginOn()) {
+                        startActivity(new Intent(getApplicationContext(), PerfilActivity.class));
+                    }else {
+                        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                    }
                     return true;
                 }
                 return true;

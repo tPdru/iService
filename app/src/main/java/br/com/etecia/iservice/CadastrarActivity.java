@@ -12,9 +12,16 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.material.textfield.TextInputEditText;
+
 public class CadastrarActivity extends AppCompatActivity implements DialogOpcaoCadastrarLoja.DialogListerCadastro {
 
+    //VAriáveis de controle
     Button btnCriarConta;
+
+    //Variáveis de informação
+    TextInputEditText txtNome, txtemail, txtSenha, txtReSenha;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +36,9 @@ public class CadastrarActivity extends AppCompatActivity implements DialogOpcaoC
 
         // Apresentação Java + XML----------------------------------------------------------
         btnCriarConta = findViewById(R.id.btnCriarConta);
+        txtemail = findViewById(R.id.txtEmailUsuario);
+        txtNome = findViewById(R.id.txtNomeCompleto);
+        txtSenha = findViewById(R.id.txtSenhaUsuario);
 
 
         //Botões----------------------------------------------------------------------------
@@ -37,9 +47,22 @@ public class CadastrarActivity extends AppCompatActivity implements DialogOpcaoC
         btnCriarConta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String email = txtemail.getText().toString().trim();
+                String senha = txtSenha.getText().toString().trim();
+
+                ObjPerfil perfil = new ObjPerfil(
+                        ControllerMaster.getControllerMaster().getCodigoList() + 1,
+                        email,
+                        txtNome.getText().toString(),
+                        senha,
+                        false
+                );
+
+                ControllerMaster.getControllerMaster().criarPerfil(perfil, email);
+                ControllerMaster.getControllerMaster().autenticarConta(email, senha);
+
                 DialogOpcaoCadastrarLoja dialog = new DialogOpcaoCadastrarLoja();
                 dialog.show(getSupportFragmentManager(),"Cadastrar loja?");
-
             }
         });
 
