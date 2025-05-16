@@ -14,12 +14,16 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.material.textfield.TextInputEditText;
+
 public class CadastrarLojaActivity extends AppCompatActivity {
 
     //Variáveis de controle
     CheckBox cbxAreaEndereco;
     LinearLayout lnlAreaEndereco;
     Button btnFinalizarCadLoja;
+    TextInputEditText txtCep, txtEstado, txtCidade, txtLogradouro;
+    TextInputEditText txtRua, txtNumero, txtComplemento;
 
     //Variáveis de Informação
 
@@ -40,6 +44,13 @@ public class CadastrarLojaActivity extends AppCompatActivity {
         cbxAreaEndereco = findViewById(R.id.cbxCadastroLojaEndereco);
         lnlAreaEndereco = findViewById(R.id.lnlCadastroLojaAreaEndereco);
         btnFinalizarCadLoja = findViewById(R.id.btnFinalizarCadLoja);
+        txtCep = findViewById(R.id.txtCadLojaCep);
+        txtEstado = findViewById(R.id.txtCadLojaEstado);
+        txtCidade = findViewById(R.id.txtCadLojaCidade);
+        txtLogradouro = findViewById(R.id.txtCadLojaLogradouro);
+        txtRua = findViewById(R.id.txtCadLojaRua);
+        txtNumero = findViewById(R.id.txtCadLojaComplemento);
+
 
         //Configurações iniciais
         lnlAreaEndereco.setClickable(false);

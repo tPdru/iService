@@ -207,118 +207,29 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_marginTop="20dp"
-                    android:gravity="center_horizontal"
-                    android:orientation="horizontal">
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="170dp"
-                        android:layout_height="60sp"
-                        android:layout_gravity="center_horizontal"
-                        android:hint="Celular"
-                        android:textColorHint="@color/cor_texto"
-                        android:textSize="@dimen/tamanho_medio"
-                        app:boxBackgroundColor="@color/cor_detalhes"
-                        app:boxStrokeColor="@color/cor_texto"
-                        app:cursorColor="@color/cor_texto"
-                        app:endIconMode="clear_text"
-                        app:hintTextColor="@color/cor_texto">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/txtCelular"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:fontFamily="@font/textos"
-                            android:textColor="@color/cor_texto"
-                            android:textSize="@dimen/tamanho_medio" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="170dp"
-                        android:layout_height="60sp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginLeft="30dp"
-                        android:hint="Telefone"
-                        android:textColorHint="@color/cor_texto"
-                        android:textSize="@dimen/tamanho_medio"
-                        app:boxBackgroundColor="@color/cor_detalhes"
-                        app:boxStrokeColor="@color/cor_texto"
-                        app:cursorColor="@color/cor_texto"
-                        app:endIconMode="clear_text"
-                        app:hintTextColor="@color/cor_texto">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/txtTelefone"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:fontFamily="@font/textos"
-                            android:textColor="@color/cor_texto"
-                            android:textSize="@dimen/tamanho_medio" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-
-                </LinearLayout>
-
-                <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="45dp"
-                    android:background="@color/cor_detalhes_secundarios"
-                    android:fontFamily="@font/titulos"
-                    android:gravity="center"
-                    android:text="Data de Nascimento"
-                    android:textColor="@color/cor_texto_claro"
-                    android:textSize="@dimen/tamanho_grande" />
+                    android:layout_height="60sp"
+                    android:layout_gravity="center_horizontal"
+                    android:hint="Celular"
+                    android:textColorHint="@color/cor_texto"
+                    android:textSize="@dimen/tamanho_medio"
+                    app:boxBackgroundColor="@color/cor_detalhes"
+                    app:boxStrokeColor="@color/cor_texto"
+                    app:cursorColor="@color/cor_texto"
+                    app:endIconMode="clear_text"
+                    app:hintTextColor="@color/cor_texto">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-
-
-                    <TextView
-                        android:layout_width="75dp"
-                        android:layout_height="60dp"
-                        android:layout_marginTop="45dp"
-                        android:background="@color/cor_detalhes"
-                        android:fontFamily="@font/titulos"
-                        android:gravity="center"
-                        android:text="Dia"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtCelular"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/textos"
                         android:textColor="@color/cor_texto"
-                        android:textSize="@dimen/tamanho_grande" />
+                        android:textSize="@dimen/tamanho_medio" />
 
-                    <TextView
-                        android:layout_width="175dp"
-                        android:layout_height="60dp"
-                        android:layout_marginTop="45dp"
-                        android:layout_marginLeft="15dp"
-                        android:background="@color/cor_detalhes"
-                        android:fontFamily="@font/titulos"
-                        android:gravity="center"
-                        android:text="Mes"
-                        android:textColor="@color/cor_texto"
-                        android:textSize="@dimen/tamanho_grande" />
-
-                    <TextView
-                        android:layout_width="100dp"
-                        android:layout_height="60dp"
-                        android:layout_marginTop="45dp"
-                        android:layout_marginLeft="15dp"
-                        android:background="@color/cor_detalhes"
-                        android:fontFamily="@font/titulos"
-                        android:gravity="center"
-                        android:text="Ano"
-                        android:textColor="@color/cor_texto"
-                        android:textSize="@dimen/tamanho_grande" />
-
-                </LinearLayout>
-
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <LinearLayout
                     android:layout_width="wrap_content"

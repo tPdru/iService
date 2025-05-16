@@ -36,6 +36,8 @@ public class SplashActivity extends AppCompatActivity {
                         email,
                         "Neymar Júnior",
                         "Senha",
+                        "NJ10",
+                        R.drawable.foto_usuario,
                         false
                 );
                 ControllerMaster.getControllerMaster().criarPerfil(perfil, email);

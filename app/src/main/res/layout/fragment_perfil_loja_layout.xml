@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FragmentPerfilLoja">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <ImageView
+                    android:id="@+id/imgPerfilLoja"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:src="@drawable/foto_imagem" />
+
+                <Button
+                    android:id="@+id/btnEditarPerfilLoja"
+                    android:layout_width="150dp"
+                    android:layout_height="100dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:padding="10dp"
+                    android:text="Editar Loja"
+                    android:textSize="@dimen/tamanho_grande" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:background="@color/cor_fundo"
+                android:orientation="vertical"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="3dp"
+                    android:background="@color/cor_detalhes"
+                    android:gravity="center_horizontal"
+                    android:text="Nome dda loja"
+                    android:textColor="@color/cor_texto"
+                    android:textSize="@dimen/tamanho_medio" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="3dp"
+                    android:background="@color/cor_detalhes"
+                    android:gravity="center_horizontal"
+                    android:text="XXXXXXXXXXXXXXXXXXXXX"
+                    android:textColor="@color/cor_texto"
+                    android:textSize="@dimen/tamanho_medio" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:background="@color/cor_fundo"
+                android:orientation="vertical"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/cor_detalhes"
+                    android:gravity="center_horizontal"
+                    android:text="Descrição"
+                    android:textColor="@color/cor_texto"
+                    android:textSize="@dimen/tamanho_medio"
+                    android:layout_marginBottom="5dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/cor_detalhes"
+                    android:gravity="center_horizontal"
+                    android:maxHeight="200sp"
+                    android:minHeight="70sp"
+                    android:text="XXXXXXXXXXXXXXXXXXXXXXXXXXX"
+                    android:textColor="@color/cor_texto"
+                    android:textSize="@dimen/tamanho_medio" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:background="@color/cor_fundo"
+                android:orientation="vertical"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/cor_detalhes"
+                    android:gravity="center_horizontal"
+                    android:text="Endereço loja física"
+                    android:textColor="@color/cor_texto"
+                    android:textSize="@dimen/tamanho_medio" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:background="@color/cor_detalhes"
+                    android:gravity="center_horizontal"
+                    android:text="Estado: XXXXXXXXXXXXX"
+                    android:textColor="@color/cor_texto"
+                    android:textSize="@dimen/tamanho_medio" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:background="@color/cor_detalhes"
+                    android:gravity="center_horizontal"
+                    android:text="Cidade: XXXXXXXXXXXXX"
+                    android:textColor="@color/cor_texto"
+                    android:textSize="@dimen/tamanho_medio" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:background="@color/cor_detalhes"
+                    android:gravity="center_horizontal"
+                    android:text="Rua: XXXXXXXXXXXXXXXXXX"
+                    android:textColor="@color/cor_texto"
+                    android:textSize="@dimen/tamanho_medio" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="2dp"
+                        android:background="@color/cor_detalhes"
+                        android:gravity="center_horizontal"
+                        android:text="Número: XXXX"
+                        android:textColor="@color/cor_texto"
+                        android:textSize="@dimen/tamanho_medio" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="2dp"
+                        android:background="@color/cor_detalhes"
+                        android:gravity="center_horizontal"
+                        android:text="Complemento: XXXX"
+                        android:textColor="@color/cor_texto"
+                        android:textSize="@dimen/tamanho_medio" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:orientation="vertical"
+                android:background="@color/cor_fundo"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/cor_detalhes"
+                    android:gravity="center_horizontal"
+                    android:text="Meus serviços"
+                    android:textColor="@color/cor_texto"
+                    android:layout_margin="3dp"
+                    android:textSize="@dimen/tamanho_medio" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="3dp"
+                    android:background="@color/cor_detalhes">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:contentDescription="Lista de serviços da sua loja"
+                        android:id="@+id/recPerfilLojaServicos"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:background="@color/cor_detalhes" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</RelativeLayout>

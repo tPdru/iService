@@ -53,6 +53,8 @@ public class FragmentHome extends Fragment {
         );
 
 
+
+
         listaCardLoja.add(
                 new ObjCardLoja(R.drawable.foto_usuario, listaServicos, "Barbearia", 5)
         );
