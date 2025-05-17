@@ -33,49 +33,24 @@ public class FragmentHome extends Fragment {
         recHomeLojas = view.findViewById(R.id.recHomeLojas);
 
         //Instancias
-        listaCardLoja = new ArrayList<>();
+        listaCardLoja = new ArrayList<>(ControllerMaster.getControllerMaster().getListaLojas());
         listaServicos = new ArrayList<>();
         adpLojas = new AdaptadorModeloCardLoja(getContext(), listaCardLoja);
 
         //Configurações iniciais---------------------------------------
-        //Adicionando itens para teste
-        listaServicos.add(
-                new ObjCardServicoPp(R.drawable.foto_imagem, "Corte", 50)
-        );
-        listaServicos.add(
-                new ObjCardServicoPp(R.drawable.foto_imagem, "Corte", 50)
-        );
-        listaServicos.add(
-                new ObjCardServicoPp(R.drawable.foto_imagem, "Corte", 50)
-        );
-        listaServicos.add(
-                new ObjCardServicoPp(R.drawable.foto_imagem, "Corte", 50)
-        );
-
-
-
-
-        listaCardLoja.add(
-                new ObjCardLoja(R.drawable.foto_usuario, listaServicos, "Barbearia", 5)
-        );
-        listaCardLoja.add(
-                new ObjCardLoja(R.drawable.foto_usuario, listaServicos, "Barbearia", 5)
-        );
-        listaCardLoja.add(
-                new ObjCardLoja(R.drawable.foto_usuario, listaServicos, "Barbearia", 5)
-        );
-        listaCardLoja.add(
-                new ObjCardLoja(R.drawable.foto_usuario, listaServicos, "Barbearia", 5)
-        );
 
 
         //Configuração RecicleVieww
         recHomeLojas.setLayoutManager(new GridLayoutManager(getContext(), 1));
         recHomeLojas.setAdapter(adpLojas);
 
-
-
-
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        listaCardLoja = new ArrayList<>(ControllerMaster.getControllerMaster().getListaLojas());
+        adpLojas.atualizarListaAgendados(listaCardLoja);
     }
 }

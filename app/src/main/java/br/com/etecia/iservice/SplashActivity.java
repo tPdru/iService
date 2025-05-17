@@ -10,6 +10,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SplashActivity extends AppCompatActivity {
 
     @Override
@@ -29,23 +32,76 @@ public class SplashActivity extends AppCompatActivity {
                 //Definindo que o app não possui conta logada no inicio
                 ControllerMaster.getControllerMaster().setLoginOn(false);
 
-                //Criação de conta teste
-                String email = "teste.barbeiro@exemplo.com";
-                ObjPerfil perfil = new ObjPerfil(
-                        ControllerMaster.getControllerMaster().getCodigoList() +1,
-                        email,
-                        "Neymar Júnior",
-                        "Senha",
-                        "NJ10",
-                        R.drawable.foto_usuario,
-                        false
-                );
-                ControllerMaster.getControllerMaster().criarPerfil(perfil, email);
+                addPerfis("teste1.barbeiro@exemplo.com");
+                addPerfis("teste2.barbeiro@exemplo.com");
+                addPerfis("teste3.barbeiro@exemplo.com");
+                addPerfis("teste4.barbeiro@exemplo.com");
+                addPerfis("teste5.barbeiro@exemplo.com");
 
 
+                ControllerMaster.getControllerMaster().carregarLojas();
                 startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                 finish();
             }
         }, 2000);
+
+        //Adicionar elementos para teste-------------------------------------------
+        //Adicionando Perfis
+
+
+
+    }
+    private void addPerfis(String email){
+        //Criação de conta teste
+
+        ObjCardLoja novaLoja;
+        List<ObjCardServicoPp> listaServicos = new ArrayList<>();
+
+        //Criando serviços
+        ObjCardServicoPp servicoPp = new ObjCardServicoPp(
+                R.drawable.foto_imagem,
+                "Corte",
+                "Qualquer corte mesmo valor",
+                35.00);
+        listaServicos.add(servicoPp);
+
+        servicoPp = new ObjCardServicoPp(
+                R.drawable.foto_imagem,
+                "Barba",
+                "Qualque estilo é o mesmo valor",
+                30.00);
+        listaServicos.add(servicoPp);
+
+        servicoPp = new ObjCardServicoPp(
+                R.drawable.foto_imagem,
+                "Sombrancelhas",
+                "Escolha como quer sua sombrancelha valores não mudão",
+                20.00);
+        listaServicos.add(servicoPp);
+
+        servicoPp = new ObjCardServicoPp(
+                R.drawable.foto_imagem,
+                "Pintura",
+                "Com sua tintura é mais barato",
+                40.00);
+        listaServicos.add(servicoPp);
+
+
+        ObjPerfil perfil = new ObjPerfil(
+                ControllerMaster.getControllerMaster().getCodigoList() + 1,
+                email,
+                "Neymar Júnior",
+                "Senha",
+                "Ney",
+                R.drawable.foto_usuario,
+                true,
+                novaLoja = new ObjCardLoja(
+                        R.drawable.foto_imagem,
+                        listaServicos,
+                        "Barbearia",
+                        4.5)
+        );
+
+        ControllerMaster.getControllerMaster().criarPerfil(perfil, email);
     }
 }

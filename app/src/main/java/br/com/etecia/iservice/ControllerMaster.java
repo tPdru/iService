@@ -10,6 +10,7 @@ public class ControllerMaster {
 
     //Variáveis para controle de informação
     private List<ObjPerfil> listaPerfis = new ArrayList<>();
+    private List<ObjCardLoja> listaLojas = new ArrayList<>();
     private boolean loginOn;
     private int indexConta;
 
@@ -56,6 +57,10 @@ public class ControllerMaster {
         }
     }
 
+    public List<ObjCardLoja> getListaLojas(){
+        return listaLojas;
+    }
+
     //Upgrade Perfil
     public void addLojaPerfil(ObjCardLoja loja){
         listaPerfis.get(indexConta).setMinhaLoja(loja);
@@ -97,4 +102,17 @@ public class ControllerMaster {
     //--------------------------------------------------------------------------}
 
     //metodo de criaçao de objetos para carregar recycleViews com exemplos
+    public void addNovaLojas(ObjPerfil perfil){
+
+    }
+
+    //Recarregando a lista de lojas
+    public void carregarLojas(){
+        listaLojas.clear();
+        for (int i = 0; i < listaPerfis.size(); i++){
+            if (listaPerfis.get(i).isTemLoja()){
+                listaLojas.add(listaPerfis.get(i).getMinhaLoja());
+            }
+        }
+    }
 }

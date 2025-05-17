@@ -30,6 +30,7 @@ public class CadastrarLojaActivity extends AppCompatActivity {
     Button btnFinalizarCadLoja;
     List<TextInputLayout> listElementos;
     boolean lojaFisica;
+    AdaptadorModeloCardLoja adaptadorModeloCardLoja;
 
     //Variáveis de Informação
     TextInputEditText txtCep, txtEstado, txtCidade, txtLogradouro;
@@ -163,6 +164,8 @@ public class CadastrarLojaActivity extends AppCompatActivity {
                                 end
                         );
                         ControllerMaster.getControllerMaster().addLojaPerfil(loja);
+                        ControllerMaster.getControllerMaster().carregarLojas();
+
                         startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                         finish();
                     }
@@ -175,6 +178,7 @@ public class CadastrarLojaActivity extends AppCompatActivity {
                                 nota
                         );
                         ControllerMaster.getControllerMaster().addLojaPerfil(loja);
+
                         startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                         finish();
                     }
@@ -202,4 +206,6 @@ public class CadastrarLojaActivity extends AppCompatActivity {
             return true;
         }
     }
+
+
 }

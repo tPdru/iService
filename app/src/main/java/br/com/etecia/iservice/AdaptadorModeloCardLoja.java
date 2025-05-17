@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.zip.Inflater;
 
@@ -45,7 +46,7 @@ public class AdaptadorModeloCardLoja extends RecyclerView.Adapter<AdaptadorModel
 
         //Configurar o recycleView Interno-------------------------------------------
         ObjCardLoja loja = listaCardLoja.get(position);
-        List<ObjCardServicoPp> lista_servicos = loja.getListaServico();
+        List<ObjCardServicoPp> lista_servicos = new ArrayList<>(loja.getListaServico());
 
         AdaptadorServicoPp adpServicoPp = new AdaptadorServicoPp(context, lista_servicos);
         holder.rec_servicos.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
@@ -71,5 +72,11 @@ public class AdaptadorModeloCardLoja extends RecyclerView.Adapter<AdaptadorModel
             nome_loja = itemView.findViewById(R.id.txtModeloCardLojaNomLoja);
             rec_servicos = itemView.findViewById(R.id.recModeloCardsLojas);
         }
+    }
+
+    //Atualizar lista
+    public void atualizarListaAgendados(List<ObjCardLoja> lista_atualizada){
+        listaCardLoja = lista_atualizada;
+        notifyDataSetChanged();
     }
 }
