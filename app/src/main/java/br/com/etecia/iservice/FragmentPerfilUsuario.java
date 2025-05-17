@@ -27,7 +27,7 @@ public class FragmentPerfilUsuario extends Fragment {
 
 
         //Pegando as informações do perfil
-        ObjPerfil meuPerfil = ControllerMaster.getControllerMaster().getinformacoesPerfil();
+        ObjPerfil meuPerfil = ControllerMaster.getControllerMaster().getInformacoesPerfil();
 
         //Preenchendo as informações do perfil
         informacoesPerfil(meuPerfil);

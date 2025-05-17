@@ -39,7 +39,7 @@
                     app:hintTextColor="@color/cor_texto">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/txtCadastrarLojaNome"
+                        android:id="@+id/txtCadLojaNome"
                         android:layout_width="wrap_content"
                         android:layout_height="60sp"
                         android:fontFamily="@font/textos"
@@ -68,7 +68,7 @@
                     app:hintTextColor="@color/cor_texto">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/txtCadastrarLojaDescricao"
+                        android:id="@+id/txtCadLojaDescricao"
                         android:layout_width="200sp"
                         android:layout_height="60sp"
                         android:fontFamily="@font/textos"
@@ -104,7 +104,7 @@
                     app:hintTextColor="@color/cor_texto">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/txtCadastrarLojaCnpj"
+                        android:id="@+id/txtCadLojaCnpj"
                         android:layout_width="250sp"
                         android:layout_height="60sp"
                         android:fontFamily="@font/textos"
@@ -137,14 +137,14 @@
                         android:id="@+id/lnlCadastroLojaAreaEndereco"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:gravity="center_horizontal">
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
 
                         <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/txtLnlCep"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
-                            android:id="@+id/txtCadLojaCep"
                             android:hint="CEP: "
                             android:textColorHint="@color/cor_texto"
                             android:textSize="@dimen/tamanho_medio"
@@ -155,6 +155,7 @@
                             app:hintTextColor="@color/cor_texto">
 
                             <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/txtCadLojaCep"
                                 android:layout_width="250sp"
                                 android:layout_height="60sp"
                                 android:fontFamily="@font/textos"
@@ -164,6 +165,7 @@
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/txtLnlEstado"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
@@ -177,9 +179,9 @@
                             app:hintTextColor="@color/cor_texto">
 
                             <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/txtCadLojaEstado"
                                 android:layout_width="250sp"
                                 android:layout_height="60sp"
-                                android:id="@+id/txtCadLojaEstado"
                                 android:fontFamily="@font/textos"
                                 android:textColor="@color/cor_texto"
                                 android:textSize="@dimen/tamanho_medio" />
@@ -187,11 +189,11 @@
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/txtLnlCidade"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
                             android:hint="Cidade: "
-                            android:id="@+id/txtCadLojaCidade"
                             android:textColorHint="@color/cor_texto"
                             android:textSize="@dimen/tamanho_medio"
                             app:boxBackgroundColor="@color/cor_detalhes"
@@ -201,6 +203,7 @@
                             app:hintTextColor="@color/cor_texto">
 
                             <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/txtCadLojaCidade"
                                 android:layout_width="250sp"
                                 android:layout_height="60sp"
                                 android:fontFamily="@font/textos"
@@ -210,11 +213,11 @@
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/txtLnlLogradouro"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
-                            android:id="@+id/txtCadLojaLogradouro"
-                            android:hint="Bairro: "
+                            android:hint="Logradouro: "
                             android:textColorHint="@color/cor_texto"
                             android:textSize="@dimen/tamanho_medio"
                             app:boxBackgroundColor="@color/cor_detalhes"
@@ -224,6 +227,7 @@
                             app:hintTextColor="@color/cor_texto">
 
                             <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/txtCadLojaLogradouro"
                                 android:layout_width="250sp"
                                 android:layout_height="60sp"
                                 android:fontFamily="@font/textos"
@@ -233,10 +237,10 @@
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/txtLnlRua"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
-                            android:id="@+id/txtCadLojaRua"
                             android:hint="Rua: "
                             android:textColorHint="@color/cor_texto"
                             android:textSize="@dimen/tamanho_medio"
@@ -247,6 +251,7 @@
                             app:hintTextColor="@color/cor_texto">
 
                             <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/txtCadLojaRua"
                                 android:layout_width="250sp"
                                 android:layout_height="60sp"
                                 android:fontFamily="@font/textos"
@@ -256,10 +261,10 @@
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/txtLnlNumero"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
-                            android:id="@+id/txtCadLojaNumero"
                             android:hint="Número: "
                             android:textColorHint="@color/cor_texto"
                             android:textSize="@dimen/tamanho_medio"
@@ -270,6 +275,7 @@
                             app:hintTextColor="@color/cor_texto">
 
                             <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/txtCadLojaNumero"
                                 android:layout_width="250sp"
                                 android:layout_height="60sp"
                                 android:fontFamily="@font/textos"
@@ -279,9 +285,9 @@
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/txtLnlComplemento"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/txtCadLojaComplemento"
                             android:layout_centerHorizontal="true"
                             android:hint="Complemento: "
                             android:textColorHint="@color/cor_texto"
@@ -293,6 +299,7 @@
                             app:hintTextColor="@color/cor_texto">
 
                             <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/txtCadLojaComplemento"
                                 android:layout_width="250sp"
                                 android:layout_height="60sp"
                                 android:fontFamily="@font/textos"

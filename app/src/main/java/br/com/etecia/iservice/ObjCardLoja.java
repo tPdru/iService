@@ -6,10 +6,11 @@ public class ObjCardLoja {
 
     private List<ObjCardServicoPp> listaServico;
     private String nomeLoja;
-    private int imgLoja, txtNota;
+    private int imgLoja;
+    private double txtNota;
     private ObjEndereco enderecoLoja;
 
-    public ObjCardLoja(int imgLoja, List<ObjCardServicoPp> listaServico, String nomeLoja, int txtNota, ObjEndereco enderecoLoja) {
+    public ObjCardLoja(int imgLoja, List<ObjCardServicoPp> listaServico, String nomeLoja, double txtNota, ObjEndereco enderecoLoja) {
         this.imgLoja = imgLoja;
         this.listaServico = listaServico;
         this.nomeLoja = nomeLoja;
@@ -17,7 +18,7 @@ public class ObjCardLoja {
         this.enderecoLoja = enderecoLoja;
     }
 
-    public ObjCardLoja(int imgLoja, List<ObjCardServicoPp> listaServico, String nomeLoja, int txtNota) {
+    public ObjCardLoja(int imgLoja, List<ObjCardServicoPp> listaServico, String nomeLoja, double txtNota) {
         this.imgLoja = imgLoja;
         this.listaServico = listaServico;
         this.nomeLoja = nomeLoja;
@@ -56,7 +57,7 @@ public class ObjCardLoja {
         this.nomeLoja = nomeLoja;
     }
 
-    public int getTxtNota() {
+    public double getTxtNota() {
         return txtNota;
     }
 

@@ -44,7 +44,7 @@ public class ControllerMaster {
     }
 
     //passar informações do perfil para o app
-    public ObjPerfil getinformacoesPerfil(){
+    public ObjPerfil getInformacoesPerfil(){
         return listaPerfis.get(indexConta);
     }
 
@@ -54,6 +54,12 @@ public class ControllerMaster {
         }else {
             return false;
         }
+    }
+
+    //Upgrade Perfil
+    public void addLojaPerfil(ObjCardLoja loja){
+        listaPerfis.get(indexConta).setMinhaLoja(loja);
+
     }
 
     //Setters --------------------------------------------------------------------------

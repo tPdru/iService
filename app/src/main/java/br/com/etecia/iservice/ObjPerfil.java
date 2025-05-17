@@ -38,6 +38,14 @@ public class ObjPerfil {
 
     }
 
+    public ObjCardLoja getMinhaLoja() {
+        return minhaLoja;
+    }
+
+    public void setMinhaLoja(ObjCardLoja minhaLoja) {
+        this.minhaLoja = minhaLoja;
+    }
+
     public double getNotaCliente() {
         return notaCliente;
     }
