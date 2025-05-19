@@ -3,62 +3,80 @@ package br.com.etecia.iservice;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link FragmentPerfilLoja#newInstance} factory method to
- * create an instance of this fragment.
- */
+import com.google.android.material.textfield.TextInputEditText;
+
 public class FragmentPerfilLoja extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    //Variáveis de Informação
+    ObjCardLoja minhaLoja = ControllerMaster.getControllerMaster().getInformacoesPerfil().getMinhaLoja();
+    ControllerMaster cM = ControllerMaster.getControllerMaster();
+    TextView txtNome, txtDescricao, txtEstado, txtCidade, txtLograd, txtRua, txtNumero, txtComplemento;
+    ImageView imgLoja;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public FragmentPerfilLoja() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment FragmentPerfilLoja.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static FragmentPerfilLoja newInstance(String param1, String param2) {
-        FragmentPerfilLoja fragment = new FragmentPerfilLoja();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+    //Variáveis de controle
+    RecyclerView recyclerView;
+    AdaptadorPerfilLojaServicos adpLojasServicos;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_perfil_loja_layout, container, false);
+        View view = inflater.inflate(R.layout.fragment_perfil_loja_layout, container, false);
+
+        //Apresentação Java + XML
+        txtNome = view.findViewById(R.id.txtNomeLoja);
+        txtDescricao = view.findViewById(R.id.txtDescricaoLoja);
+        txtEstado = view.findViewById(R.id.txtEstadoLoja);
+        txtCidade = view.findViewById(R.id.txtCidadeLoja);
+        txtLograd = view.findViewById(R.id.txtLogradouroLoja);
+        txtRua = view.findViewById(R.id.txtRuaLoja);
+        txtNumero = view.findViewById(R.id.txtNumeroLoja);
+        txtComplemento = view.findViewById(R.id.txtComplementoLoja);
+
+        imgLoja = view.findViewById(R.id.imgPerfilLoja);
+
+        recyclerView = view.findViewById(R.id.recPerfilLojaServicos);
+
+        //Instancias
+        adpLojasServicos = new AdaptadorPerfilLojaServicos();
+
+        ObjEndereco endereco = minhaLoja.getEnderecoLoja();
+
+        //Controlando informaçoes-----------------------------------------
+
+        if ( cM.getInformacoesPerfil().isTemLoja() ) {
+            //Colocando informações
+            //Com endereço
+            if ( minhaLoja.isTemEndereco() ) {
+                txtNome.setText(minhaLoja.getNomeLoja());
+                txtDescricao.setText(minhaLoja.getDescricao());
+                imgLoja.setImageResource(minhaLoja.getImgLoja());
+
+                txtEstado.setText(endereco.getEstado());
+                txtCidade.setText(endereco.getCidade());
+                txtLograd.setText(endereco.getLogradouro());
+                txtRua.setText(endereco.getRua());
+                txtNumero.setText(endereco.getNumero());
+                txtComplemento.setText(endereco.getComplemento());
+            }else {
+                //Sem endereço
+                txtNome.setText(minhaLoja.getNomeLoja());
+                txtDescricao.setText(minhaLoja.getDescricao());
+                imgLoja.setImageResource(minhaLoja.getImgLoja());
+            }
+        }else {
+
+
+        }
+
+
+        return view;
     }
 }

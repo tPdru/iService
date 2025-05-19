@@ -9,6 +9,8 @@ public class ObjCardLoja {
     private int imgLoja;
     private double txtNota;
     private ObjEndereco enderecoLoja;
+    private String descricao;
+    private boolean temEndereco;
 
     public ObjCardLoja(int imgLoja, List<ObjCardServicoPp> listaServico, String nomeLoja, double txtNota, ObjEndereco enderecoLoja) {
         this.imgLoja = imgLoja;
@@ -23,6 +25,23 @@ public class ObjCardLoja {
         this.listaServico = listaServico;
         this.nomeLoja = nomeLoja;
         this.txtNota = txtNota;
+    }
+
+
+    public boolean isTemEndereco() {
+        return temEndereco;
+    }
+
+    public void setTemEndereco(boolean temEndereco) {
+        this.temEndereco = temEndereco;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     public ObjEndereco getEnderecoLoja() {

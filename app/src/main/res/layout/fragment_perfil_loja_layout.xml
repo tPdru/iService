@@ -10,6 +10,7 @@
         android:layout_height="match_parent"
         android:fillViewport="true">
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -61,6 +62,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="3dp"
+                    android:id="@+id/txtNomeLoja"
                     android:background="@color/cor_detalhes"
                     android:gravity="center_horizontal"
                     android:text="XXXXXXXXXXXXXXXXXXXXX"
@@ -93,6 +95,7 @@
                     android:background="@color/cor_detalhes"
                     android:gravity="center_horizontal"
                     android:maxHeight="200sp"
+                    android:id="@+id/txtDescricaoLoja"
                     android:minHeight="70sp"
                     android:text="XXXXXXXXXXXXXXXXXXXXXXXXXXX"
                     android:textColor="@color/cor_texto"
@@ -122,6 +125,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="2dp"
+                    android:id="@+id/txtEstadoLoja"
                     android:background="@color/cor_detalhes"
                     android:gravity="center_horizontal"
                     android:text="Estado: XXXXXXXXXXXXX"
@@ -134,6 +138,7 @@
                     android:layout_margin="2dp"
                     android:background="@color/cor_detalhes"
                     android:gravity="center_horizontal"
+                    android:id="@+id/txtCidadeLoja"
                     android:text="Cidade: XXXXXXXXXXXXX"
                     android:textColor="@color/cor_texto"
                     android:textSize="@dimen/tamanho_medio" />
@@ -144,6 +149,18 @@
                     android:layout_margin="2dp"
                     android:background="@color/cor_detalhes"
                     android:gravity="center_horizontal"
+                    android:id="@+id/txtLogradouroLoja"
+                    android:text="Cidade: XXXXXXXXXXXXX"
+                    android:textColor="@color/cor_texto"
+                    android:textSize="@dimen/tamanho_medio" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:background="@color/cor_detalhes"
+                    android:gravity="center_horizontal"
+                    android:id="@+id/txtRuaLoja"
                     android:text="Rua: XXXXXXXXXXXXXXXXXX"
                     android:textColor="@color/cor_texto"
                     android:textSize="@dimen/tamanho_medio" />
@@ -160,6 +177,7 @@
                         android:background="@color/cor_detalhes"
                         android:gravity="center_horizontal"
                         android:text="Número: XXXX"
+                        android:id="@+id/txtNumeroLoja"
                         android:textColor="@color/cor_texto"
                         android:textSize="@dimen/tamanho_medio" />
 
@@ -167,6 +185,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="2dp"
+                        android:id="@+id/txtComplementoLoja"
                         android:background="@color/cor_detalhes"
                         android:gravity="center_horizontal"
                         android:text="Complemento: XXXX"

@@ -44,6 +44,7 @@ public class HomeActivity extends AppCompatActivity {
         materialToolbar = findViewById(R.id.matTooBarActivtHome);
         bottomNavigationView = findViewById(R.id.botNavgationTelaPrincipal);
 
+
         //Informações iniciais --------------------------------
         getSupportFragmentManager().beginTransaction().replace(R.id.frmLayoutConteiner,new FragmentHome()).commit();
 
@@ -56,11 +57,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 if(item.getItemId() == R.id.itemMenuTopPerfil){
-                    if (ControllerMaster.getControllerMaster().getLoginOn()) {
-                        startActivity(new Intent(getApplicationContext(), PerfilActivity.class));
-                    }else {
-                        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-                    }
+                    startActivity(new Intent(getApplicationContext(), PerfilActivity.class));
                     return true;
                 }
                 return true;

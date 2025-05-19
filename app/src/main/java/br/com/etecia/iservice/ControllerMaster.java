@@ -48,6 +48,10 @@ public class ControllerMaster {
     public ObjPerfil getInformacoesPerfil(){
         return listaPerfis.get(indexConta);
     }
+    //Passa informações da loja se ouver
+    public ObjCardLoja getInformacoesLoja(){
+        return listaPerfis.get(indexConta).getMinhaLoja();
+    }
 
     public boolean getLoginOn(){
         if (loginOn){

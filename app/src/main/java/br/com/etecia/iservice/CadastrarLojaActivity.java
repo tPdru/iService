@@ -163,7 +163,11 @@ public class CadastrarLojaActivity extends AppCompatActivity {
                                 nota,
                                 end
                         );
+                        //Adicionando descrição a loja, end = true
+                        loja.setDescricao(descricao);
+                        loja.setTemEndereco(true);
                         ControllerMaster.getControllerMaster().addLojaPerfil(loja);
+
                         ControllerMaster.getControllerMaster().carregarLojas();
 
                         startActivity(new Intent(getApplicationContext(), HomeActivity.class));
@@ -177,6 +181,10 @@ public class CadastrarLojaActivity extends AppCompatActivity {
                                 nome,
                                 nota
                         );
+
+                        //Adicionando descrição a loja
+                        loja.setDescricao(descricao);
+                        loja.setTemEndereco(false);
                         ControllerMaster.getControllerMaster().addLojaPerfil(loja);
 
                         startActivity(new Intent(getApplicationContext(), HomeActivity.class));

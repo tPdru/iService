@@ -38,8 +38,11 @@ public class PerfilActivity extends AppCompatActivity {
         tabLayout = findViewById(R.id.tabLayoutPerfil);
         materialToolbar = findViewById(R.id.matTooBarActivtPerfil);
 
+        //Controle maste
+        ControllerMaster contMaster = ControllerMaster.getControllerMaster();
+
         //Configurações iniciais
-        carregarFragment(new FragmentPerfilUsuario());
+        carregarFragment(contMaster.getLoginOn() ? new FragmentPerfilUsuario(): new FragmentPerfilDesLogado() );
 
 
         //Configuração TabLayout
@@ -50,10 +53,25 @@ public class PerfilActivity extends AppCompatActivity {
 
                 switch (tab.getPosition()){
                     case 0:
-                        escolhido = new FragmentPerfilUsuario();
+                        //Mudando a pagina caso o usuario tenha ou não perfil
+                        if ( contMaster.getLoginOn() ) {
+                            escolhido = new FragmentPerfilUsuario();
+                        }else {
+                            escolhido = new FragmentPerfilDesLogado();
+                        }
                         break;
                     case 1:
-                        escolhido = new FragmentPerfilLoja();
+                        //Mudando a pagina caso o usuario tenha ou não loja
+                        //verificando se o perfil esta lçogado antees
+                        if ( contMaster.getLoginOn() ){
+                            if ( contMaster.getInformacoesPerfil().isTemLoja() ) {
+                                escolhido = new FragmentPerfilLoja();
+                            } else {
+                                escolhido = new FragmentPerfilSemLoja();
+                            }
+                        } else {
+                            escolhido = new FragmentPerfilSemLoja();
+                        }
                         break;
                 }
 
