@@ -17,8 +17,8 @@
             android:id="@+id/matTooBarActivtHome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/cor_fundo"
-            app:title=""
+            android:background="@color/cor_principal"
+            app:title="Quack Workes"
             app:menu="@menu/menu_top_activt_home"
             app:titleTextColor="@color/cor_texto_claro"
             app:titleCentered="true"/>

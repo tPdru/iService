@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/cor_fundo"
+
     android:orientation="vertical"
     tools:context=".CadastrarActivity">
 
@@ -231,25 +231,21 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="30dp"
-                    android:background="@color/cor_principal">
+
 
                     <Button
                         android:id="@+id/btnCriarConta"
                         style="@style/ThemeOverlay.Material3.Button.ElevatedButton"
                         android:layout_width="200dp"
                         android:layout_height="75dp"
+                        android:layout_marginTop="15dp"
                         android:fontFamily="@font/titulos"
                         android:layout_gravity="center_horizontal"
                         android:backgroundTint="@color/cor_principal"
                         android:text="Criar conta"
                         android:textSize="@dimen/tamanho_grande" />
 
-                </LinearLayout>
+
 
             </LinearLayout>
 

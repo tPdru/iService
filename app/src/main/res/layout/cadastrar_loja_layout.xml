@@ -40,8 +40,8 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/txtCadLojaNome"
-                        android:layout_width="wrap_content"
-                        android:layout_height="60sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="65sp"
                         android:fontFamily="@font/textos"
                         android:hint="Nome da loja"
                         android:maxWidth="250sp"
@@ -53,7 +53,8 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/txtLayoutCadastrarLojaDescricao"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="15dp"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/imgCadastrarLoja"
                     android:layout_centerHorizontal="true"
@@ -69,7 +70,7 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/txtCadLojaDescricao"
-                        android:layout_width="200sp"
+                        android:layout_width="match_parent"
                         android:layout_height="60sp"
                         android:fontFamily="@font/textos"
                         android:hint="Descrição"
@@ -90,8 +91,9 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/txtLayoutCadastrarLojaCnpj"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
                     android:layout_below="@+id/txtLayoutCadastrarLojaDescricao"
                     android:layout_centerHorizontal="true"
                     android:hint="CPF/CNPJ"
@@ -105,7 +107,7 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/txtCadLojaCnpj"
-                        android:layout_width="250sp"
+                        android:layout_width="match_parent"
                         android:layout_height="60sp"
                         android:fontFamily="@font/textos"
                         android:textColor="@color/cor_texto"
@@ -142,7 +144,7 @@
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/txtLnlCep"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
                             android:hint="CEP: "
@@ -156,7 +158,7 @@
 
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/txtCadLojaCep"
-                                android:layout_width="250sp"
+                                android:layout_width="match_parent"
                                 android:layout_height="60sp"
                                 android:fontFamily="@font/textos"
                                 android:textColor="@color/cor_texto"
@@ -166,9 +168,10 @@
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/txtLnlEstado"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
+                            android:layout_marginTop="10dp"
                             android:hint="Estado: "
                             android:textColorHint="@color/cor_texto"
                             android:textSize="@dimen/tamanho_medio"
@@ -180,7 +183,7 @@
 
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/txtCadLojaEstado"
-                                android:layout_width="250sp"
+                                android:layout_width="match_parent"
                                 android:layout_height="60sp"
                                 android:fontFamily="@font/textos"
                                 android:textColor="@color/cor_texto"
@@ -190,9 +193,10 @@
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/txtLnlCidade"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
+                            android:layout_marginTop="10dp"
                             android:hint="Cidade: "
                             android:textColorHint="@color/cor_texto"
                             android:textSize="@dimen/tamanho_medio"
@@ -204,7 +208,7 @@
 
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/txtCadLojaCidade"
-                                android:layout_width="250sp"
+                                android:layout_width="match_parent"
                                 android:layout_height="60sp"
                                 android:fontFamily="@font/textos"
                                 android:textColor="@color/cor_texto"
@@ -214,7 +218,8 @@
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/txtLnlLogradouro"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="10dp"
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
                             android:hint="Logradouro: "
@@ -228,7 +233,7 @@
 
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/txtCadLojaLogradouro"
-                                android:layout_width="250sp"
+                                android:layout_width="match_parent"
                                 android:layout_height="60sp"
                                 android:fontFamily="@font/textos"
                                 android:textColor="@color/cor_texto"
@@ -238,8 +243,9 @@
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/txtLnlRua"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
                             android:layout_centerHorizontal="true"
                             android:hint="Rua: "
                             android:textColorHint="@color/cor_texto"
@@ -252,7 +258,7 @@
 
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/txtCadLojaRua"
-                                android:layout_width="250sp"
+                                android:layout_width="match_parent"
                                 android:layout_height="60sp"
                                 android:fontFamily="@font/textos"
                                 android:textColor="@color/cor_texto"
@@ -262,8 +268,9 @@
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/txtLnlNumero"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
                             android:layout_centerHorizontal="true"
                             android:hint="Número: "
                             android:textColorHint="@color/cor_texto"
@@ -276,7 +283,7 @@
 
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/txtCadLojaNumero"
-                                android:layout_width="250sp"
+                                android:layout_width="match_parent"
                                 android:layout_height="60sp"
                                 android:fontFamily="@font/textos"
                                 android:textColor="@color/cor_texto"
@@ -286,8 +293,9 @@
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/txtLnlComplemento"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
                             android:layout_centerHorizontal="true"
                             android:hint="Complemento: "
                             android:textColorHint="@color/cor_texto"
@@ -300,7 +308,7 @@
 
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/txtCadLojaComplemento"
-                                android:layout_width="250sp"
+                                android:layout_width="match_parent"
                                 android:layout_height="60sp"
                                 android:fontFamily="@font/textos"
                                 android:textColor="@color/cor_texto"
@@ -316,11 +324,13 @@
                 <Button
                     android:id="@+id/btnFinalizarCadLoja"
                     android:layout_width="wrap_content"
+                    android:backgroundTint="@color/cor_principal"
+                    android:fontFamily="@font/titulos"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/lnlAreaEndereco"
                     android:layout_centerHorizontal="true"
-                    android:layout_margin="10dp"
-                    android:text="Finalizar cadastro"
+                    android:layout_margin="20dp"
+                    android:text="Cadastrar"
                     android:textSize="@dimen/tamanho_grande" />
 
             </RelativeLayout>
