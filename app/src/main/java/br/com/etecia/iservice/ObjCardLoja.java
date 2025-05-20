@@ -11,8 +11,10 @@ public class ObjCardLoja {
     private ObjEndereco enderecoLoja;
     private String descricao;
     private boolean temEndereco;
+    private String emailDono;
 
-    public ObjCardLoja(int imgLoja, List<ObjCardServicoPp> listaServico, String nomeLoja, double txtNota, ObjEndereco enderecoLoja) {
+    public ObjCardLoja(String emailDono, int imgLoja, List<ObjCardServicoPp> listaServico, String nomeLoja, double txtNota, ObjEndereco enderecoLoja) {
+        this.emailDono = emailDono;
         this.imgLoja = imgLoja;
         this.listaServico = listaServico;
         this.nomeLoja = nomeLoja;
@@ -20,7 +22,8 @@ public class ObjCardLoja {
         this.enderecoLoja = enderecoLoja;
     }
 
-    public ObjCardLoja(int imgLoja, List<ObjCardServicoPp> listaServico, String nomeLoja, double txtNota) {
+    public ObjCardLoja(String emailDono, int imgLoja, List<ObjCardServicoPp> listaServico, String nomeLoja, double txtNota) {
+        this.emailDono = emailDono;
         this.imgLoja = imgLoja;
         this.listaServico = listaServico;
         this.nomeLoja = nomeLoja;
@@ -82,5 +85,13 @@ public class ObjCardLoja {
 
     public void setTxtNota(int txtNota) {
         this.txtNota = txtNota;
+    }
+
+    public String getEmailDono() {
+        return emailDono;
+    }
+
+    public void setEmailDono(String emailDono) {
+        this.emailDono = emailDono;
     }
 }

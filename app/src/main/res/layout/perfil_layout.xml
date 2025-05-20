@@ -19,6 +19,7 @@
             android:layout_height="wrap_content"
             android:background="@color/cor_fundo"
             app:title=""
+            app:navigationIcon="@drawable/baseline_arrow_back"
             app:titleTextColor="@color/cor_texto_claro"
             app:titleCentered="true"/>
     </com.google.android.material.appbar.AppBarLayout>

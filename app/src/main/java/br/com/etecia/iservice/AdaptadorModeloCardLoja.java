@@ -1,12 +1,14 @@
 package br.com.etecia.iservice;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -28,6 +30,7 @@ public class AdaptadorModeloCardLoja extends RecyclerView.Adapter<AdaptadorModel
         this.listaCardLoja = listaCardLoja;
     }
 
+
     @NonNull
     @Override
     public AdaptadorModeloCardLoja.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -44,6 +47,8 @@ public class AdaptadorModeloCardLoja extends RecyclerView.Adapter<AdaptadorModel
         holder.img_loja.setImageResource(listaCardLoja.get(position).getImgLoja());
         holder.nota_loja.setText(String.valueOf(listaCardLoja.get(position).getTxtNota()));
 
+
+
         //Configurar o recycleView Interno-------------------------------------------
         ObjCardLoja loja = listaCardLoja.get(position);
         List<ObjCardServicoPp> lista_servicos = new ArrayList<>(loja.getListaServico());
@@ -51,6 +56,28 @@ public class AdaptadorModeloCardLoja extends RecyclerView.Adapter<AdaptadorModel
         AdaptadorServicoPp adpServicoPp = new AdaptadorServicoPp(context, lista_servicos);
         holder.rec_servicos.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
         holder.rec_servicos.setAdapter(adpServicoPp);
+
+        //Configurando o click das lojas
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Pegar a posição atual do item escolhido
+                int pos = holder.getAdapterPosition();
+
+                //Verifica se a posição do item clicado e valida
+                if ( pos == RecyclerView.NO_POSITION )  return;
+
+                //pegando o contexto do item clicado
+                Intent intent = new Intent(context, OutrasLojasActivity.class);
+
+                //salvando as informaçoes do serviço escolhido
+                intent.putExtra("emailEscolhido", listaCardLoja.get(pos).getEmailDono());
+
+                //iniciando a nova activity
+                context.startActivity(intent);
+            }
+        });
+
     }
 
     @Override

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".OutrasLojasActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/appBarOutrasLojas"
+        android:layout_marginBottom="30dp">
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/matTooBarOutrasLojas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/cor_fundo"
+            app:navigationIcon="@drawable/baseline_arrow_back"
+            app:title=""
+            app:titleTextColor="@color/cor_texto_claro"
+            app:titleCentered="true"/>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:id="@+id/imgOutrasLojas"
+        android:src="@drawable/foto_imagem"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/appBarOutrasLojas"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="xxxxxxxxxxxxxxxxxxxxxxx"
+        android:id="@+id/txtOutrasLojasNome"
+        android:textSize="@dimen/tamanho_grande"
+        android:layout_below="@id/imgOutrasLojas"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="xxxxxxxxxxxxxxxxxxxxxxx"
+        android:id="@+id/txtOutrasLojasDescricao"
+        android:textSize="@dimen/tamanho_grande"
+        android:layout_below="@id/txtOutrasLojasNome"
+        android:layout_centerHorizontal="true"
+        android:maxHeight="200dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lnlServ"
+        android:layout_below="@id/txtOutrasLojasDescricao"
+        android:orientation="horizontal">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/recOutrasLojasServicos"/>
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnOutrasLojasContatar"
+        android:textSize="@dimen/tamanho_grande"
+        android:text="Entrar em contado"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/lnlServ"/>
+
+</RelativeLayout>

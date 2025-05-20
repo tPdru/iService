@@ -1,5 +1,7 @@
 package br.com.etecia.iservice;
 
+import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -105,9 +107,18 @@ public class ControllerMaster {
     }
     //--------------------------------------------------------------------------}
 
-    //metodo de criaçao de objetos para carregar recycleViews com exemplos
-    public void addNovaLojas(ObjPerfil perfil){
+    //metodo para encontrar a loja atraves do codigo(email)
+    public ObjPerfil localizaadorLojas( String email){
 
+        int ind;
+        for ( int i = 0; i < listaPerfis.size(); i++) {
+
+           if (listaPerfis.get(i).getEmail().equals(email)){
+               return listaPerfis.get(i);
+           }
+
+        }
+        return localizaadorLojas(email);
     }
 
     //Recarregando a lista de lojas

@@ -121,6 +121,7 @@ public class CadastrarLojaActivity extends AppCompatActivity {
                 String nome = txtNome.getText().toString().trim();
                 String cpfCnpj = txtCpfCnpj.getText().toString().trim();
                 String descricao = txtDescricao.getText().toString().trim();
+                String email = ControllerMaster.getControllerMaster().getInformacoesPerfil().getEmail();
 
                 //Strings com as informações endereço
                 String cep = txtCep.getText().toString().trim();
@@ -157,6 +158,7 @@ public class CadastrarLojaActivity extends AppCompatActivity {
                         );
 
                         loja = new ObjCardLoja(
+                                email,
                                 imgFoto,
                                 listServicos,
                                 nome,
@@ -176,6 +178,7 @@ public class CadastrarLojaActivity extends AppCompatActivity {
                 }else {
                     if ( checkCampo(nome, txtNome) && checkCampo(cpfCnpj, txtCpfCnpj)) {
                         loja = new ObjCardLoja(
+                                email,
                                 imgFoto,
                                 listServicos,
                                 nome,

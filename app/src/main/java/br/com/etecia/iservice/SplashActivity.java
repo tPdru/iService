@@ -96,6 +96,7 @@ public class SplashActivity extends AppCompatActivity {
                 R.drawable.foto_usuario,
                 true,
                 novaLoja = new ObjCardLoja(
+                        email,
                         R.drawable.foto_imagem,
                         listaServicos,
                         "Barbearia",
