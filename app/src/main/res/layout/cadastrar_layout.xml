@@ -18,6 +18,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/cor_fundo"
             android:orientation="vertical">
 
             <com.google.android.material.appbar.AppBarLayout
@@ -243,6 +244,7 @@
                         android:layout_gravity="center_horizontal"
                         android:backgroundTint="@color/cor_principal"
                         android:text="Criar conta"
+                        android:textColor="@color/cor_texto"
                         android:textSize="@dimen/tamanho_grande" />
 
 

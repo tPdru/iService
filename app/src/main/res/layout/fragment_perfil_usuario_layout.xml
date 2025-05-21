@@ -14,6 +14,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/cor_fundo"
             android:orientation="vertical">
 
             <RelativeLayout
@@ -24,7 +25,7 @@
                     android:id="@+id/viewSuperior"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
-                    android:background="@color/cor_fundo"/>
+                    android:background="@color/cor_principal"/>
 
                 <ImageView
                     android:id="@+id/imgPerfil"
@@ -51,6 +52,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
+                        android:textColor="@color/cor_secundaria"
+                        android:fontFamily="@font/textos"
                         android:text="4.75"
                         android:textSize="@dimen/tamanho_grande"/>
                     <TextView
@@ -58,6 +61,8 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:text="Cliente"
+                        android:textColor="@color/cor_secundaria"
+                        android:fontFamily="@font/textos"
                         android:textSize="@dimen/tamanho_medio"/>
 
                 </LinearLayout>
@@ -80,13 +85,19 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:text="128"
+                        android:textColor="@color/cor_secundaria"
+                        android:fontFamily="@font/textos"
                         android:textSize="@dimen/tamanho_grande"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/cor_secundaria"
+                        android:fontFamily="@font/textos"
+                        android:gravity="center"
+
                         android:layout_gravity="center_horizontal"
                         android:text="Serviços contratados"
-                        android:textSize="@dimen/tamanho_medio"/>
+                        />
 
                 </LinearLayout>
 
@@ -104,12 +115,15 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:id="@+id/txtPerfilNomeFt"
+                        android:textColor="@color/cor_secundaria"
+                        android:fontFamily="@font/titulos"
                         android:text="Hugo Suterio"
-                        android:textSize="@dimen/tamanho_medio"/>
+                        android:textSize="@dimen/tamanho_grande"/>
 
                 </LinearLayout>
 
                 <LinearLayout
+                    android:layout_marginTop="30dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -119,18 +133,22 @@
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
                         android:layout_margin="3dp"
-                        android:background="@color/cor_fundo"/>
+                        android:background="@color/cor_detalhes_secundarios"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/tamanho_medio"
+                        android:textColor="@color/cor_secundaria"
+                        android:fontFamily="@font/titulos"
                         android:text="Nome:"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/tamanho_medio"
+                        android:textColor="@color/cor_secundaria"
+                        android:fontFamily="@font/textos"
                         android:id="@+id/txtPerfilNome"
                         android:text="Hugo de Jesus Suterio dos Santos"/>
 
@@ -138,18 +156,22 @@
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
                         android:layout_margin="3dp"
-                        android:background="@color/cor_fundo"/>
+                        android:background="@color/cor_detalhes_secundarios"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/tamanho_medio"
+                        android:textColor="@color/cor_secundaria"
+                        android:fontFamily="@font/titulos"
                         android:text="E-mail:"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/txtPerfilEmail"
+                        android:textColor="@color/cor_secundaria"
+                        android:fontFamily="@font/textos"
                         android:textSize="@dimen/tamanho_medio"
                         android:text="Hugo de Jesus Suterio dos Santos"/>
 
@@ -157,7 +179,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
                         android:layout_margin="3dp"
-                        android:background="@color/cor_fundo"/>
+                        android:background="@color/cor_detalhes_secundarios"/>
 
                 </LinearLayout>
 

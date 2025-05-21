@@ -17,30 +17,32 @@
             android:id="@+id/matTooBarActivtPerfil"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/cor_fundo"
-            app:title=""
+            android:background="@color/cor_secundaria"
             app:navigationIcon="@drawable/baseline_arrow_back"
-            app:titleTextColor="@color/cor_texto_claro"
             app:titleCentered="true"/>
+
     </com.google.android.material.appbar.AppBarLayout>
 
     <com.google.android.material.tabs.TabLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/cor_fundo"
+        android:background="@color/cor_secundaria"
         app:tabTextColor="@color/cor_texto_claro"
         android:id="@+id/tabLayoutPerfil"
         app:tabIndicatorColor="@color/cor_detalhes">
+
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tabMeuPerfil"
             android:text="Meu perfil"/>
+
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tabMinhaLoja"
             android:text="Minha Loja"/>
+
     </com.google.android.material.tabs.TabLayout>
 
 

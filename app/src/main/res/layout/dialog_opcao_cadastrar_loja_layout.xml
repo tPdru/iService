@@ -32,10 +32,11 @@
                 android:layout_height="wrap_content">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:background="@color/cor_recusar">
+                    android:background="@color/cor_recusar"
+                    android:gravity="center">
 
                     <Button
                         android:id="@+id/btnDialogNaoCadastrar"
@@ -49,11 +50,12 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_gravity="center_horizontal"
-                    android:background="@color/cor_confirmar">
+                    android:background="@color/cor_confirmar"
+                    android:gravity="center">
 
                     <Button
                         android:id="@+id/btnDialogSimCadastrar"
