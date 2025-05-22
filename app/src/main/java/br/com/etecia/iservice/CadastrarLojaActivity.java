@@ -92,12 +92,15 @@ public class CadastrarLojaActivity extends AppCompatActivity {
         listElementos.add(lnlNumero);
         listElementos.add(lnlComplemento);
         ativacaoElementos(listElementos, true);
-        lojaFisica = false;
+        //*lojaFisica = false;
+
+
 
 
 
         //CheckBox, ativar e desativar área de endereço
         cbxAreaEndereco.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(cbxAreaEndereco.isChecked()){

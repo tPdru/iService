@@ -8,8 +8,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -24,6 +26,7 @@ public class FragmentPerfilLoja extends Fragment {
     //Variáveis de controle
     RecyclerView recyclerView;
     AdaptadorPerfilLojaServicos adpLojasServicos;
+    Button btnEditarLoja;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -39,6 +42,8 @@ public class FragmentPerfilLoja extends Fragment {
         txtRua = view.findViewById(R.id.txtRuaLoja);
         txtNumero = view.findViewById(R.id.txtNumeroLoja);
         txtComplemento = view.findViewById(R.id.txtComplementoLoja);
+
+        btnEditarLoja = view.findViewById(R.id.btnEditarPerfilLoja);
 
         imgLoja = view.findViewById(R.id.imgPerfilLoja);
 
@@ -59,22 +64,33 @@ public class FragmentPerfilLoja extends Fragment {
                 txtDescricao.setText(minhaLoja.getDescricao());
                 imgLoja.setImageResource(minhaLoja.getImgLoja());
 
-                txtEstado.setText(endereco.getEstado());
-                txtCidade.setText(endereco.getCidade());
-                txtLograd.setText(endereco.getLogradouro());
-                txtRua.setText(endereco.getRua());
-                txtNumero.setText(endereco.getNumero());
-                txtComplemento.setText(endereco.getComplemento());
+                if(minhaLoja.getEnderecoLoja() != null) {
+                    txtEstado.setText(endereco.getEstado());
+                    txtCidade.setText(endereco.getCidade());
+                    txtLograd.setText(endereco.getLogradouro());
+                    txtRua.setText(endereco.getRua());
+                    txtNumero.setText(String.valueOf(endereco.getNumero()));
+                    txtComplemento.setText(endereco.getComplemento());
+                }
+
             }else {
                 //Sem endereço
                 txtNome.setText(minhaLoja.getNomeLoja());
                 txtDescricao.setText(minhaLoja.getDescricao());
                 imgLoja.setImageResource(minhaLoja.getImgLoja());
             }
-        }else {
-
-
         }
+
+        btnEditarLoja.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (endereco.getCidade() == null) {
+                    Toast.makeText(requireContext(), "Esta vazio", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(requireContext(), endereco.getCidade() + " " + minhaLoja.isTemEndereco(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
 
         return view;

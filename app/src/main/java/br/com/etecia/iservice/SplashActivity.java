@@ -86,6 +86,17 @@ public class SplashActivity extends AppCompatActivity {
                 40.00);
         listaServicos.add(servicoPp);
 
+        //Criando um endereço
+        ObjEndereco endere = new ObjEndereco(
+                111,
+                "São Paulo",
+                "BLoco B",
+                "São Paulo",
+                "Satelite",
+                23,
+                "Laranjeiras"
+        );
+
 
         ObjPerfil perfil = new ObjPerfil(
                 ControllerMaster.getControllerMaster().getCodigoList() + 1,
@@ -100,9 +111,11 @@ public class SplashActivity extends AppCompatActivity {
                         R.drawable.foto_imagem,
                         listaServicos,
                         "Barbearia",
-                        4.5)
+                        4.5,
+                        endere
+                )
         );
-
+        perfil.getMinhaLoja().setTemEndereco(true);
         ControllerMaster.getControllerMaster().criarPerfil(perfil, email);
     }
 }
