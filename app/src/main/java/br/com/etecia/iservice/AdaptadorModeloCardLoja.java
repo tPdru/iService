@@ -68,7 +68,7 @@ public class AdaptadorModeloCardLoja extends RecyclerView.Adapter<AdaptadorModel
                 if ( pos == RecyclerView.NO_POSITION )  return;
 
                 //pegando o contexto do item clicado
-                Intent intent = new Intent(context, OutrasLojasActivity.class);
+                Intent intent = new Intent(context, LojaActivity.class);
 
                 //salvando as informaçoes do serviço escolhido
                 intent.putExtra("emailEscolhido", listaCardLoja.get(pos).getEmailDono());
