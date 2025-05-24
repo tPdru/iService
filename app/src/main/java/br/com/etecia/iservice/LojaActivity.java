@@ -1,6 +1,8 @@
 package br.com.etecia.iservice;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -33,7 +35,7 @@ public class LojaActivity extends AppCompatActivity {
     List<ObjCardServicoPp> listService;
     ControllerMaster contMaster = ControllerMaster.getControllerMaster();
     Button btnContatar;
-    MaterialToolbar materialToolbar;
+    MaterialToolbar topAppBarLoja;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +55,8 @@ public class LojaActivity extends AppCompatActivity {
         imgFotoLoja = findViewById(R.id.imgFotoLoja);
         recServicosLoja = findViewById(R.id.recServicosLoja);
         btnContatar = findViewById(R.id.btnContatar);
+        topAppBarLoja = findViewById(R.id.topAppBarLoja);
+
 
         //Instancias
         listService = new ArrayList<>();
@@ -83,6 +87,14 @@ public class LojaActivity extends AppCompatActivity {
 
 
         recServicosLoja.setLayoutManager(new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.HORIZONTAL,false));
+        topAppBarLoja.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(),HomeActivity.class));
+                finish();
+            }
+        });
+
 
     }
 }
