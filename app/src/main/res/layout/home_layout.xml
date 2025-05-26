@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
+    android:background="@color/cor_secundaria"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -17,7 +18,7 @@
             android:id="@+id/matTooBarActivtHome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/cor_principal"
+            android:background="@color/cor_secundaria"
             app:title="Quack Workes"
             app:menu="@menu/menu_top_activt_home"
             app:titleTextColor="@color/cor_texto_claro"
@@ -37,8 +38,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         app:itemTextColor="@color/cor_texto_claro"
-        app:itemRippleColor="@color/cor_texto"
-        android:background="@color/cor_fundo"
+        app:itemRippleColor="@color/cor_detalhes"
+        android:background="@color/cor_secundaria"
         app:menu="@menu/menu_activt_home" />
 
 </RelativeLayout>

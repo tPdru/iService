@@ -11,9 +11,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/cor_fundo"
             android:orientation="vertical">
 
             <RelativeLayout
@@ -24,157 +26,169 @@
                     android:id="@+id/viewSuperior"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
-                    android:background="@color/cor_fundo"/>
+                    android:background="@color/cor_principal" />
 
                 <ImageView
                     android:id="@+id/imgPerfil"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="40dp"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:src="@drawable/foto_usuario"/>
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="40dp"
+                    android:src="@drawable/foto_usuario" />
 
                 <LinearLayout
-                    android:padding="3dp"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
                     android:layout_below="@id/viewSuperior"
                     android:layout_alignParentLeft="true"
-                    android:layout_width="100dp"
-                    android:layout_height="130dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:padding="3dp">
 
                     <ImageView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/ic_android_black"/>
+                        android:src="@drawable/ic_android_black" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
+                        android:fontFamily="@font/textos"
                         android:text="4.75"
-                        android:textSize="@dimen/tamanho_grande"/>
+                        android:textColor="@color/cor_secundaria"
+                        android:textSize="@dimen/tamanho_grande" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
+                        android:fontFamily="@font/textos"
                         android:text="Cliente"
-                        android:textSize="@dimen/tamanho_medio"/>
+                        android:textColor="@color/cor_secundaria"
+                        android:textSize="@dimen/tamanho_medio" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:padding="3dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_below="@id/viewSuperior"
                     android:layout_width="100dp"
-                    android:layout_height="130dp"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/viewSuperior"
+                    android:layout_alignParentRight="true"
+                    android:orientation="vertical"
+                    android:padding="3dp">
 
                     <ImageView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/ic_android_black"/>
+                        android:src="@drawable/ic_android_black" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
+                        android:fontFamily="@font/textos"
                         android:text="128"
-                        android:textSize="@dimen/tamanho_grande"/>
+                        android:textColor="@color/cor_secundaria"
+                        android:textSize="@dimen/tamanho_grande" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
+                        android:fontFamily="@font/textos"
+                        android:gravity="center"
+                        android:textSize="@dimen/tamanho_medio"
                         android:text="Serviços contratados"
-                        android:textSize="@dimen/tamanho_medio"/>
+                        android:textColor="@color/cor_secundaria" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/textoAbaixoImg"
-                    android:padding="3dp"
-                    android:layout_below="@id/imgPerfil"
-                    android:layout_centerHorizontal="true"
                     android:layout_width="200dp"
                     android:layout_height="95dp"
-                    android:orientation="vertical">
+                    android:layout_below="@id/imgPerfil"
+                    android:layout_centerHorizontal="true"
+                    android:orientation="vertical"
+                    android:padding="3dp">
 
                     <TextView
+                        android:id="@+id/txtPerfilNomeFt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:id="@+id/txtPerfilNomeFt"
+                        android:fontFamily="@font/titulos"
                         android:text="Hugo Suterio"
-                        android:textSize="@dimen/tamanho_medio"/>
+                        android:textColor="@color/cor_secundaria"
+                        android:textSize="@dimen/tamanho_grande" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_below="@id/textoAbaixoImg">
+                    android:layout_below="@id/textoAbaixoImg"
+                    android:layout_marginTop="30dp"
+                    android:orientation="vertical">
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
                         android:layout_margin="3dp"
-                        android:background="@color/cor_fundo"/>
+                        android:background="@color/cor_detalhes_secundarios" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/tamanho_medio"
-                        android:text="Nome:"/>
+                        android:fontFamily="@font/titulos"
+                        android:text="Nome:"
+                        android:textColor="@color/cor_secundaria"
+                        android:textSize="@dimen/tamanho_medio" />
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="@dimen/tamanho_medio"
                         android:id="@+id/txtPerfilNome"
-                        android:text="Hugo de Jesus Suterio dos Santos"/>
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/textos"
+                        android:text="Hugo de Jesus Suterio dos Santos"
+                        android:textColor="@color/cor_secundaria"
+                        android:textSize="@dimen/tamanho_medio" />
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
                         android:layout_margin="3dp"
-                        android:background="@color/cor_fundo"/>
+                        android:background="@color/cor_detalhes_secundarios" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/tamanho_medio"
-                        android:text="E-mail:"/>
+                        android:fontFamily="@font/titulos"
+                        android:text="E-mail:"
+                        android:textColor="@color/cor_secundaria"
+                        android:textSize="@dimen/tamanho_medio" />
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         android:id="@+id/txtPerfilEmail"
-                        android:textSize="@dimen/tamanho_medio"
-                        android:text="Hugo de Jesus Suterio dos Santos"/>
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/textos"
+                        android:text="Hugo de Jesus Suterio dos Santos"
+                        android:textColor="@color/cor_secundaria"
+                        android:textSize="@dimen/tamanho_medio" />
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
                         android:layout_margin="3dp"
-                        android:background="@color/cor_fundo"/>
+                        android:background="@color/cor_detalhes_secundarios" />
 
                 </LinearLayout>
 
 
-
-
-
             </RelativeLayout>
-
-
-
-
-
-
-
-
-
 
 
         </LinearLayout>
