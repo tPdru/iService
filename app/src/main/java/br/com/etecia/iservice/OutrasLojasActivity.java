@@ -34,6 +34,7 @@ public class OutrasLojasActivity extends AppCompatActivity {
     ControllerMaster contMaster = ControllerMaster.getControllerMaster();
     Button btnContatar;
     MaterialToolbar materialToolbar;
+    AdaptadorPerfilLojaServicos adtLojaServicos;
 
 
     @Override
@@ -55,7 +56,8 @@ public class OutrasLojasActivity extends AppCompatActivity {
         materialToolbar = findViewById(R.id.matTooBarOutrasLojas);
 
         //Instancias
-        listService = new ArrayList<>();
+        listService = new ArrayList<>(contMaster.getInformacoesPerfil().getMinhaLoja().getListaServico());//Copiando a lista do controller
+        adtLojaServicos = new AdaptadorPerfilLojaServicos(getApplicationContext(), listService);
 
         //pegando string que foram salvas, na escolha da loja
         codigo = getIntent().getStringExtra("emailEscolhido");
@@ -82,6 +84,7 @@ public class OutrasLojasActivity extends AppCompatActivity {
                 finish();
             }
         });
+
 
     }
 
