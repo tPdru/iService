@@ -45,7 +45,7 @@ public class FragmentPerfilLoja extends Fragment {
         recyclerView = view.findViewById(R.id.recPerfilLojaServicos);
 
         //Instancias
-        adpLojasServicos = new AdaptadorPerfilLojaServicos();
+        //adpLojasServicos = new AdaptadorPerfilLojaServicos();
 
         ObjEndereco endereco = minhaLoja.getEnderecoLoja();
 

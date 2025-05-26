@@ -38,6 +38,10 @@ public class SplashActivity extends AppCompatActivity {
                 addPerfis("teste4.barbeiro@exemplo.com");
                 addPerfis("teste5.barbeiro@exemplo.com");
 
+                // Inicializa o ApiRequest com o contexto da aplicação
+                ApiRequest apiRequest = new ApiRequest();
+                apiRequest.init(getApplicationContext());
+
 
                 ControllerMaster.getControllerMaster().carregarLojas();
                 startActivity(new Intent(getApplicationContext(), HomeActivity.class));
