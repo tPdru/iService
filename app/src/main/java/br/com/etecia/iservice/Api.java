@@ -4,7 +4,7 @@ public class Api {
     /**
      * Passar o endereço do servidor aqui
      */
-    private static final String ROOT_URL = "";
+    private static final String ROOT_URL = "http://10.67.96.108/HeroeApi/v1/ApiTbUsuarios.php?apicall=";
 
     /**
      * Constantes para chmar açoes do banco

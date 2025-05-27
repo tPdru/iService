@@ -95,6 +95,7 @@
                                 android:id="@+id/txtUsuario"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:inputType="text"
                                 android:fontFamily="@font/textos"
                                 android:textColor="@color/cor_texto"
                                 android:textSize="@dimen/tamanho_medio" />
@@ -120,6 +121,7 @@
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/txtNomeCompleto"
                                 android:layout_width="match_parent"
+                                android:inputType="text"
                                 android:layout_height="match_parent"
                                 android:fontFamily="@font/textos"
                                 android:textColor="@color/cor_texto"
@@ -150,6 +152,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/txtEmailUsuario"
                         android:layout_width="match_parent"
+                        android:inputType="text"
                         android:layout_height="match_parent"
                         android:fontFamily="@font/textos"
                         android:textColor="@color/cor_texto"
@@ -224,6 +227,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/txtCelular"
                         android:layout_width="match_parent"
+                        android:inputType="number"
                         android:layout_height="match_parent"
                         android:fontFamily="@font/textos"
                         android:textColor="@color/cor_texto"
