@@ -37,6 +37,10 @@ public class ObjPerfil {
         this.minhaLoja = minhaLoja;
 
     }
+    //Construtor vazio para o json
+    public ObjPerfil () {
+
+    }
 
     public ObjCardLoja getMinhaLoja() {
         return minhaLoja;

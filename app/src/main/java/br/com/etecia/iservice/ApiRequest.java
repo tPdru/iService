@@ -15,10 +15,11 @@ import java.util.Map;
 
 public class ApiRequest {
 
+
     //Fila de requisiçoes
     private static RequestQueue requestQueue;
 
-    //O volley vai presisar de um contextoi para adiciona a fila
+    //O volley vai presisar de um contexto para adicionar a fila
     public void init(Context context) {
         requestQueue = Volley.newRequestQueue(context);
     }

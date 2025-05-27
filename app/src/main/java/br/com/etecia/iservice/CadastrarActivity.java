@@ -85,6 +85,8 @@ public class CadastrarActivity extends AppCompatActivity implements DialogOpcaoC
                         ControllerMaster.getControllerMaster().criarPerfil(perfil, email);
                         //efetua o login apos a criação
                         ControllerMaster.getControllerMaster().autenticarConta(email, senha);
+                        DAOUsuario daoUsu = new DAOUsuario();
+                        daoUsu.creatPerfil(perfil, getApplicationContext());
 
                         //chama o dialog fragment para decidir sobre a criação da loja
                         DialogOpcaoCadastrarLoja dialog = new DialogOpcaoCadastrarLoja();
