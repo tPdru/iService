@@ -89,7 +89,6 @@
                             app:cursorColor="@color/cor_texto"
                             app:endIconMode="clear_text"
                             app:hintTextColor="@color/cor_texto"
-
                             >
 
                             <com.google.android.material.textfield.TextInputEditText
