@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -82,14 +83,17 @@ public class LojaActivity extends AppCompatActivity {
         listService = new ArrayList<>(loja.getListaServico());
 
         //Configurando recycleView
+        adaptadorLoja = new AdaptadorLoja(getApplicationContext(),listService);
 
-        adaptadorLoja = new AdaptadorLoja(getApplicationContext(), loja.getListaServico());
 
 
         recServicosLoja.setLayoutManager(new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.HORIZONTAL,false));
+        recServicosLoja.setAdapter(adaptadorLoja);
+
         topAppBarLoja.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast.makeText(LojaActivity.this, " " + listService.size(), Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(getApplicationContext(),HomeActivity.class));
                 finish();
             }
