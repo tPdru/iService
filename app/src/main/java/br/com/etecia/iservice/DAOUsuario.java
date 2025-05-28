@@ -1,6 +1,7 @@
 package br.com.etecia.iservice;
 
 import android.content.Context;
+import android.util.Log;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -13,9 +14,7 @@ import org.json.JSONObject;
 
 public class DAOUsuario {
 
-    //Definindo o tipo da conexão
-    private static final int CODE_GET_REQUEST = 1024;
-    private static final int CODE_POST_REQUEST = 1025;
+    List<ObjPerfil> listaPerfis;
 
     /**
      * CRUD do usario
@@ -43,7 +42,12 @@ public class DAOUsuario {
         },
                 //Resposta caso seja erro
                 error -> {
-                    Toast.makeText(context, "Erro de conexão.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context,   "Erro de conexão.", Toast.LENGTH_SHORT).show();
+                    //vendo o erro no log
+                    if (error.networkResponse != null) {
+                        Log.e("API", "Status Code: " + error.networkResponse.statusCode);
+                        Log.e("API", "Data: " + new String(error.networkResponse.data));
+                    }
                 });
 
     }
@@ -55,9 +59,8 @@ public class DAOUsuario {
                 response -> {
                     try {
                         JSONArray jsonArray = new JSONArray(response);
-
+                        listaPerfis = new ArrayList<>();
                         ObjPerfil perfil = new ObjPerfil();
-                        List<ObjPerfil> lista = new ArrayList<>();
 
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject obj = jsonArray.getJSONObject(i);
@@ -67,19 +70,39 @@ public class DAOUsuario {
                             perfil.setEmail(obj.getString("email_usua"));
                             perfil.setSenha(obj.getString("senha_usua"));
                             perfil.setCelular(obj.getString("cel_usua"));
-                            lista.add(perfil);
+                            listaPerfis.add(perfil);
                         }
 
                     } catch (JSONException e) {
                         throw new RuntimeException(e);
                     }
-
                 },
                 error -> {
                     Toast.makeText(context, "Erro no servidor!", Toast.LENGTH_SHORT).show();
                 });
 
-        return readPerfil(context);
+        return listaPerfis;
     }
+
+    public void deletePerfil(int cod) {
+
+    }
+
+    public void updatePerfil(int cod) {
+        
+    }
+
+    /**
+     * 'nome_usua',
+     * 'login_usua',
+     * 'senha_usua',
+     * 'end_usua',
+     * 'profis_usua',
+     * 'email_usua',
+     * 'tel_usua',
+     * 'cel_usua',
+     * 'cpf_usua',
+     * 'sexo_usua'
+     */
 
 }
