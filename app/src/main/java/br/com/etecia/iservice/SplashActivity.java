@@ -15,6 +15,8 @@ import java.util.List;
 
 public class SplashActivity extends AppCompatActivity {
 
+    ControllerMaster contMaster = ControllerMaster.getControllerMaster();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +34,7 @@ public class SplashActivity extends AppCompatActivity {
                 //Definindo que o app não possui conta logada no inicio
                 ControllerMaster.getControllerMaster().setLoginOn(false);
 
+                //Adicionando perfis/loja/serviços de forma manual para testes
                 addPerfis("teste1.barbeiro@exemplo.com");
                 addPerfis("teste2.barbeiro@exemplo.com");
                 addPerfis("teste3.barbeiro@exemplo.com");
@@ -42,8 +45,12 @@ public class SplashActivity extends AppCompatActivity {
                 ApiRequest apiRequest = new ApiRequest();
                 apiRequest.init(getApplicationContext());
 
+                //adicionando lojas atravez do banco
+                DAOLoja daoLoja = new DAOLoja();
+                contMaster.carregarLojasBanco(daoLoja.readLojas(getApplicationContext()));
 
-                ControllerMaster.getControllerMaster().carregarLojas();
+
+                //contMaster.carregarLojas();
                 startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                 finish();
             }

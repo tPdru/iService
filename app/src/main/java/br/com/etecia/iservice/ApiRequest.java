@@ -24,11 +24,12 @@ public class ApiRequest {
         requestQueue = Volley.newRequestQueue(context);
     }
 
-    public static void post(String url, Map<String, String> parans,
+    //Post para criar
+    public static void post(String url, Map<String, String> params,
                             Response.Listener<String> listener,
                             Response.ErrorListener errorListener) {
 
-        final Map<String, String> finalParams = parans;
+        final Map<String, String> finalParams = params;
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, listener, errorListener) {
             @Nullable
@@ -40,6 +41,7 @@ public class ApiRequest {
         requestQueue.add(stringRequest);
     }
 
+    //Get para ler
     public static void get(String url,
                            Response.Listener<String> listener,
                            Response.ErrorListener errorListener) {
@@ -47,5 +49,12 @@ public class ApiRequest {
         requestQueue.add(stringRequest);
     }
 
+    //Delete para deletar
+    public static void delete(String url, int codigo, Response.Listener listener, Response.ErrorListener error) {
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url + codigo, listener, error);
+        requestQueue.add(stringRequest);
+
+    }
 
 }

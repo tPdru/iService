@@ -130,6 +130,15 @@ public class ControllerMaster {
             }
         }
     }
+
+    public void carregarLojasBanco(List<ObjCardLoja> lista) {
+
+        for (int i = 0; i < lista.size(); i++) {
+            listaLojas.add(lista.get(i));
+        }
+
+    }
+
     
 
 

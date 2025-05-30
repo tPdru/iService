@@ -12,6 +12,8 @@ public class ObjCardLoja {
     private String descricao;
     private boolean temEndereco;
     private String emailDono;
+    private int codigLoja;
+    private int codUsuario;
 
     public ObjCardLoja(String emailDono, int imgLoja, List<ObjCardServicoPp> listaServico, String nomeLoja, double txtNota, ObjEndereco enderecoLoja) {
         this.emailDono = emailDono;
@@ -30,6 +32,26 @@ public class ObjCardLoja {
         this.txtNota = txtNota;
     }
 
+    public ObjCardLoja() {
+
+    }
+
+
+    public int getCodUsuario() {
+        return codUsuario;
+    }
+
+    public void setCodUsuario(int codUsuario) {
+        this.codUsuario = codUsuario;
+    }
+
+    public int getCodigLoja() {
+        return codigLoja;
+    }
+
+    public void setCodigLoja(int codigLoja) {
+        this.codigLoja = codigLoja;
+    }
 
     public boolean isTemEndereco() {
         return temEndereco;

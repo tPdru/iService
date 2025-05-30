@@ -30,10 +30,19 @@ public class DAOUsuario {
         parametro.put("email_usua", perfil.getEmail());
         parametro.put("login_usua", perfil.getUsuario());
         parametro.put("senha_usua", perfil.getSenha());
-        Toast.makeText(context, "Passei  !", Toast.LENGTH_SHORT).show();
-        if ( !perfil.getCelular().isEmpty() ) {
+        //colocando informaçoes para ajustes
+        parametro.put("end_usua", "Rua teste");
+        parametro.put("profis_usua", "Barbeiro");
+        parametro.put("tel_usua", "1122221111");
+        parametro.put("cpf_usua", "123456789");
+        parametro.put("sexo_usua", "M");
+        parametro.put("cel_usua", "11944443333");
+
+       /** if ( !perfil.getCelular().isEmpty() ) {
             parametro.put("cel_usua", perfil.getCelular());
-        }
+        }else {
+            parametro.put("cel_usua", "11944443333");
+        }*/
 
         ApiRequest.post(Api.URL_CREATE_USUARIO, parametro,
                 //Resposta caso seja sucesso
@@ -84,25 +93,54 @@ public class DAOUsuario {
         return listaPerfis;
     }
 
-    public void deletePerfil(int cod) {
+
+    ///Deletar perfil--------------------------------------------------------
+    public void deletePerfil(int cod, Context context) {
+        ApiRequest.delete(Api.URL_DELETE_USUARIO, cod, response -> {
+                    Toast.makeText(context, "Sua conta foi finalizada!", Toast.LENGTH_SHORT).show();
+        },
+                error -> {
+                    Toast.makeText(context, "Erro no servidor!", Toast.LENGTH_SHORT).show();
+                });
 
     }
 
-    public void updatePerfil(int cod) {
-        
+    // Método para atualizar um perfil existente
+    public void updatePerfil(ObjPerfil perfil, Context context) {
+        // Criando um HashMap para enviar os dados via POST
+        HashMap<String, String> parametro = new HashMap<>();
+
+        // Passando todos os dados necessários
+        parametro.put("cod_usua", String.valueOf(perfil.getCodigo())); // ID do usuário a ser atualizado
+        parametro.put("nome_usua", perfil.getNome());
+        parametro.put("email_usua", perfil.getEmail());
+        parametro.put("login_usua", perfil.getUsuario());
+        parametro.put("senha_usua", perfil.getSenha());
+
+        // Colocando informações adicionais - você pode ajustar conforme seu app
+        parametro.put("end_usua", "Rua teste");
+        parametro.put("profis_usua", "Barbeiro");
+        parametro.put("tel_usua", "1122221111");
+        parametro.put("cpf_usua", "123456789");
+        parametro.put("sexo_usua", "M");
+        parametro.put("cel_usua", perfil.getCelular());
+
+        // Fazendo a requisição POST para atualizar o usuário
+        ApiRequest.post(Api.URL_UPDATE_USUARIO, parametro,
+                // Callback de sucesso
+                response -> {
+                    Toast.makeText(context, "Perfil atualizado com sucesso!", Toast.LENGTH_SHORT).show();
+                },
+                // Callback de erro
+                error -> {
+                    Toast.makeText(context, "Erro ao atualizar o perfil.", Toast.LENGTH_SHORT).show();
+                    if (error.networkResponse != null) {
+                        Log.e("API", "Status Code: " + error.networkResponse.statusCode);
+                        Log.e("API", "Data: " + new String(error.networkResponse.data));
+                    }
+                });
     }
 
-    /**
-     * 'nome_usua',
-     * 'login_usua',
-     * 'senha_usua',
-     * 'end_usua',
-     * 'profis_usua',
-     * 'email_usua',
-     * 'tel_usua',
-     * 'cel_usua',
-     * 'cpf_usua',
-     * 'sexo_usua'
-     */
+
 
 }
