@@ -1,14 +1,19 @@
 package br.com.etecia.iservice;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
-
+import android.graphics.drawable.BitmapDrawable;
 import androidx.activity.EdgeToEdge;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -16,14 +21,30 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.io.ByteArrayOutputStream;
+
 public class CadastrarActivity extends AppCompatActivity implements DialogOpcaoCadastrarLoja.DialogListerCadastro {
 
     //VAriáveis de controle
     Button btnCriarConta;
 
+    ImageView imgCadUsuario;
+
     //Variáveis de informação
     TextInputEditText txtNome, txtemail, txtSenha, txtReSenha, txtUsuario, txtCelular;
 
+    ActivityResultLauncher <Intent> imagePickerLauncher;
+
+    byte[]imageBytes;
+
+    int codigoImagem;
+
+    private byte[] imageViewToByte (ImageView imageView){
+        Bitmap bitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        return stream.toByteArray();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +65,43 @@ public class CadastrarActivity extends AppCompatActivity implements DialogOpcaoC
         txtUsuario = findViewById(R.id.txtUsuario);
         txtReSenha = findViewById(R.id.txtConfirmarSenhaUsuario);
         txtCelular = findViewById(R.id.txtCelular);
+        imgCadUsuario = findViewById(R.id.imgCadUsuario);
+        Button buttonFoto = findViewById(R.id.btnAdicionarFoto);
+
+        DAOUsuario daoUsuario = new DAOUsuario();
+
+        codigoImagem=getIntent().getIntExtra("getCodigo", 0);
+
+        // Inicializa o launcher para selecionar imagem
+        imagePickerLauncher=registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result->{
+                    if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                        Uri selectedImageUri = result.getData().getData();
+                        imgCadUsuario.setImageURI(selectedImageUri);
+
+                        // Verifica se há uma imagem no ImageView antes de converter
+                        if (imgCadUsuario.getDrawable()!=null){
+                            imageBytes = imageViewToByte(imgCadUsuario);
+                            Toast.makeText(this, "Imagen selecionada!", Toast.LENGTH_SHORT).show();
+                        }else {
+                            Toast.makeText(this, "Erro: imagem inválida!", Toast.LENGTH_SHORT).show();
+                        }
+                    }else {
+                        Toast.makeText(this, "Erro ao selecionar a imagem", Toast.LENGTH_SHORT).show();
+                    }
+                }
+        );
 
 
         //Botões----------------------------------------------------------------------------
+
+        // Botão para escolher imagem
+
+        buttonFoto.setOnClickListener(v->{
+
+        });
+
         //Botão criar conta chama o dialog para o usuário decidir se quer ir para a criação
         //da loja.
         btnCriarConta.setOnClickListener(new View.OnClickListener() {
