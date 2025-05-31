@@ -99,7 +99,9 @@ public class CadastrarActivity extends AppCompatActivity implements DialogOpcaoC
         // Botão para escolher imagem
 
         buttonFoto.setOnClickListener(v->{
-
+            Intent intent = new Intent(Intent.ACTION_PICK);
+            intent.setType("image/*");
+            imagePickerLauncher.launch(intent);
         });
 
         //Botão criar conta chama o dialog para o usuário decidir se quer ir para a criação
@@ -138,10 +140,17 @@ public class CadastrarActivity extends AppCompatActivity implements DialogOpcaoC
 
                         //cria a conta
                         ControllerMaster.getControllerMaster().criarPerfil(perfil, email);
+
+
                         //efetua o login apos a criação
                         ControllerMaster.getControllerMaster().autenticarConta(email, senha);
                         DAOUsuario daoUsu = new DAOUsuario();
-                        daoUsu.creatPerfil(perfil, getApplicationContext());
+
+                        if (imageBytes!= null){
+                            daoUsuario.creatPerfil(perfil, getApplicationContext(), imageBytes);
+                        }else{
+                            Toast.makeText(CadastrarActivity.this, "Selecione a imagem primeiro", Toast.LENGTH_SHORT).show();
+                        }
 
                         //chama o dialog fragment para decidir sobre a criação da loja
                         DialogOpcaoCadastrarLoja dialog = new DialogOpcaoCadastrarLoja();

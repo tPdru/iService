@@ -21,7 +21,7 @@ public class DAOUsuario {
      */
 
     //Create
-    public void creatPerfil (ObjPerfil perfil, Context context) {
+    public void creatPerfil (ObjPerfil perfil, Context context, byte[] imageBytes) {
 
         //Conexão entre o Android e o PHP através do Hash.
         //passando os dados do objeto para um HashMap
@@ -30,6 +30,7 @@ public class DAOUsuario {
         parametro.put("email_usua", perfil.getEmail());
         parametro.put("login_usua", perfil.getUsuario());
         parametro.put("senha_usua", perfil.getSenha());
+        parametro.put("imagem_usuario", imageBytes.toString());
         //colocando informaçoes para ajustes
         parametro.put("end_usua", "Rua teste");
         parametro.put("profis_usua", "Barbeiro");

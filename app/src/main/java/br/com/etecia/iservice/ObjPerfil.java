@@ -1,5 +1,7 @@
 package br.com.etecia.iservice;
 
+import java.sql.Blob;
+
 public class ObjPerfil {
     private boolean temLoja;
     private String nome;
@@ -11,8 +13,9 @@ public class ObjPerfil {
     private String usuario;
     private String celular;
     private ObjCardLoja minhaLoja;
-
     private int codigo;//Codigo para criar contas, feito para testes
+
+
 
     //Construtor sem loja
     public ObjPerfil(int codigo, String email, String nome, String senha, String usuario, int fotoUsuario, boolean temLoja) {
@@ -25,6 +28,7 @@ public class ObjPerfil {
         this.fotoUsuario = fotoUsuario;
 
     }
+
     //Construtor com loja
     public ObjPerfil(int codigo, String email, String nome, String senha, String usuario, int fotoUsuario, boolean temLoja, ObjCardLoja minhaLoja) {
         this.codigo = codigo;
@@ -37,8 +41,9 @@ public class ObjPerfil {
         this.minhaLoja = minhaLoja;
 
     }
+
     //Construtor vazio para o json
-    public ObjPerfil () {
+    public ObjPerfil() {
 
     }
 
@@ -117,7 +122,6 @@ public class ObjPerfil {
     public String getSenha() {
         return senha;
     }
-
     public void setSenha(String senha) {
         this.senha = senha;
     }
@@ -129,4 +133,5 @@ public class ObjPerfil {
     public void setTemLoja(boolean temLoja) {
         this.temLoja = temLoja;
     }
+
 }
