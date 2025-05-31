@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -26,7 +27,7 @@ public class AdaptadorTeste extends RecyclerView.Adapter<AdaptadorTeste.ViewHold
     public AdaptadorTeste.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view;
         LayoutInflater inflater = LayoutInflater.from(context);
-        view = inflater.inflate(R.layout.testar_banco_layout, parent, false);
+        view = inflater.inflate(R.layout.obj_teste_layout, parent, false);
         return new ViewHolder(view);
     }
 

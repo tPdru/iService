@@ -21,7 +21,7 @@ public class DAOUsuario {
      */
 
     //Create
-    public void creatPerfil (ObjPerfil perfil, Context context) {
+    public void creatPerfil(ObjPerfil perfil, Context context) {
 
         //Conexão entre o Android e o PHP através do Hash.
         //passando os dados do objeto para um HashMap
@@ -38,20 +38,20 @@ public class DAOUsuario {
         parametro.put("sexo_usua", "M");
         parametro.put("cel_usua", "11944443333");
 
-       /** if ( !perfil.getCelular().isEmpty() ) {
-            parametro.put("cel_usua", perfil.getCelular());
-        }else {
-            parametro.put("cel_usua", "11944443333");
-        }*/
+        /** if ( !perfil.getCelular().isEmpty() ) {
+         parametro.put("cel_usua", perfil.getCelular());
+         }else {
+         parametro.put("cel_usua", "11944443333");
+         }*/
 
         ApiRequest.post(Api.URL_CREATE_USUARIO, parametro,
                 //Resposta caso seja sucesso
                 response -> {
                     Toast.makeText(context, "Conta criada com sucesso!", Toast.LENGTH_SHORT).show();
-        },
+                },
                 //Resposta caso seja erro
                 error -> {
-                    Toast.makeText(context,   "Erro de conexão.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Erro de conexão.", Toast.LENGTH_SHORT).show();
                     //vendo o erro no log
                     if (error.networkResponse != null) {
                         Log.e("API", "Status Code: " + error.networkResponse.statusCode);
@@ -62,10 +62,10 @@ public class DAOUsuario {
     }
 
 
-
-    public List<ObjPerfil> readPerfil (Context context){
+    public List<ObjPerfil> readPerfil(Context context) {
         ApiRequest.get(Api.URL_READ_USUARIO,
                 response -> {
+                    Toast.makeText(context, "passou aqui", Toast.LENGTH_SHORT).show();
                     try {
                         JSONArray jsonArray = new JSONArray(response);
                         listaPerfis = new ArrayList<>();
@@ -94,11 +94,11 @@ public class DAOUsuario {
     }
 
 
-    ///Deletar perfil--------------------------------------------------------
+    /// Deletar perfil--------------------------------------------------------
     public void deletePerfil(int cod, Context context) {
         ApiRequest.delete(Api.URL_DELETE_USUARIO, cod, response -> {
                     Toast.makeText(context, "Sua conta foi finalizada!", Toast.LENGTH_SHORT).show();
-        },
+                },
                 error -> {
                     Toast.makeText(context, "Erro no servidor!", Toast.LENGTH_SHORT).show();
                 });
@@ -140,7 +140,6 @@ public class DAOUsuario {
                     }
                 });
     }
-
 
 
 }
