@@ -1,7 +1,6 @@
 package br.com.etecia.iservice;
 
 import android.os.Bundle;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,10 +13,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TestarBancoActivity extends AppCompatActivity {
+public class TestarBancoActivity extends AppCompatActivity{
 
     RecyclerView recyclerView;
-    List<ObjTeste> listaTeste;
+    List<ObjTeste> listaTeste = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +29,6 @@ public class TestarBancoActivity extends AppCompatActivity {
             return insets;
         });
         recyclerView = findViewById(R.id.recTeste);
-        listaTeste = new ArrayList<>();
 
 
         // Inicializa o ApiRequest com o contexto da aplicação
@@ -39,33 +37,45 @@ public class TestarBancoActivity extends AppCompatActivity {
 
         DAOUsuario usu = new DAOUsuario();
         List<ObjPerfil> listaPerf = new ArrayList<>();
-        listaPerf = usu.readPerfil(getApplicationContext());
-
-        //Toast.makeText(this, listaPerf.get(0).getNome(), Toast.LENGTH_SHORT).show();
-
-
-        /*for (int i = 0; i < listaPerf.size(); i++) {
-            listaTeste.add(new ObjTeste(listaPerf.get(i).getNome()));
-        }*/
 
 
 
-
-
+        //Adicionando itens de forma manual
         listaTeste.add(new ObjTeste("Hugo"));
         listaTeste.add(new ObjTeste("Hugo"));
         listaTeste.add(new ObjTeste("Hugo"));
         listaTeste.add(new ObjTeste("Hugo"));
-
-
 
 
         AdaptadorTeste adpTeste = new AdaptadorTeste(getApplicationContext(), listaTeste);
 
+        //configurando o recyclerView
         recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(), 1));
-
         recyclerView.setAdapter(adpTeste);
 
 
+        //pegando a lista atravez de uma interface (A interface tem que cer passada como parametro na classe que envia a informação)
+        usu.readPerfil(getApplicationContext(), new InRespostaPerfil() {
+            @Override
+            public void listaReadPerfil(List<ObjPerfil> listaPerfils) {
+                //Testando se a liosta esta vazia
+                if ( listaPerfils != null ) {
+                    //Passando as informações para a lista do recycleView
+                    for (int i = 0; i < listaPerfils.size(); i++) {
+                        listaTeste.add(new ObjTeste(listaPerfils.get(i).getNome()));
+                    }
+                    adpTeste.notifyDataSetChanged();
+                }
+
+            }
+
+            @Override
+            public void listaReadLoja(List<ObjCardLoja> listaLojas) {
+
+            }
+        });
+
+
     }
+
 }

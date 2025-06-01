@@ -20,7 +20,7 @@ public class ApiRequest {
     private static RequestQueue requestQueue;
 
     //O volley vai presisar de um contexto para adicionar a fila
-    public void init(Context context) {
+    public static void init(Context context) {
         requestQueue = Volley.newRequestQueue(context);
     }
 

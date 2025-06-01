@@ -4,7 +4,7 @@ public class Api {
     /**
      * Passar o endereço do servidor aqui
      */
-    private static final String ROOT_URL_PERFIL = "http://10.67.97.30/HeroeApi/v1/ApiTbUsuarios.php?apicall=";
+    private static final String ROOT_URL_PERFIL = "http://192.168.15.48/HeroeApi/v1/ApiTbUsuarios.php?apicall=";
     private static final String ROOT_URL_LOJA = "http://10.67.97.30/Heroeapi/v1/ApiTbLojas.php?apicall=";
     private static final String ROOT_URL_SERV = "http://10.67.96.108/HeroeApi/v1/ApiTbUsuarios.php?apicall=";
 

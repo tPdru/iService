@@ -12,10 +12,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class DAOUsuario {
+public class DAOUsuario{
 
     List<ObjPerfil> listaPerfis;
-
+    InRespostaPerfil mandarLista;
     /**
      * CRUD do usario
      */
@@ -61,26 +61,36 @@ public class DAOUsuario {
 
     }
 
-
-    public List<ObjPerfil> readPerfil(Context context) {
+    // Pasando a interface como parametro
+    public void readPerfil(Context context, InRespostaPerfil mandarLista) {
         ApiRequest.get(Api.URL_READ_USUARIO,
                 response -> {
                     Toast.makeText(context, "passou aqui", Toast.LENGTH_SHORT).show();
                     try {
-                        JSONArray jsonArray = new JSONArray(response);
+                        /// Criaar o objeto json antes de transformar em array
+                        JSONObject jsonObject = new JSONObject(response);
+                        JSONArray jsonArray = jsonObject.getJSONArray("usuarios");
+
                         listaPerfis = new ArrayList<>();
-                        ObjPerfil perfil = new ObjPerfil();
 
                         for (int i = 0; i < jsonArray.length(); i++) {
+                            //Criar um novo objeto vazio
+                            ObjPerfil perfil = new ObjPerfil();
+                            //pegar o objeto json dentro do jsonArray
                             JSONObject obj = jsonArray.getJSONObject(i);
+                            //Setar s informaçoes no0 perfil vazio
                             perfil.setCodigo(obj.getInt("cod_usua"));
                             perfil.setUsuario(obj.getString("login_usua"));
                             perfil.setNome(obj.getString("nome_usua"));
                             perfil.setEmail(obj.getString("email_usua"));
                             perfil.setSenha(obj.getString("senha_usua"));
                             perfil.setCelular(obj.getString("cel_usua"));
+                            //adicionar o perfil na lista
                             listaPerfis.add(perfil);
                         }
+                        //mandar a lista completata atravez da interface
+                        mandarLista.listaReadPerfil(new ArrayList<>(listaPerfis));
+                        Toast.makeText(context, listaPerfis.get(0).getNome(), Toast.LENGTH_SHORT).show();
 
                     } catch (JSONException e) {
                         throw new RuntimeException(e);
@@ -89,8 +99,6 @@ public class DAOUsuario {
                 error -> {
                     Toast.makeText(context, "Erro no servidor!", Toast.LENGTH_SHORT).show();
                 });
-
-        return listaPerfis;
     }
 
 
