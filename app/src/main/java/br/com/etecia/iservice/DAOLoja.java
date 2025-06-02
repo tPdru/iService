@@ -18,7 +18,10 @@ import java.util.HashMap;
 import java.util.List;
 
 public class DAOLoja {
-    private List<ObjCardLoja> listaLoja = new ArrayList<>();
+
+    //Interface
+    InRespostaPerfil mandarListaLojas;
+
 
     public void createLoja(ObjCardLoja loja) {
 
@@ -40,29 +43,39 @@ public class DAOLoja {
 
     }
 
-    public List<ObjCardLoja> readLojas(Context context) {
+    public void readLojas(Context context, InRespostaPerfil mandarListaLojas) {
         ApiRequest.get(Api.URL_READ_LOJA,
                 response -> {
                     try {
-                        //Lista json que tras as informaçoes
-                        JSONArray jsonLista = new JSONArray(response);
-                        //Objeto loja para preencher com o construtor vazio
-                        ObjCardLoja loja = new ObjCardLoja();
 
-                        for (int i = 0; i < jsonLista.length(); i++) {
-                            //Transformando o json em um objeto
-                            JSONObject obj = jsonLista.getJSONObject(i);
+                        List<ObjCardLoja> listaLoja = new ArrayList<>();
 
-                            //Criando as lojas e adicionando a lista
+                        //Objeto json que tras as informaçoes
+                        JSONObject jsonObject = new JSONObject(response);
+
+                        //Colocando o objto Json em um Array Json
+                        JSONArray jsonArray = jsonObject.getJSONArray("lojas");
+
+                        for (int i = 0; i < jsonArray.length(); i++) {
+
+                            //Objeto loja para preencher com o construtor vazio
+                            ObjCardLoja loja = new ObjCardLoja();
+                            //Pegando o objeto json dentro da lista
+                            JSONObject obj = jsonArray.getJSONObject(i);
+
+                            //Passando os dados do objeto json para o loja
                             loja.setNomeLoja(obj.getString("nome_loja"));
                             loja.setDescricao(obj.getString("desc_loja"));
                             loja.setEmailDono(obj.getString("email_loja"));
                             loja.setImgLoja(R.drawable.foto_imagem);
                             loja.setCodigLoja(obj.getInt("cod_loja"));
                             loja.setCodUsuario(obj.getInt("cod_usua"));
+
+                            loja.setTemServicos(false);
+
                             listaLoja.add(loja);
                         }
-
+                        mandarListaLojas.listaReadLoja(new ArrayList<>(listaLoja));
 
                     } catch (JSONException e) {
                         throw new RuntimeException(e);
@@ -71,33 +84,8 @@ public class DAOLoja {
                 },
                 error -> {
                     Toast.makeText(context, "Erro em lojas", Toast.LENGTH_SHORT).show();
-
-
                 });
 
-
-        return listaLoja;
     }
-
-
-
-
-
-    /*Função de identificação de erros
-    private void erros() {
-        if (error instanceof NetworkError) {
-            // Erro de rede
-        } else if (error instanceof ServerError) {
-            // Erro no servidor
-        } else if (error instanceof AuthFailureError) {
-            // Falha de autenticação
-        } else if (error instanceof ParseError) {
-            // Erro ao processar resposta
-        } else if (error instanceof TimeoutError) {
-            // Timeout
-        }
-    }*/
-
-
 
 }

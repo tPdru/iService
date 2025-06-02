@@ -11,6 +11,7 @@ public class ObjCardLoja {
     private ObjEndereco enderecoLoja;
     private String descricao;
     private boolean temEndereco;
+    private boolean temServicos;
     private String emailDono;
     private int codigLoja;
     private int codUsuario;
@@ -39,6 +40,14 @@ public class ObjCardLoja {
 
     public int getCodUsuario() {
         return codUsuario;
+    }
+
+    public boolean isTemServicos() {
+        return temServicos;
+    }
+
+    public void setTemServicos(boolean temServicos) {
+        this.temServicos = temServicos;
     }
 
     public void setCodUsuario(int codUsuario) {

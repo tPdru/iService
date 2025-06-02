@@ -32,7 +32,7 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
                 //Definindo que o app não possui conta logada no inicio
-                ControllerMaster.getControllerMaster().setLoginOn(false);
+                contMaster.setLoginOn(false);
 
                 //Adicionando perfis/loja/serviços de forma manual para testes
                 addPerfis("teste1.barbeiro@exemplo.com");
@@ -47,8 +47,19 @@ public class SplashActivity extends AppCompatActivity {
 
                 //adicionando lojas atravez do banco
                 DAOLoja daoLoja = new DAOLoja();
-                contMaster.carregarLojasBanco(daoLoja.readLojas(getApplicationContext()));
+                daoLoja.readLojas(getApplicationContext(), new InRespostaPerfil() {
+                    @Override
+                    public void listaReadPerfil(List<ObjPerfil> listaPerfils) {
 
+                    }
+                    @Override
+                    public void listaReadLoja(List<ObjCardLoja> listaLojas) {
+                        if ( listaLojas != null ) {
+                            contMaster.carregarLojasBanco(new ArrayList<>(listaLojas));
+                        }
+
+                    }
+                });
 
                 //contMaster.carregarLojas();
                 startActivity(new Intent(getApplicationContext(), HomeActivity.class));
@@ -97,6 +108,7 @@ public class SplashActivity extends AppCompatActivity {
                 40.00);
         listaServicos.add(servicoPp);
 
+
         //Criando um endereço
         ObjEndereco endere = new ObjEndereco(
                 111,
@@ -125,8 +137,13 @@ public class SplashActivity extends AppCompatActivity {
                         4.5,
                         endere
                 )
+
         );
+
+        // avisando que tem servisos e endereço
+        perfil.getMinhaLoja().setTemServicos(true);
         perfil.getMinhaLoja().setTemEndereco(true);
+
         ControllerMaster.getControllerMaster().criarPerfil(perfil, email);
     }
 }

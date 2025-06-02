@@ -51,11 +51,19 @@ public class AdaptadorModeloCardLoja extends RecyclerView.Adapter<AdaptadorModel
 
         //Configurar o recycleView Interno-------------------------------------------
         ObjCardLoja loja = listaCardLoja.get(position);
-        List<ObjCardServicoPp> lista_servicos = new ArrayList<>(loja.getListaServico());
 
-        AdaptadorServicoPp adpServicoPp = new AdaptadorServicoPp(context, lista_servicos);
-        holder.rec_servicos.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
-        holder.rec_servicos.setAdapter(adpServicoPp);
+
+        //Verifica se a loja tem serviços
+        if ( loja.isTemServicos() ) {
+
+            List<ObjCardServicoPp> lista_servicos = new ArrayList<>(loja.getListaServico());
+
+            //Liga o adaptador com os serviços
+            AdaptadorServicoPp adpServicoPp = new AdaptadorServicoPp(context, lista_servicos);
+            holder.rec_servicos.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
+            holder.rec_servicos.setAdapter(adpServicoPp);
+        }
+
 
         //Configurando o click das lojas
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -77,12 +85,12 @@ public class AdaptadorModeloCardLoja extends RecyclerView.Adapter<AdaptadorModel
                 context.startActivity(intent);
             }
         });
-
     }
 
     @Override
     public int getItemCount() {
-        return listaCardLoja.size();
+        // operador ternario verificando se alista esta null antes de passar
+        return listaCardLoja != null? listaCardLoja.size() : 0;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
@@ -103,7 +111,14 @@ public class AdaptadorModeloCardLoja extends RecyclerView.Adapter<AdaptadorModel
 
     //Atualizar lista
     public void atualizarListaAgendados(List<ObjCardLoja> lista_atualizada){
-        listaCardLoja = lista_atualizada;
+
+        if (lista_atualizada != null){
+            listaCardLoja.clear();
+            listaCardLoja.addAll(lista_atualizada);
+        } else {
+            listaCardLoja.clear();
+        }
         notifyDataSetChanged();
+
     }
 }
