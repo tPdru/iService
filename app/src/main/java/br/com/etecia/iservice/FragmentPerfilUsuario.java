@@ -19,7 +19,7 @@ public class FragmentPerfilUsuario extends Fragment {
 
     TextView txtNome, txtEmail, txtNomeFt;
 
-    //ImageView imgPerfil;
+    ImageView imgPerfil;
 
 
     private void carregarImagemLoca(){
@@ -47,7 +47,7 @@ public class FragmentPerfilUsuario extends Fragment {
         txtNome = view.findViewById(R.id.txtPerfilNome);
         txtEmail = view.findViewById(R.id.txtPerfilEmail);
         txtNomeFt = view.findViewById(R.id.txtPerfilNomeFt);
-        //imgPerfil = view.findViewById(R.id.imgPerfil);
+        imgPerfil = view.findViewById(R.id.imgPerfil);
 
 
         //Pegando as informações do perfil
