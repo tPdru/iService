@@ -4,9 +4,9 @@ public class Api {
     /**
      * Passar o endereço do servidor aqui
      */
-    private static final String ROOT_URL_PERFIL = "http://localHost/HeroeApi/v1/ApiTbUsuarios.php?apicall=";
-    private static final String ROOT_URL_LOJA = "http://localHost/HeroeApi/v1/ApiTbLojas.php?apicall=";
-    private static final String ROOT_URL_SERV = "http://localHost/HeroeApi/v1/ApiTbServicos.php?apicall=";
+    private static final String ROOT_URL_PERFIL = "http://10.67.96.229/HeroeApi/v1/ApiTbUsuarios.php?apicall=";
+    private static final String ROOT_URL_LOJA = "http://10.67.96.229/HeroeApi/v1/ApiTbLojas.php?apicall=";
+    private static final String ROOT_URL_SERV = "http://10.67.96.229/HeroeApi/v1/ApiTbServicos.php?apicall=";
 
     /**
      * Constantes para chmar açoes do banco

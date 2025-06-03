@@ -2,6 +2,7 @@ package br.com.etecia.iservice;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -22,6 +23,8 @@ import androidx.core.view.WindowInsetsCompat;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.io.ByteArrayOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 
 public class CadastrarActivity extends AppCompatActivity implements DialogOpcaoCadastrarLoja.DialogListerCadastro {
 
@@ -46,6 +49,21 @@ public class CadastrarActivity extends AppCompatActivity implements DialogOpcaoC
         return stream.toByteArray();
     }
 
+    private void salvarImagemLocal(byte[] imageBytes){
+
+        try {
+            FileOutputStream fos = openFileOutput("perfil.png", MODE_PRIVATE);
+            fos.write(imageBytes);
+            fos.close();
+            Toast.makeText(this,"Imagem salva localmente", Toast.LENGTH_SHORT).show();
+        }catch (Exception e){
+            e.printStackTrace();
+            Toast.makeText(this,"erro ao salvar a Imagem localmente", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +74,8 @@ public class CadastrarActivity extends AppCompatActivity implements DialogOpcaoC
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+
 
         // Apresentação Java + XML----------------------------------------------------------
         btnCriarConta = findViewById(R.id.btnCriarConta);
@@ -90,8 +110,9 @@ public class CadastrarActivity extends AppCompatActivity implements DialogOpcaoC
                     }else {
                         Toast.makeText(this, "Erro ao selecionar a imagem", Toast.LENGTH_SHORT).show();
                     }
-                }
-        );
+                });
+
+
 
 
         //Botões----------------------------------------------------------------------------
@@ -104,9 +125,13 @@ public class CadastrarActivity extends AppCompatActivity implements DialogOpcaoC
 
         });
 
+
+
+
         //Botão criar conta chama o dialog para o usuário decidir se quer ir para a criação
         //da loja.
         btnCriarConta.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 //Pegar os textos
@@ -115,6 +140,9 @@ public class CadastrarActivity extends AppCompatActivity implements DialogOpcaoC
                 String nome = txtNome.getText().toString().trim();
                 String usuario = txtUsuario.getText().toString().trim();
                 String confirmarSenha = txtReSenha.getText().toString().trim();
+
+                imageBytes=imageViewToByte(imgCadUsuario);
+                salvarImagemLocal(imageBytes);
 
                 //Testar os textos
                 if (checkCampo(usuario, txtUsuario) && checkCampo(nome, txtNome) &&
