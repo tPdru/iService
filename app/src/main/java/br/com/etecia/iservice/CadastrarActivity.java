@@ -26,7 +26,7 @@ import java.io.ByteArrayOutputStream;
 public class CadastrarActivity extends AppCompatActivity implements DialogOpcaoCadastrarLoja.DialogListerCadastro {
 
     //VAriáveis de controle
-    Button btnCriarConta;
+    Button btnCriarConta, btnAdicionarFoto;
 
     ImageView imgCadUsuario;
 
@@ -66,7 +66,7 @@ public class CadastrarActivity extends AppCompatActivity implements DialogOpcaoC
         txtReSenha = findViewById(R.id.txtConfirmarSenhaUsuario);
         txtCelular = findViewById(R.id.txtCelular);
         imgCadUsuario = findViewById(R.id.imgCadUsuario);
-        Button buttonFoto = findViewById(R.id.btnAdicionarFoto);
+        btnAdicionarFoto = findViewById(R.id.btnAdicionarFoto);
 
         DAOUsuario daoUsuario = new DAOUsuario();
 
@@ -97,8 +97,10 @@ public class CadastrarActivity extends AppCompatActivity implements DialogOpcaoC
         //Botões----------------------------------------------------------------------------
 
         // Botão para escolher imagem
-
-        buttonFoto.setOnClickListener(v->{
+        btnAdicionarFoto.setOnClickListener(v->{
+            Intent intent = new Intent(Intent.ACTION_PICK);
+            intent.setType("image/*");
+            imagePickerLauncher.launch(intent);
 
         });
 
@@ -141,7 +143,8 @@ public class CadastrarActivity extends AppCompatActivity implements DialogOpcaoC
                         //efetua o login apos a criação
                         ControllerMaster.getControllerMaster().autenticarConta(email, senha);
                         DAOUsuario daoUsu = new DAOUsuario();
-                        daoUsu.creatPerfil(perfil, getApplicationContext());
+                        daoUsu.creatPerfil(perfil, getApplicationContext(),imageBytes);
+
 
                         //chama o dialog fragment para decidir sobre a criação da loja
                         DialogOpcaoCadastrarLoja dialog = new DialogOpcaoCadastrarLoja();

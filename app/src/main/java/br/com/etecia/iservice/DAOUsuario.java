@@ -1,6 +1,7 @@
 package br.com.etecia.iservice;
 
 import android.content.Context;
+import android.util.Base64;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -20,8 +21,12 @@ public class DAOUsuario{
      * CRUD do usario
      */
 
+    //Metodo converter byte[] em Base64
+    private String byteArrayToBase64 (byte[] imageBytes){
+        return android.util.Base64.encodeToString(imageBytes, Base64.NO_WRAP);
+    }
     //Create
-    public void creatPerfil(ObjPerfil perfil, Context context) {
+    public void creatPerfil(ObjPerfil perfil, Context context, byte[] imageBytes) {
 
         //Conexão entre o Android e o PHP através do Hash.
         //passando os dados do objeto para um HashMap
@@ -30,6 +35,13 @@ public class DAOUsuario{
         parametro.put("email_usua", perfil.getEmail());
         parametro.put("login_usua", perfil.getUsuario());
         parametro.put("senha_usua", perfil.getSenha());
+
+        if (imageBytes != null){
+            parametro.put("imagem_usuario", byteArrayToBase64(imageBytes));
+        }else {
+            parametro.put("imagem_usuario", "");
+        }
+
         //colocando informaçoes para ajustes
         parametro.put("end_usua", "Rua teste");
         parametro.put("profis_usua", "Barbeiro");
@@ -74,10 +86,10 @@ public class DAOUsuario{
                         listaPerfis = new ArrayList<>();
 
                         for (int i = 0; i < jsonArray.length(); i++) {
-                            //Criar um novo objeto vazio
-                            ObjPerfil perfil = new ObjPerfil();
                             //pegar o objeto json dentro do jsonArray
                             JSONObject obj = jsonArray.getJSONObject(i);
+                            //Criar um novo objeto vazio
+                            ObjPerfil perfil = new ObjPerfil();
                             //Setar s informaçoes no0 perfil vazio
                             perfil.setCodigo(obj.getInt("cod_usua"));
                             perfil.setUsuario(obj.getString("login_usua"));
