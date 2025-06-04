@@ -17,9 +17,13 @@ public class AdaptadorLoja extends RecyclerView.Adapter <AdaptadorLoja.ViewHolde
     Context contexto;
     List <ObjCardServicoPp> listaServicos;
 
-    public AdaptadorLoja(Context contexto, List<ObjCardServicoPp> listaServicos) {
+    //Interface para passar o serviõ escolhido ao detalhes
+    InComunicarServPp inComunicar;
+
+    public AdaptadorLoja(Context contexto, List<ObjCardServicoPp> listaServicos, InComunicarServPp inComunicar) {
         this.contexto = contexto;
         this.listaServicos = listaServicos;
+        this.inComunicar = inComunicar;
     }
 
     @NonNull
@@ -33,9 +37,14 @@ public class AdaptadorLoja extends RecyclerView.Adapter <AdaptadorLoja.ViewHolde
 
     @Override
     public void onBindViewHolder(@NonNull AdaptadorLoja.ViewHolder holder, int position) {
+
         holder.imgServ.setImageResource(listaServicos.get(position).getImgServicoPp());
         holder.nomeServ.setText(listaServicos.get(position).getTxtNomeServicoPp());
-        holder.valorServ.setText(listaServicos.get(position).getTxtNomeServicoPp());
+
+        //Ajustando a formatação do valor
+        String valorFormatado = "R$: " + listaServicos.get(position).getTxtValorServicoPp();
+
+        holder.valorServ.setText(valorFormatado);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,9 +66,16 @@ public class AdaptadorLoja extends RecyclerView.Adapter <AdaptadorLoja.ViewHolde
                 intent.putExtra("detalhesServ", listaServicos.get(numServ).getTxtDetalhesServicoPp());
 
                 //iniciando a nova activity
-                contexto.startActivity(intent);
+                //contexto.startActivity(intent);
 
-
+                //ObjetoServiço que vai receber as informações do selecionado
+                ObjCardServicoPp objServ = new ObjCardServicoPp(
+                        listaServicos.get(numServ).getImgServicoPp(),
+                        listaServicos.get(numServ).getTxtNomeServicoPp(),
+                        listaServicos.get(numServ).getTxtDetalhesServicoPp(),
+                        listaServicos.get(numServ).getTxtValorServicoPp());
+                // Envia o objeto atravez da interface
+                inComunicar.enviarServico(objServ);
             }
         });
     }

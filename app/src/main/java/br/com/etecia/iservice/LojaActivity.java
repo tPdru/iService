@@ -83,7 +83,13 @@ public class LojaActivity extends AppCompatActivity {
         listService = new ArrayList<>(loja.getListaServico());
 
         //Configurando recycleView
-        adaptadorLoja = new AdaptadorLoja(getApplicationContext(),listService);
+        adaptadorLoja = new AdaptadorLoja(getApplicationContext(), listService, new InComunicarServPp() {
+            @Override
+            public void enviarServico(ObjCardServicoPp objServ) {
+                DialogDetalhesServico dialog = new DialogDetalhesServico(objServ);
+                dialog.show(getSupportFragmentManager(), "DetalhesServico");
+            }
+        });
 
 
 

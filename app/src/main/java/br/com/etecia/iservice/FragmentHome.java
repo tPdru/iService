@@ -34,7 +34,7 @@ public class FragmentHome extends Fragment {
         recHomeLojas = view.findViewById(R.id.recHomeLojas);
 
         //Instancias
-        listaCardLoja = new ArrayList<>();
+        listaCardLoja = new ArrayList<>(contMaster.getListaLojas());
         adpLojas = new AdaptadorModeloCardLoja(getContext(), listaCardLoja);
 
         //Configurações iniciais---------------------------------------
@@ -51,6 +51,7 @@ public class FragmentHome extends Fragment {
         super.onResume();
 
         //adicionando lojas atravez do banco
+        /** Atualizaçaõ via banco online
         DAOLoja daoLoja = new DAOLoja();
         daoLoja.readLojas(requireContext(), new InRespostaPerfil() {
             @Override
@@ -71,5 +72,7 @@ public class FragmentHome extends Fragment {
 
             }
         });
+         */
+
     }
 }

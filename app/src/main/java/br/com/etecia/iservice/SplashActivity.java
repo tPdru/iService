@@ -41,6 +41,7 @@ public class SplashActivity extends AppCompatActivity {
                 addPerfis("teste4.barbeiro@exemplo.com");
                 addPerfis("teste5.barbeiro@exemplo.com");
 
+                /** Banco de dados online
                 // Inicializa o ApiRequest com o contexto da aplicação
                 ApiRequest apiRequest = new ApiRequest();
                 apiRequest.init(getApplicationContext());
@@ -60,8 +61,9 @@ public class SplashActivity extends AppCompatActivity {
 
                     }
                 });
+                */
 
-                //contMaster.carregarLojas();
+                contMaster.carregarLojas();
                 startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                 finish();
             }
