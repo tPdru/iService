@@ -29,6 +29,7 @@ public class HomeActivity extends AppCompatActivity {
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,9 +45,9 @@ public class HomeActivity extends AppCompatActivity {
         materialToolbar = findViewById(R.id.matTooBarActivtHome);
         bottomNavigationView = findViewById(R.id.botNavgationTelaPrincipal);
 
-
         //Informações iniciais --------------------------------
         getSupportFragmentManager().beginTransaction().replace(R.id.frmLayoutConteiner,new FragmentHome()).commit();
+
 
 
 

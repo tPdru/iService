@@ -68,8 +68,7 @@ android:fillViewport="true">
         android:textSize="18sp"
         android:backgroundTint="#0044C0"
         android:textColor="#FFFFFF"
-        android:elevation="4dp"
-        android:cornerRadius="12dp" />
+        android:elevation="4dp"/>
 
     <!-- Botão criar conta -->
     <Button
@@ -82,8 +81,7 @@ android:fillViewport="true">
         android:textSize="18sp"
         android:backgroundTint="#03A9F4"
         android:textColor="#FFFFFF"
-        android:elevation="4dp"
-        android:cornerRadius="12dp" />
+        android:elevation="4dp" />
 
 </LinearLayout>
 </androidx.core.widget.NestedScrollView>

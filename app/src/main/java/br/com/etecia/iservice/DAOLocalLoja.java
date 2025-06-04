@@ -95,12 +95,28 @@ public class DAOLocalLoja {
             do {
                 int id = cursor.getInt(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_ID_LOJA));
                 String nome = cursor.getString(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_NOME_LOJA));
+                String descricao =  cursor.getString(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_DESCRICAO_LOJA));
+                int temEnd = cursor.getInt(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_TEM_END_LOJA));
+                int temServ = cursor.getInt(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_TEM_SERV_LOJA));
+                int codUsu = cursor.getInt(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_ID_PERFIL_FK));
+                String cpfCnpj = cursor.getString(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_CPF_CNPJ_LOJA));
+                String img = cursor.getString(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_IMG_LOJA));
 
-                //Objeto Loja
-                ObjCardLoja loja = new ObjCardLoja(
+                //Objeto Loja vazio
+                ObjCardLoja loja = new ObjCardLoja();
 
-                );
+                // setando as informaçoes
+                loja.setCodigLoja(id);
+                loja.setNomeLoja(nome);
+                loja.setDescricao(descricao);
+                loja.setTemEndereco(temEnd == 1 ? true:false);
+                loja.setTemServicos(temServ == 1 ? true:false);
+                loja.setCodUsuario(codUsu);
+                loja.setCpfCnpj(Integer.getInteger(cpfCnpj));
+
+                //Adicionando a lista
                 lista.add(loja);
+
             }while (cursor.moveToNext());
         }
 
@@ -112,18 +128,65 @@ public class DAOLocalLoja {
 
     }
 
+    /**
+     * Método para atualizar um LOJA no banco de dados.
+     * Recebe um objeto ObjLoja com o ID e os novos dados.
+     */
 
+    public boolean atualizarLoja(ObjCardLoja loja) {
 
+        // Obtém o banco no modo de escrita.
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
 
+        // Cria um ContentValues para mapear as colunas aos valores
+        ContentValues values = new ContentValues();
 
+        //Colocando os valores
+        values.put(dbHelper.COLUMN_NOME_LOJA, loja.getNomeLoja());
+        values.put(dbHelper.COLUMN_IMG_LOJA, loja.getImgLoja());
+        values.put(dbHelper.COLUMN_CPF_CNPJ_LOJA, loja.getCpfCnpj());
+        values.put(dbHelper.COLUMN_DESCRICAO_LOJA, loja.getDescricao());
+        values.put(dbHelper.COLUMN_TEM_END_LOJA, loja.isTemEndereco());
+        values.put(dbHelper.COLUMN_TEM_SERV_LOJA, loja.isTemServicos());
 
+        // Condição de qual registro será atualizado.
+        String condicao = DbHelper.COLUMN_ID_LOJA + " = ?";
+        String[] condArgumentos = {String.valueOf(condicao)};
 
+        // Executa o update.
+        int linhasModificadas = db.update(DbHelper.TABLE_LOJA, values, condicao, condArgumentos);
 
+        // Fecha o cursor e o banco.
+        db.close();
 
+        if ( linhasModificadas != -1 ) return true;
 
+        return false;
+    }
 
+    /**
+     * Método para deletar um LOJA do banco de dados.
+     * Recebe o objet LOJA, pega o codigo para excluir.
+     */
+    public boolean deleteLoja(ObjCardLoja loja) {
 
+        // Obtém o banco no modo de escrita.
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
 
+        String qual = DbHelper.COLUMN_ID_LOJA + " = ?";
+        String[] qualArgumentos = {String.valueOf(loja.getCodigLoja())};
+
+        // Executa o delete.
+        int linhasAfetadas = db.delete(DbHelper.TABLE_LOJA, qual, qualArgumentos);
+
+        // Fecha o banco após operação.
+        db.close();
+
+        //Retora true caso a exclusão tenha sido um sucesso
+        if ( linhasAfetadas > 0 ) return true;
+
+        return false;
+    }
 
 
 

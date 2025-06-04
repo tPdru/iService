@@ -88,7 +88,7 @@ public class DbHelper extends SQLiteOpenHelper {
                     COLUMN_ID_LOJA + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     COLUMN_ID_PERFIL_FK + " INTEGER, " +
                     COLUMN_NOME_LOJA + " TEXT, " +
-                    COLUMN_IMG_LOJA + " TEXT, " +
+                    COLUMN_IMG_LOJA + "     TEXT, " +
                     COLUMN_CPF_CNPJ_LOJA + " TEXT, " +
                     COLUMN_TEM_END_LOJA + " INTEGER, " +
                     COLUMN_TEM_SERV_LOJA + " INTEGER, " +

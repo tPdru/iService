@@ -11,7 +11,7 @@ public class ControllerMaster {
     private static final ControllerMaster CONTROLLER_MASTER = new ControllerMaster();
 
     //Variáveis para controle de informação
-    private List<ObjPerfil> listaPerfis = new ArrayList<>();
+    private static List<ObjPerfil> listaPerfis = new ArrayList<>();
     private List<ObjCardLoja> listaLojas = new ArrayList<>();
     private boolean loginOn;
     private int indexConta;
@@ -20,9 +20,15 @@ public class ControllerMaster {
     //Construtor privado que impede que outras classes criem novos objetos ControleDados
     private ControllerMaster(){};
 
+
     //Metodo publico para acessar
     public static ControllerMaster getControllerMaster(){
         return CONTROLLER_MASTER;
+    }
+
+    //lista de perfil para testes
+    public static List<ObjPerfil> getListaPerfis() {
+        return new ArrayList<>(listaPerfis);
     }
 
     //Metodo para criar um perfil garantindo que o email é unico
