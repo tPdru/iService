@@ -1,58 +1,90 @@
-<?xml version="1.0" encoding="utf-8"?>
+<!-- Layout principal da tela -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#151515"
     android:orientation="vertical"
     tools:context=".LoginActivity">
 
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+<androidx.core.widget.NestedScrollView
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:fillViewport="true">
 
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp">
 
-            <EditText
-                android:id="@+id/txtLoginEmail"
-                android:layout_width="250sp"
-                android:layout_height="50sp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="200dp"
-                android:hint="e-mail" />
+    <!-- Logo  -->
+    <ImageView
+        android:id="@+id/logoImage"
+        android:layout_width="180dp"
+        android:layout_height="190dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/logo"
+        android:layout_marginTop="40dp"
+        android:contentDescription="Logo do App" />
 
-            <EditText
-                android:id="@+id/txtLoginSenha"
-                android:layout_width="250sp"
-                android:layout_height="50sp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="30dp"
-                android:hint="e-mail" />
+    <!-- Campo de e-mail -->
+    <EditText
+        android:id="@+id/txtLoginEmail"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dp"
+        android:hint="E-mail"
+        android:background="@drawable/edit_text_background"
+        android:padding="12dp"
+        android:inputType="textEmailAddress"
+        android:textColorHint="#888" />
 
-            <Button
-                android:id="@+id/btnLogar"
-                android:layout_width="200dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="150dp"
-                android:text="Entrar"
-                android:textSize="@dimen/tamanho_grande" />
+    <!-- Campo de senha -->
+    <EditText
+        android:id="@+id/txtLoginSenha"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="24dp"
+        android:hint="Senha"
+        android:background="@drawable/edit_text_background"
+        android:padding="12dp"
+        android:inputType="textPassword"
+        android:textColorHint="#888" />
 
-            <Button
-                android:id="@+id/btnCadastrar"
-                android:layout_width="200dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center_horizontal"
-                android:text="Criar conta"
-                android:textSize="@dimen/tamanho_grande" />
+    <!-- Botão Entrar -->
+    <Button
+        android:id="@+id/btnLogar"
+        android:layout_width="200dp"
+        android:layout_height="64dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="70dp"
+        android:text="Entrar"
+        android:textSize="18sp"
+        android:backgroundTint="#0044C0"
+        android:textColor="#FFFFFF"
+        android:elevation="4dp"
+        android:cornerRadius="12dp" />
 
-        </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
+    <!-- Botão criar conta -->
+    <Button
+        android:id="@+id/btnCadastrar"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="29dp"
+        android:text="Criar conta"
+        android:textSize="18sp"
+        android:backgroundTint="#03A9F4"
+        android:textColor="#FFFFFF"
+        android:elevation="4dp"
+        android:cornerRadius="12dp" />
 
 </LinearLayout>
+</androidx.core.widget.NestedScrollView>
+    </LinearLayout>
