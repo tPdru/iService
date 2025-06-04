@@ -24,6 +24,10 @@ public class FragmentHome extends Fragment {
     //Variáveis de informação
     List<ObjCardLoja> listaCardLoja;
 
+    //Banco local
+    DAOLocalPerfil daoLocalPerfil;
+    DAOLocalLoja daoLocalLoja;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -34,10 +38,15 @@ public class FragmentHome extends Fragment {
         recHomeLojas = view.findViewById(R.id.recHomeLojas);
 
         //Instancias
+        daoLocalPerfil = new DAOLocalPerfil(getContext());
+        daoLocalLoja = new DAOLocalLoja(getContext());
         listaCardLoja = new ArrayList<>(contMaster.getListaLojas());
         adpLojas = new AdaptadorModeloCardLoja(getContext(), listaCardLoja);
 
         //Configurações iniciais---------------------------------------
+
+
+
 
         //Configuração RecicleVieww
         recHomeLojas.setLayoutManager(new GridLayoutManager(getContext(), 1));
@@ -73,6 +82,11 @@ public class FragmentHome extends Fragment {
             }
         });
          */
+
+
+        /**adicionando lojas atravez do banco Local*/
+
+
 
     }
 }

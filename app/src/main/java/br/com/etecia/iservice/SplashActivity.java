@@ -17,6 +17,10 @@ public class SplashActivity extends AppCompatActivity {
 
     ControllerMaster contMaster = ControllerMaster.getControllerMaster();
 
+    //Banco local
+    DAOLocalPerfil daoLocalPerfil;
+    DAOLocalLoja daoLocalLoja;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +66,15 @@ public class SplashActivity extends AppCompatActivity {
                     }
                 });
                 */
+
+                //Banco local
+                // Instancias
+                daoLocalPerfil = new DAOLocalPerfil(getApplicationContext());
+                daoLocalLoja = new DAOLocalLoja(getApplicationContext());
+
+
+                daoLocalPerfil.inserirPerfil(contMaster.getLis);
+
 
                 contMaster.carregarLojas();
                 startActivity(new Intent(getApplicationContext(), HomeActivity.class));
