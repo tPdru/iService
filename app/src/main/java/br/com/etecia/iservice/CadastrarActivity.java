@@ -20,6 +20,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.io.ByteArrayOutputStream;
@@ -30,6 +32,8 @@ public class CadastrarActivity extends AppCompatActivity implements DialogOpcaoC
 
     //VAriáveis de controle
     Button btnCriarConta, btnAdicionarFoto;
+
+    MaterialToolbar materialButton;
 
     ImageView imgCadUsuario;
 
@@ -87,6 +91,7 @@ public class CadastrarActivity extends AppCompatActivity implements DialogOpcaoC
         txtCelular = findViewById(R.id.txtCelular);
         imgCadUsuario = findViewById(R.id.imgCadUsuario);
         btnAdicionarFoto = findViewById(R.id.btnAdicionarFoto);
+        materialButton = findViewById(R.id.appBarCadastrar);
 
         DAOUsuario daoUsuario = new DAOUsuario();
 
@@ -115,8 +120,16 @@ public class CadastrarActivity extends AppCompatActivity implements DialogOpcaoC
 
 
 
-
         //Botões----------------------------------------------------------------------------
+
+        //Btn Voltar
+        materialButton.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                finish();
+            }
+        });
 
         // Botão para escolher imagem
         btnAdicionarFoto.setOnClickListener(v->{
@@ -189,6 +202,9 @@ public class CadastrarActivity extends AppCompatActivity implements DialogOpcaoC
         });
 
     }
+
+
+
 
     // Metodo de checar se os campos estão preenchidos
     private boolean checkCampo(String texto, TextInputEditText inputEditText){

@@ -13,10 +13,14 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.tabs.TabLayout;
+
 public class LoginActivity extends AppCompatActivity {
 
     //Variáveis de controle
     Button btnLogin, btnCadastrar;
+    MaterialToolbar materialToolbar;
     int tentativas = 0;
 
     //Variáveis de informação
@@ -34,10 +38,11 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         //Apresentação Java + XML
+        materialToolbar = findViewById(R.id.topAppBarPerfil);
         btnLogin = findViewById(R.id.btnLogar);
         btnCadastrar = findViewById(R.id.btnCadastrar);
-        txtEmail = findViewById(R.id.txtLoginEmail);
-        txtSenha = findViewById(R.id.txtLoginSenha);
+        txtEmail = findViewById(R.id.txtEmailUsuario);
+        txtSenha = findViewById(R.id.txtSenhaUsuario);
 
         //Botões ---------------------------------------------
 
@@ -69,6 +74,15 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), CadastrarActivity.class));
+            }
+        });
+
+        //Btn Voltar
+        materialToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                finish();
             }
         });
 
