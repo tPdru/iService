@@ -170,9 +170,9 @@ public class CadastrarLojaActivity extends AppCompatActivity {
                         );
                         //Adicionando descrição a loja, end = true
                         loja.setDescricao(descricao);
-                        loja.setTemEndereco(true);
                         ControllerMaster.getControllerMaster().getInformacoesPerfil().setTemLoja(true);
                         ControllerMaster.getControllerMaster().addLojaPerfil(loja);
+                        ControllerMaster.getControllerMaster().getInformacoesPerfil().getMinhaLoja().setTemEndereco(true);
 
                         ControllerMaster.getControllerMaster().carregarLojas();
 

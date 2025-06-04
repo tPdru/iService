@@ -15,6 +15,7 @@ public class ObjCardLoja {
     private String emailDono;
     private int codigLoja;
     private int codUsuario;
+    private int cpfCnpj;
 
     public ObjCardLoja(String emailDono, int imgLoja, List<ObjCardServicoPp> listaServico, String nomeLoja, double txtNota, ObjEndereco enderecoLoja) {
         this.emailDono = emailDono;
@@ -37,6 +38,14 @@ public class ObjCardLoja {
 
     }
 
+
+    public int getCpfCnpj() {
+        return cpfCnpj;
+    }
+
+    public void setCpfCnpj(int cpfCnpj) {
+        this.cpfCnpj = cpfCnpj;
+    }
 
     public int getCodUsuario() {
         return codUsuario;

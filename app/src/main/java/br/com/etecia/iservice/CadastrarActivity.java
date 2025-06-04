@@ -101,6 +101,7 @@ public class CadastrarActivity extends AppCompatActivity implements DialogOpcaoC
                         imgCadUsuario.setImageURI(selectedImageUri);
 
                         // Verifica se há uma imagem no ImageView antes de converter
+
                         if (imgCadUsuario.getDrawable()!=null){
                             imageBytes = imageViewToByte(imgCadUsuario);
                             Toast.makeText(this, "Imagen selecionada!", Toast.LENGTH_SHORT).show();
@@ -170,9 +171,11 @@ public class CadastrarActivity extends AppCompatActivity implements DialogOpcaoC
                         ControllerMaster.getControllerMaster().criarPerfil(perfil, email);
                         //efetua o login apos a criação
                         ControllerMaster.getControllerMaster().autenticarConta(email, senha);
+
+                        /** Adiciona oa banco online
                         DAOUsuario daoUsu = new DAOUsuario();
                         daoUsu.creatPerfil(perfil, getApplicationContext(),imageBytes);
-
+                        */
 
                         //chama o dialog fragment para decidir sobre a criação da loja
                         DialogOpcaoCadastrarLoja dialog = new DialogOpcaoCadastrarLoja();

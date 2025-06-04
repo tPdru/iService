@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -70,12 +71,10 @@ public class FragmentPerfilLoja extends Fragment {
                 txtNome.setText(minhaLoja.getNomeLoja());
                 txtDescricao.setText(minhaLoja.getDescricao());
                 imgLoja.setImageResource(minhaLoja.getImgLoja());
+
             }
-        }else {
-
-
         }
-
+        Toast.makeText(getContext(), "Tem: " + minhaLoja.isTemEndereco(), Toast.LENGTH_SHORT).show();
 
         return view;
     }

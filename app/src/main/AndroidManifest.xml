@@ -21,9 +21,6 @@
             android:exported="false" >
         </activity>
         <activity
-            android:name=".DialogEditExcluirServActivity"
-            android:exported="false" />
-        <activity
             android:name=".OutrasLojasActivity"
             android:exported="false" />
         <activity
