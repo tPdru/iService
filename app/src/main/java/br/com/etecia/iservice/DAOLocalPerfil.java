@@ -2,8 +2,13 @@ package br.com.etecia.iservice;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.ImageView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DAOLocalPerfil {
 
@@ -21,7 +26,7 @@ public class DAOLocalPerfil {
      * Método para inserir um novo PERFIL no banco de dados.
      * Recebe um objeto ObjPerfil como parâmetro.
      */
-    public boolean inserirPerfil(ObjPerfil perfil) {
+    public long inserirPerfil(ObjPerfil perfil) {
 
         // Obtém o banco no modo de escrita.
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -44,11 +49,84 @@ public class DAOLocalPerfil {
         // Fecha o banco após operação.
         db.close();
 
-        // True em caso de sucesso
-        if ( id != -1 ) return true;
-
-        return false;
+        return id;
     }
+
+    /**
+     * Método para listar todas os PERFILS do banco.
+     * Retorna uma Lista de ObjPerfil.
+     */
+    public List<ObjPerfil> readPerfil() {
+
+        // Instanciando a lista que vai ser retornada
+        List<ObjPerfil> lista = new ArrayList<>();
+
+        // Obtém o banco no modo de leitura.
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+        // Define as colunas que queremos consultar.
+        String[] colunas = {
+                dbHelper.COLUMN_ID_PERFIL,
+                dbHelper.COLUMN_NOME_PERFIL,
+                dbHelper.COLUMN_IMG_PERFIL,
+                dbHelper.COLUMN_TEM_LOJA_PERFIL,
+                dbHelper.COLUMN_SENHA_PERFIL,
+                dbHelper.COLUMN_USUARIO_PERFIL,
+                dbHelper.COLUMN_EMAIL_PERFIL,
+                dbHelper.COLUMN_CELULAR_PERFIL
+
+        };
+
+        // Faz a consulta no banco.
+        Cursor cursor = db.query(
+                DbHelper.TABLE_PERFIL, // tabela
+                colunas,                 // colunas
+                null,                    // where
+                null,                    // whereArgs
+                null,                    // groupBy
+                null,                    // having
+                null                     // orderBy
+        );
+
+        // Percorre o Cursor e cria objetos ObjServico.
+        if (cursor.moveToFirst()) {
+
+            do {
+                int id = cursor.getInt(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_ID_PERFIL));
+                String nome = cursor.getString(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_NOME_PERFIL));
+                String usuario =  cursor.getString(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_USUARIO_PERFIL));
+                int temLoja = cursor.getInt(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_TEM_LOJA_PERFIL));
+                String celular = cursor.getString(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_CELULAR_PERFIL));
+                String email = cursor.getString(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_EMAIL_PERFIL));
+                String senha = cursor.getString(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_SENHA_PERFIL));
+                String img = cursor.getString(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_IMG_PERFIL));
+
+                //Objeto Loja vazio
+                ObjPerfil perfil = new ObjPerfil();
+
+                // setando as informaçoes
+                perfil.setCodigo(id);
+                perfil.setNome(nome);
+                perfil.setUsuario(usuario);
+                perfil.setTemLoja(temLoja == 1 ? true:false);
+                perfil.setCelular(celular);
+                perfil.setEmail(email);
+                perfil.setSenha(senha);
+
+                //Adicionando a lista
+                lista.add(perfil);
+
+            }while (cursor.moveToNext());
+        }
+
+        // Fecha o cursor e o banco.
+        cursor.close();
+        db.close();
+
+        return lista;  // Retorna a lista
+
+    }
+
 
 
 

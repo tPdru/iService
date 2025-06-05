@@ -24,7 +24,7 @@ public class DAOLocalLoja {
      * Método para inserir um novo Loja no banco de dados.
      * Recebe um objeto ObjLoja como parâmetro.
      */
-    public boolean inserirPerfil(ObjCardLoja loja) {
+    public boolean inserirLoja(ObjCardLoja loja) {
 
         // Obtém o banco no modo de escrita.
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -75,12 +75,13 @@ public class DAOLocalLoja {
                 dbHelper.COLUMN_CPF_CNPJ_LOJA,
                 dbHelper.COLUMN_DESCRICAO_LOJA,
                 dbHelper.COLUMN_TEM_END_LOJA,
-                dbHelper.COLUMN_TEM_SERV_LOJA
+                dbHelper.COLUMN_TEM_SERV_LOJA,
+                dbHelper.COLUMN_ID_PERFIL_FK
         };
 
         // Faz a consulta no banco.
         Cursor cursor = db.query(
-                DbHelper.TABLE_SERVICO, // tabela
+                DbHelper.TABLE_LOJA, // tabela
                 colunas,                 // colunas
                 null,                    // where
                 null,                    // whereArgs
@@ -112,7 +113,7 @@ public class DAOLocalLoja {
                 loja.setTemEndereco(temEnd == 1 ? true:false);
                 loja.setTemServicos(temServ == 1 ? true:false);
                 loja.setCodUsuario(codUsu);
-                loja.setCpfCnpj(Integer.getInteger(cpfCnpj));
+                loja.setCpfCnpj(Integer.parseInt(cpfCnpj));
 
                 //Adicionando a lista
                 lista.add(loja);

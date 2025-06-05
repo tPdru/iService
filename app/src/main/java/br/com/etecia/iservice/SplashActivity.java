@@ -3,6 +3,7 @@ package br.com.etecia.iservice;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -38,13 +39,6 @@ public class SplashActivity extends AppCompatActivity {
                 //Definindo que o app não possui conta logada no inicio
                 contMaster.setLoginOn(false);
 
-                //Adicionando perfis/loja/serviços de forma manual para testes
-                addPerfis("teste1.barbeiro@exemplo.com");
-                addPerfis("teste2.barbeiro@exemplo.com");
-                addPerfis("teste3.barbeiro@exemplo.com");
-                addPerfis("teste4.barbeiro@exemplo.com");
-                addPerfis("teste5.barbeiro@exemplo.com");
-
                 /** Banco de dados online
                 // Inicializa o ApiRequest com o contexto da aplicação
                 ApiRequest apiRequest = new ApiRequest();
@@ -73,9 +67,45 @@ public class SplashActivity extends AppCompatActivity {
                 daoLocalLoja = new DAOLocalLoja(getApplicationContext());
 
 
+                //Adicionando lojas no banco local de forma manual
+                List<ObjCardLoja> lista = new ArrayList<>(daoLocalLoja.readLojas());
+                List<String> emails = new ArrayList<>();
+                emails.add("teste1.barbeiro@exemplo.com");
+                emails.add("teste2.barbeiro@exemplo.com");
+                emails.add("teste3.barbeiro@exemplo.com");
+                emails.add("teste4.barbeiro@exemplo.com");
 
 
-                contMaster.carregarLojas();
+                for (int i = 3; i > lista.size(); i--) {
+
+
+                    ObjPerfil perfil = new ObjPerfil();
+                    ObjCardLoja loja = new ObjCardLoja();
+
+                    perfil.setNome("Hugo Suterio");
+                    perfil.setEmail(emails.get(i));
+                    perfil.setUsuario("Hugo");
+                    perfil.setSenha("123456");
+                    perfil.setFotoUsuario(R.drawable.foto_usuario);
+                    perfil.setTemLoja(true);
+                    perfil.setCelular("184758963");
+
+                    perfil.setCodigo(daoLocalPerfil.inserirPerfil(perfil));
+
+
+                    loja.setNomeLoja("Oficina");
+                    loja.setImgLoja(R.drawable.foto_imagem);
+                    loja.setCpfCnpj(55577733);
+                    loja.setDescricao("Reparos em carros");
+                    loja.setTemEndereco(false);
+                    loja.setTemServicos(false);
+                    loja.setCodUsuario(perfil.getCodigo());
+
+                    daoLocalLoja.inserirLoja(loja);
+                    Toast.makeText(SplashActivity.this, "Insert: ", Toast.LENGTH_SHORT).show();
+                }
+
+                //contMaster.carregarLojas();
                 startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                 finish();
             }

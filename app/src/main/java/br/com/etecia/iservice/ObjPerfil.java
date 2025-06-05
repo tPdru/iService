@@ -12,10 +12,10 @@ public class ObjPerfil {
     private String celular;
     private ObjCardLoja minhaLoja;
 
-    private int codigo;//Codigo para criar contas, feito para testes
+    private long codigo;
 
     //Construtor sem loja
-    public ObjPerfil(int codigo, String email, String nome, String senha, String usuario, int fotoUsuario, boolean temLoja) {
+    public ObjPerfil(long codigo, String email, String nome, String senha, String usuario, int fotoUsuario, boolean temLoja) {
         this.codigo = codigo;
         this.email = email;
         this.nome = nome;
@@ -26,7 +26,7 @@ public class ObjPerfil {
 
     }
     //Construtor com loja
-    public ObjPerfil(int codigo, String email, String nome, String senha, String usuario, int fotoUsuario, boolean temLoja, ObjCardLoja minhaLoja) {
+    public ObjPerfil(long codigo, String email, String nome, String senha, String usuario, int fotoUsuario, boolean temLoja, ObjCardLoja minhaLoja) {
         this.codigo = codigo;
         this.email = email;
         this.nome = nome;
@@ -90,11 +90,11 @@ public class ObjPerfil {
         this.fotoUsuario = fotoUsuario;
     }
 
-    public int getCodigo() {
+    public long getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
+    public void setCodigo(long codigo) {
         this.codigo = codigo;
     }
 

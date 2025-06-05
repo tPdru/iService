@@ -14,7 +14,7 @@ public class ObjCardLoja {
     private boolean temServicos;
     private String emailDono;
     private int codigLoja;
-    private int codUsuario;
+    private long codUsuario;
     private int cpfCnpj;
 
     public ObjCardLoja(String emailDono, int imgLoja, List<ObjCardServicoPp> listaServico, String nomeLoja, double txtNota, ObjEndereco enderecoLoja) {
@@ -47,8 +47,11 @@ public class ObjCardLoja {
         this.cpfCnpj = cpfCnpj;
     }
 
-    public int getCodUsuario() {
+    public long getCodUsuario() {
         return codUsuario;
+    }
+    public void setCodUsuario(long codUsuario) {
+        this.codUsuario = codUsuario;
     }
 
     public boolean isTemServicos() {
@@ -59,9 +62,7 @@ public class ObjCardLoja {
         this.temServicos = temServicos;
     }
 
-    public void setCodUsuario(int codUsuario) {
-        this.codUsuario = codUsuario;
-    }
+
 
     public int getCodigLoja() {
         return codigLoja;
