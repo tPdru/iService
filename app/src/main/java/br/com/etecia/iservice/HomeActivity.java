@@ -28,8 +28,6 @@ public class HomeActivity extends AppCompatActivity {
     FrameLayout frameLayout;
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,9 +44,7 @@ public class HomeActivity extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.botNavgationTelaPrincipal);
 
         //Informações iniciais --------------------------------
-        getSupportFragmentManager().beginTransaction().replace(R.id.frmLayoutConteiner,new FragmentHome()).commit();
-
-
+        getSupportFragmentManager().beginTransaction().replace(R.id.frmLayoutConteiner, new FragmentHome()).commit();
 
 
         //Botões ---------------------
@@ -57,9 +53,15 @@ public class HomeActivity extends AppCompatActivity {
         materialToolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                if(item.getItemId() == R.id.itemMenuTopPerfil){
-                    startActivity(new Intent(getApplicationContext(), PerfilActivity.class));
-                    return true;
+
+                if (item.getItemId() == R.id.itemMenuTopPerfil) {
+                    if (ControllerMaster.getControllerMaster().getLoginOn()) {
+                        startActivity(new Intent(getApplicationContext(), PerfilActivity.class));
+                        return true;
+                    }else {
+                        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                        return true;
+                    }
                 }
                 return true;
             }
@@ -74,7 +76,7 @@ public class HomeActivity extends AppCompatActivity {
                 //Recebe o fragmento correspondete ao item selecionado
                 Fragment fragment = null;
 
-                if(item.getItemId() == R.id.itemMenuBotHome){
+                if (item.getItemId() == R.id.itemMenuBotHome) {
 
                     fragment = new FragmentHome();
 
@@ -82,15 +84,15 @@ public class HomeActivity extends AppCompatActivity {
 
                     fragment = new FragmentFavoritos();
 
-                }else if (item.getItemId() == R.id.itemMenuBotMenssagens){
+                } else if (item.getItemId() == R.id.itemMenuBotMenssagens) {
 
                     fragment = new FragmentChat();
 
                 }
 
 
-                if(fragment != null){
-                    getSupportFragmentManager().beginTransaction().replace(R.id.frmLayoutConteiner,fragment).commit();
+                if (fragment != null) {
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frmLayoutConteiner, fragment).commit();
                 }
 
                 return true;

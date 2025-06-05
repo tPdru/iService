@@ -73,7 +73,6 @@ public class SplashActivity extends AppCompatActivity {
                 daoLocalLoja = new DAOLocalLoja(getApplicationContext());
 
 
-                daoLocalPerfil.inserirPerfil(contMaster.getLis);
 
 
                 contMaster.carregarLojas();

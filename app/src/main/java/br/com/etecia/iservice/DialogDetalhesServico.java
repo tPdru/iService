@@ -2,6 +2,8 @@ package br.com.etecia.iservice;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +15,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.viewmodel.CreationExtras;
+
+import java.net.URI;
 
 public class DialogDetalhesServico extends DialogFragment {
 
@@ -48,6 +52,8 @@ public class DialogDetalhesServico extends DialogFragment {
         txtNome = view.findViewById(R.id.txtDialogNomeServico);
         txtValor = view.findViewById(R.id.txtDialogPreco);
         imgServ = view.findViewById(R.id.imgDialogServico);
+        btnEntrarEmContato = view.findViewById(R.id.btnDialogEntrarEmContato);
+
 
         //Setando informações no dialog
         imgServ.setImageResource(objCardServicoPp.getImgServicoPp());
@@ -56,7 +62,14 @@ public class DialogDetalhesServico extends DialogFragment {
         //Formatando o valor
         String valorFormatado = "R$: " + objCardServicoPp.getTxtValorServicoPp();
         txtValor.setText(valorFormatado);
-
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        btnEntrarEmContato.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                intent.setData(Uri.parse("mailto:"));
+                startActivity(intent);
+            }
+        });
 
 
 
@@ -64,7 +77,6 @@ public class DialogDetalhesServico extends DialogFragment {
 
         return dialog;
     }
-
 
 
 

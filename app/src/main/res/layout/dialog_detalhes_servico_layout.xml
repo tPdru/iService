@@ -68,7 +68,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="15dp"
-                    android:backgroundTint="@color/cor_principal"
+                    android:background="@drawable/bordas_botoes"
                     android:fontFamily="@font/textos"
                     android:maxWidth="350dp"
                     android:text="Entrar em Contato"
