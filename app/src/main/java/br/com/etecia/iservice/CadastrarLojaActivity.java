@@ -1,12 +1,15 @@
 package br.com.etecia.iservice;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -19,6 +22,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +31,8 @@ public class CadastrarLojaActivity extends AppCompatActivity {
     //Variáveis de controle
     CheckBox cbxAreaEndereco;
     LinearLayout lnlAreaEndereco;
-    Button btnFinalizarCadLoja;
+    ImageView imgCadastrarLoja;
+    Button btnFinalizarCadLoja, btnAdicionarFotoLoja;
     List<TextInputLayout> listElementos;
     boolean lojaFisica;
     AdaptadorModeloCardLoja adaptadorModeloCardLoja;
@@ -36,6 +41,21 @@ public class CadastrarLojaActivity extends AppCompatActivity {
     TextInputEditText txtCep, txtEstado, txtCidade, txtLogradouro;
     TextInputEditText txtRua, txtNumero, txtComplemento;
     TextInputEditText txtNome, txtCpfCnpj, txtDescricao;
+
+    //converter imageView pra byte
+    private byte[] imageViewToByte (ImageView imgCad){
+        // Pega o drawable (imagem) do ImageView e o converte para Bitmap
+        Bitmap bitmap = ((BitmapDrawable) imgCad.getDrawable()).getBitmap();
+
+        // Cria um fluxo de bytes na memória para armazenar a imagem comprimida
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+
+        // Comprime o bitmap em formato PNG com qualidade 100% e escreve no stream
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+
+        // Retorna o array de bytes com os dados da imagem comprimida
+        return stream.toByteArray();
+    }
 
 
     @Override
