@@ -72,10 +72,6 @@ public class SplashActivity extends AppCompatActivity {
                 daoLocalPerfil = new DAOLocalPerfil(getApplicationContext());
                 daoLocalLoja = new DAOLocalLoja(getApplicationContext());
 
-
-                daoLocalPerfil.inserirPerfil(contMaster.getLis);
-
-
                 contMaster.carregarLojas();
                 startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                 finish();

@@ -47,9 +47,13 @@ public class CadastrarActivity extends AppCompatActivity implements DialogOpcaoC
     int codigoImagem;
 
     private byte[] imageViewToByte (ImageView imageView){
+        // Pega o drawable (imagem) do ImageView e o converte para Bitmap
         Bitmap bitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
+        // Cria um fluxo de bytes na memória para armazenar a imagem comprimida
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        // Comprime o bitmap em formato PNG com qualidade 100% e escreve no stream
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        // Retorna o array de bytes com os dados da imagem comprimida
         return stream.toByteArray();
     }
 
