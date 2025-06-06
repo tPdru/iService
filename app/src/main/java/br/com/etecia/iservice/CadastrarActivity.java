@@ -51,26 +51,15 @@ public class CadastrarActivity extends AppCompatActivity implements DialogOpcaoC
     private byte[] imageViewToByte (ImageView imageView){
         // Pega o drawable (imagem) do ImageView e o converte para Bitmap
         Bitmap bitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
+
         // Cria um fluxo de bytes na memória para armazenar a imagem comprimida
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
+
         // Comprime o bitmap em formato PNG com qualidade 100% e escreve no stream
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+
         // Retorna o array de bytes com os dados da imagem comprimida
         return stream.toByteArray();
-    }
-
-    private void salvarImagemLocal(byte[] imageBytes){
-
-        try {
-            FileOutputStream fos = openFileOutput("perfil.png", MODE_PRIVATE);
-            fos.write(imageBytes);
-            fos.close();
-            Toast.makeText(this,"Imagem salva localmente", Toast.LENGTH_SHORT).show();
-        }catch (Exception e){
-            e.printStackTrace();
-            Toast.makeText(this,"erro ao salvar a Imagem localmente", Toast.LENGTH_SHORT).show();
-        }
-
     }
 
 
@@ -141,8 +130,13 @@ public class CadastrarActivity extends AppCompatActivity implements DialogOpcaoC
 
         // Botão para escolher imagem
         btnAdicionarFoto.setOnClickListener(v->{
+            // Cria uma intent para abrir o seletor de imagens do dispositivo
             Intent intent = new Intent(Intent.ACTION_PICK);
+
+            // Define que o tipo de conteúdo a ser selecionado é imagem
             intent.setType("image/*");
+
+            // Lança a intent usando o launcher previamente registrado (imagePickerLauncher)
             imagePickerLauncher.launch(intent);
 
         });
@@ -164,7 +158,7 @@ public class CadastrarActivity extends AppCompatActivity implements DialogOpcaoC
                 String confirmarSenha = txtReSenha.getText().toString().trim();
 
                 imageBytes=imageViewToByte(imgCadUsuario);
-                salvarImagemLocal(imageBytes);
+
 
                 //Testar os textos
                 if (checkCampo(usuario, txtUsuario) && checkCampo(nome, txtNome) &&

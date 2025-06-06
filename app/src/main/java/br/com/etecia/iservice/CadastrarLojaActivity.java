@@ -3,6 +3,7 @@ package br.com.etecia.iservice;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -14,6 +15,9 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -31,11 +35,13 @@ public class CadastrarLojaActivity extends AppCompatActivity {
     //Variáveis de controle
     CheckBox cbxAreaEndereco;
     LinearLayout lnlAreaEndereco;
-    ImageView imgCadastrarLoja;
+    ImageView imgCadLoja;
     Button btnFinalizarCadLoja, btnAdicionarFotoLoja;
     List<TextInputLayout> listElementos;
     boolean lojaFisica;
+    byte[] imageBytes;
     AdaptadorModeloCardLoja adaptadorModeloCardLoja;
+    ActivityResultLauncher<Intent> imagePickerLauncher;
 
     //Variáveis de Informação
     TextInputEditText txtCep, txtEstado, txtCidade, txtLogradouro;
@@ -46,7 +52,7 @@ public class CadastrarLojaActivity extends AppCompatActivity {
     DAOLocalLoja daoLocalLoja;
 
     //converter imageView pra byte
-    private byte[] imageViewToByte (ImageView imgCad){
+    private byte[] imageViewToByte(ImageView imgCad) {
         // Pega o drawable (imagem) do ImageView e o converte para Bitmap
         Bitmap bitmap = ((BitmapDrawable) imgCad.getDrawable()).getBitmap();
 
@@ -76,11 +82,14 @@ public class CadastrarLojaActivity extends AppCompatActivity {
         cbxAreaEndereco = findViewById(R.id.cbxCadastroLojaEndereco);
         lnlAreaEndereco = findViewById(R.id.lnlCadastroLojaAreaEndereco);
         btnFinalizarCadLoja = findViewById(R.id.btnFinalizarCadLoja);
+        btnAdicionarFotoLoja = findViewById(R.id.btnAdicionarFotoLoja);
 
         //Loja
         txtNome = findViewById(R.id.txtCadLojaNome);
         txtCpfCnpj = findViewById(R.id.txtCadLojaCnpj);
         txtDescricao = findViewById(R.id.txtCadLojaDescricao);
+        imgCadLoja = findViewById(R.id.imgCadLoja);
+
 
         //Endereço
         txtCep = findViewById(R.id.txtCadLojaCep);
@@ -118,7 +127,38 @@ public class CadastrarLojaActivity extends AppCompatActivity {
         //*lojaFisica = false;
 
 
+        // Inicializa o launcher para selecionar imagem
+        imagePickerLauncher = registerForActivityResult(
+                // Define o tipo de contrato para iniciar uma Activity esperando um resultado
+                new ActivityResultContracts.StartActivityForResult(),
 
+                // Define o que fazer quando a Activity retornar um resultado
+                result -> {
+                    // Verifica se o resultado foi OK e se os dados retornados não são nulos
+                    if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+
+                        // Obtém a URI da imagem selecionada
+                        Uri selectedImageUri = result.getData().getData();
+
+                        // Define essa URI como a imagem exibida no ImageView
+                        imgCadLoja.setImageURI(selectedImageUri);
+
+                        // Verifica se há uma imagem no ImageView antes de converter
+                        if (imgCadLoja.getDrawable() != null) {
+
+                            // Converte a imagem do ImageView para um array de bytes
+                            imageBytes = imageViewToByte(imgCadLoja);
+                            Toast.makeText(this, "Imagen selecionada!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(this, "Erro: imagem inválida", Toast.LENGTH_SHORT).show();
+                        }
+
+                    } else {
+                        // Caso a seleção falhe ou seja cancelada, exibe mensagem de erro
+                        Toast.makeText(this, "Erro ao selecionar a imagem", Toast.LENGTH_SHORT).show();
+                    }
+                }
+        );
 
 
         //CheckBox, ativar e desativar área de endereço
@@ -126,11 +166,11 @@ public class CadastrarLojaActivity extends AppCompatActivity {
 
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(cbxAreaEndereco.isChecked()){
+                if (cbxAreaEndereco.isChecked()) {
                     lnlAreaEndereco.setEnabled(false);
                     ativacaoElementos(listElementos, false);
                     lojaFisica = false;
-                }else{
+                } else {
                     lnlAreaEndereco.setEnabled(true);
                     ativacaoElementos(listElementos, true);
                     lojaFisica = true;
@@ -139,6 +179,20 @@ public class CadastrarLojaActivity extends AppCompatActivity {
         });
 
         //Botões ----------------------------------------------------------------------
+
+        // Botão para escolher imagem
+        btnAdicionarFotoLoja.setOnClickListener(v -> {
+            // Cria uma intent para abrir o seletor de imagens do dispositivo
+            Intent intent = new Intent(Intent.ACTION_PICK);
+
+            // Define que o tipo de conteúdo a ser selecionado é imagem
+            intent.setType("image/*");
+
+            // Lança a intent usando o launcher previamente registrado (imagePickerLauncher)
+            imagePickerLauncher.launch(intent);
+        });
+         
+
         //Botão de finalizar cadastro
         btnFinalizarCadLoja.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -171,8 +225,8 @@ public class CadastrarLojaActivity extends AppCompatActivity {
                 double nota = 5;
 
                 if (lojaFisica) {
-                    if ( checkCampo(cep, txtCep) && checkCampo(estado, txtCep) && checkCampo(cidade, txtCep) &&
-                    checkCampo(logra, txtCep) && checkCampo(rua, txtCep) && checkCampo(numero, txtCep) && checkCampo(comp, txtCep) ) {
+                    if (checkCampo(cep, txtCep) && checkCampo(estado, txtCep) && checkCampo(cidade, txtCep) &&
+                            checkCampo(logra, txtCep) && checkCampo(rua, txtCep) && checkCampo(numero, txtCep) && checkCampo(comp, txtCep)) {
                         end = new ObjEndereco(
                                 Integer.parseInt(cep),
                                 cidade,
@@ -209,8 +263,8 @@ public class CadastrarLojaActivity extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                         finish();
                     }
-                }else {
-                    if ( checkCampo(nome, txtNome) && checkCampo(cpfCnpj, txtCpfCnpj)) {
+                } else {
+                    if (checkCampo(nome, txtNome) && checkCampo(cpfCnpj, txtCpfCnpj)) {
                         loja = new ObjCardLoja(
                                 email,
                                 imgFoto,
@@ -243,19 +297,19 @@ public class CadastrarLojaActivity extends AppCompatActivity {
     }
 
     //Função para desativar ou ativar os elemento de endereço
-    private void ativacaoElementos(List<TextInputLayout> listElemento, boolean enable){
+    private void ativacaoElementos(List<TextInputLayout> listElemento, boolean enable) {
         for (int i = 0; i < listElemento.size(); i++) {
-            listElemento.get(i).setVisibility( enable? View.GONE:View.VISIBLE );
+            listElemento.get(i).setVisibility(enable ? View.GONE : View.VISIBLE);
         }
     }
 
     // Metodo de checar se os campos estão preenchidos
-    private boolean checkCampo(String texto, TextInputEditText inputEditText){
-        if ( TextUtils.isEmpty(texto) ) {
+    private boolean checkCampo(String texto, TextInputEditText inputEditText) {
+        if (TextUtils.isEmpty(texto)) {
             inputEditText.setError("Preencha todos os campos!");
             inputEditText.requestFocus();
             return false;
-        }else {
+        } else {
             return true;
         }
     }
