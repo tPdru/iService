@@ -42,6 +42,9 @@ public class CadastrarLojaActivity extends AppCompatActivity {
     TextInputEditText txtRua, txtNumero, txtComplemento;
     TextInputEditText txtNome, txtCpfCnpj, txtDescricao;
 
+    //Banco
+    DAOLocalLoja daoLocalLoja;
+
     //converter imageView pra byte
     private byte[] imageViewToByte (ImageView imgCad){
         // Pega o drawable (imagem) do ImageView e o converte para Bitmap
@@ -88,7 +91,6 @@ public class CadastrarLojaActivity extends AppCompatActivity {
         txtNumero = findViewById(R.id.txtCadLojaNumero);
         txtComplemento = findViewById(R.id.txtCadLojaComplemento);
 
-
         //Variáveis TextInputLayout
         TextInputLayout lnlCep = findViewById(R.id.txtLnlCep);
         TextInputLayout lnlEstado = findViewById(R.id.txtLnlEstado);
@@ -102,6 +104,7 @@ public class CadastrarLojaActivity extends AppCompatActivity {
 
         //Instacias
         listElementos = new ArrayList<>();
+        daoLocalLoja = new DAOLocalLoja(getApplicationContext());
 
         //Configurações iniciais
         listElementos.add(lnlCep);
@@ -194,7 +197,14 @@ public class CadastrarLojaActivity extends AppCompatActivity {
                         ControllerMaster.getControllerMaster().addLojaPerfil(loja);
                         ControllerMaster.getControllerMaster().getInformacoesPerfil().getMinhaLoja().setTemEndereco(true);
 
-                        ControllerMaster.getControllerMaster().carregarLojas();
+                        /** Salvando no Banco local */
+                        //adicionando a chave estrangeira a loja too
+                        ControllerMaster cm = ControllerMaster.getControllerMaster();
+                        loja.setCodUsuario(cm.getInformacoesPerfil().getCodigo());
+                        // criando a loja e adicionando ocodigo da loja oa controlemaster
+                        loja.setCodigLoja(daoLocalLoja.inserirLoja(loja));
+
+                        //ControllerMaster.getControllerMaster().carregarLojas();
 
                         startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                         finish();
@@ -214,6 +224,14 @@ public class CadastrarLojaActivity extends AppCompatActivity {
                         loja.setTemEndereco(false);
                         ControllerMaster.getControllerMaster().addLojaPerfil(loja);
                         ControllerMaster.getControllerMaster().getInformacoesPerfil().setTemLoja(true);
+
+                        /** Salvando no Banco local */
+                        //adicionando a chave estrangeira a loja too
+                        ControllerMaster cm = ControllerMaster.getControllerMaster();
+                        loja.setCodUsuario(cm.getInformacoesPerfil().getCodigo());
+                        // criando a loja e adicionando ocodigo da loja oa controlemaster
+                        loja.setCodigLoja(daoLocalLoja.inserirLoja(loja));
+
                         startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                         finish();
                     }

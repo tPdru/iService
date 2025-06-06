@@ -12,8 +12,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.material.textfield.TextInputEditText;
-
 public class FragmentPerfilLoja extends Fragment {
 
     //Variáveis de Informação
@@ -62,7 +60,7 @@ public class FragmentPerfilLoja extends Fragment {
 
                 txtEstado.setText(endereco.getEstado());
                 txtCidade.setText(endereco.getCidade());
-                txtLograd.setText(endereco.getLogradouro());
+                txtLograd.setText(endereco.getBairro());
                 txtRua.setText(endereco.getRua());
                 txtNumero.setText(endereco.getNumero());
                 txtComplemento.setText(endereco.getComplemento());

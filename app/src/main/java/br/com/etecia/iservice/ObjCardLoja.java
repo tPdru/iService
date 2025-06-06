@@ -13,9 +13,9 @@ public class ObjCardLoja {
     private boolean temEndereco;
     private boolean temServicos;
     private String emailDono;
-    private int codigLoja;
+    private long codigLoja;
     private long codUsuario;
-    private int cpfCnpj;
+    private String cpfCnpj;
 
     public ObjCardLoja(String emailDono, int imgLoja, List<ObjCardServicoPp> listaServico, String nomeLoja, double txtNota, ObjEndereco enderecoLoja) {
         this.emailDono = emailDono;
@@ -39,11 +39,11 @@ public class ObjCardLoja {
     }
 
 
-    public int getCpfCnpj() {
+    public String getCpfCnpj() {
         return cpfCnpj;
     }
 
-    public void setCpfCnpj(int cpfCnpj) {
+    public void setCpfCnpj(String cpfCnpj) {
         this.cpfCnpj = cpfCnpj;
     }
 
@@ -64,11 +64,11 @@ public class ObjCardLoja {
 
 
 
-    public int getCodigLoja() {
+    public long getCodigLoja() {
         return codigLoja;
     }
 
-    public void setCodigLoja(int codigLoja) {
+    public void setCodigLoja(long codigLoja) {
         this.codigLoja = codigLoja;
     }
 

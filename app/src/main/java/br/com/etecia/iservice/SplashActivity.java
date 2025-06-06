@@ -95,7 +95,7 @@ public class SplashActivity extends AppCompatActivity {
 
                     loja.setNomeLoja("Oficina");
                     loja.setImgLoja(R.drawable.foto_imagem);
-                    loja.setCpfCnpj(55577733);
+                    loja.setCpfCnpj("55577733");
                     loja.setDescricao("Reparos em carros");
                     loja.setTemEndereco(false);
                     loja.setTemServicos(false);

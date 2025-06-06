@@ -45,6 +45,8 @@ public class CadastrarActivity extends AppCompatActivity implements DialogOpcaoC
     byte[]imageBytes;
 
     int codigoImagem;
+    //Bancos
+    DAOLocalPerfil daoLocalPerfil;
 
     private byte[] imageViewToByte (ImageView imageView){
         // Pega o drawable (imagem) do ImageView e o converte para Bitmap
@@ -97,7 +99,9 @@ public class CadastrarActivity extends AppCompatActivity implements DialogOpcaoC
         btnAdicionarFoto = findViewById(R.id.btnAdicionarFoto);
         materialButton = findViewById(R.id.appBarCadastrar);
 
-        DAOUsuario daoUsuario = new DAOUsuario();
+        // bancos
+        DAOUsuario daoUsuario = new DAOUsuario();//Banco online (desativado)
+        daoLocalPerfil = new DAOLocalPerfil(getApplicationContext());
 
         codigoImagem=getIntent().getIntExtra("getCodigo", 0);
 
@@ -188,6 +192,12 @@ public class CadastrarActivity extends AppCompatActivity implements DialogOpcaoC
                         ControllerMaster.getControllerMaster().criarPerfil(perfil, email);
                         //efetua o login apos a criação
                         ControllerMaster.getControllerMaster().autenticarConta(email, senha);
+
+                        /**Adiciona ao banco Local*/
+                        //adicionando o codigo do usuario no controlemaster too
+                        ControllerMaster cm = ControllerMaster.getControllerMaster();
+                        cm.getInformacoesPerfil().setCodigo(daoLocalPerfil.inserirPerfil(perfil));
+
 
                         /** Adiciona oa banco online
                         DAOUsuario daoUsu = new DAOUsuario();

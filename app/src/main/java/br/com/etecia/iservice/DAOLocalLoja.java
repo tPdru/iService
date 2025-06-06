@@ -24,7 +24,7 @@ public class DAOLocalLoja {
      * Método para inserir um novo Loja no banco de dados.
      * Recebe um objeto ObjLoja como parâmetro.
      */
-    public boolean inserirLoja(ObjCardLoja loja) {
+    public long inserirLoja(ObjCardLoja loja) {
 
         // Obtém o banco no modo de escrita.
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -49,10 +49,7 @@ public class DAOLocalLoja {
         // Fecha o banco após operação.
         db.close();
 
-        // True em caso de sucesso
-        if ( id != -1 ) return true;
-
-        return false;
+        return id;
     }
 
     /**
@@ -113,7 +110,7 @@ public class DAOLocalLoja {
                 loja.setTemEndereco(temEnd == 1 ? true:false);
                 loja.setTemServicos(temServ == 1 ? true:false);
                 loja.setCodUsuario(codUsu);
-                loja.setCpfCnpj(Integer.parseInt(cpfCnpj));
+                loja.setCpfCnpj(cpfCnpj);
 
                 //Adicionando a lista
                 lista.add(loja);
