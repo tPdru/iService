@@ -39,7 +39,7 @@ public class DAOLocalPerfil {
         values.put(dbHelper.COLUMN_EMAIL_PERFIL, perfil.getEmail());
         values.put(dbHelper.COLUMN_USUARIO_PERFIL, perfil.getUsuario());
         values.put(dbHelper.COLUMN_SENHA_PERFIL, perfil.getSenha());
-        values.put(dbHelper.COLUMN_IMG_PERFIL, perfil.getFotoUsuario());
+        values.put(dbHelper.COLUMN_IMG_PERFIL, perfil.getFoto());
         values.put(dbHelper.COLUMN_TEM_LOJA_PERFIL, perfil.isTemLoja());
         values.put(dbHelper.COLUMN_CELULAR_PERFIL, perfil.getCelular());
 

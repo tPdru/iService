@@ -22,21 +22,13 @@ public class FragmentPerfilUsuario extends Fragment {
     ImageView imgPerfil;
 
 
-    private void carregarImagemLoca(){
-        try{
-            FileInputStream fis = requireContext().openFileInput("perfil.png");
-            Bitmap bitmap = BitmapFactory.decodeStream(fis);
-            fis.close();
-
-            ImageView imgPerfil = getView().findViewById(R.id.imgPerfil);
-            imgPerfil.setImageBitmap(bitmap);
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-    }
+    //Pegando as informações do perfil
+    ObjPerfil meuPerfil = ControllerMaster.getControllerMaster().getInformacoesPerfil();
 
 
 
+    //carregando dados do perfil
+    byte[] imageBytes = meuPerfil.getFoto();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -49,14 +41,9 @@ public class FragmentPerfilUsuario extends Fragment {
         txtNomeFt = view.findViewById(R.id.txtPerfilNomeFt);
         imgPerfil = view.findViewById(R.id.imgPerfil);
 
-
-        //Pegando as informações do perfil
-        ObjPerfil meuPerfil = ControllerMaster.getControllerMaster().getInformacoesPerfil();
-
         //Preenchendo as informações do perfil
         informacoesPerfil(meuPerfil);
 
-        carregarImagemLoca();
 
         return view;
     }
@@ -66,5 +53,7 @@ public class FragmentPerfilUsuario extends Fragment {
         txtNome.setText(meuPerfil.getNome());
         txtEmail.setText(meuPerfil.getEmail());
         txtNomeFt.setText(meuPerfil.getNome());
+        Bitmap bitmap = BitmapFactory.decodeByteArray(imageBytes, 0,imageBytes.length);
+        imgPerfil.setImageBitmap(bitmap);
     }
 }

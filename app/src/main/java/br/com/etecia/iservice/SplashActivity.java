@@ -175,7 +175,7 @@ public class SplashActivity extends AppCompatActivity {
                 "Neymar Júnior",
                 "Senha",
                 "Ney",
-                R.drawable.foto_usuario,
+
                 true,
                 novaLoja = new ObjCardLoja(
                         email,

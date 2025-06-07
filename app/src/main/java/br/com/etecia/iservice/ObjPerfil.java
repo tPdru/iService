@@ -6,7 +6,7 @@ public class ObjPerfil {
     private String email;
     private double notaCliente;
     private int quantServFinal = 0;
-    private int fotoUsuario;
+    private byte[] foto;
     private String senha;
     private String usuario;
     private String celular;
@@ -14,31 +14,47 @@ public class ObjPerfil {
 
     private long codigo;
 
+
     //Construtor sem loja
-    public ObjPerfil(long codigo, String email, String nome, String senha, String usuario, int fotoUsuario, boolean temLoja) {
+    public ObjPerfil(long codigo, String email, String nome, String senha, String usuario, byte[] foto, boolean temLoja) {
         this.codigo = codigo;
         this.email = email;
         this.nome = nome;
         this.senha = senha;
         this.usuario = usuario;
+        this.foto = foto;
         this.temLoja = temLoja;
-        this.fotoUsuario = fotoUsuario;
+
 
     }
+
     //Construtor com loja
-    public ObjPerfil(long codigo, String email, String nome, String senha, String usuario, int fotoUsuario, boolean temLoja, ObjCardLoja minhaLoja) {
+    public ObjPerfil(long codigo, String email, String nome, String senha, String usuario, byte[] imagem, boolean temLoja, ObjCardLoja minhaLoja) {
         this.codigo = codigo;
         this.email = email;
         this.nome = nome;
         this.senha = senha;
         this.usuario = usuario;
         this.temLoja = temLoja;
-        this.fotoUsuario = fotoUsuario;
+        this.foto = foto;
         this.minhaLoja = minhaLoja;
 
     }
+
+    //Construtor sem imagem
+    public ObjPerfil(long codigo, String email, String nome, String senha, String usuario, boolean temLoja, ObjCardLoja minhaLoja) {
+        this.codigo = codigo;
+        this.email = email;
+        this.nome = nome;
+        this.senha = senha;
+        this.usuario = usuario;
+        this.temLoja = temLoja;
+        this.minhaLoja = minhaLoja;
+
+    }
+
     //Construtor vazio para o json
-    public ObjPerfil () {
+    public ObjPerfil() {
 
     }
 
@@ -82,12 +98,12 @@ public class ObjPerfil {
         this.usuario = usuario;
     }
 
-    public int getFotoUsuario() {
-        return fotoUsuario;
+    public byte[] getFoto() {
+        return foto;
     }
 
-    public void setFotoUsuario(int fotoUsuario) {
-        this.fotoUsuario = fotoUsuario;
+    public void setFoto(byte[] foto) {
+        this.foto = foto;
     }
 
     public long getCodigo() {

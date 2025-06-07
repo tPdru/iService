@@ -173,7 +173,7 @@ public class CadastrarActivity extends AppCompatActivity implements DialogOpcaoC
                                 nome,
                                 senha,
                                 usuario,
-                                R.drawable.foto_usuario,
+                                imageBytes,
                                 false
                         );
 
