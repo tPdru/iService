@@ -1,5 +1,6 @@
 package br.com.etecia.iservice;
 
+import android.content.Context;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -115,7 +116,6 @@ public class ControllerMaster {
 
     //metodo para encontrar a loja atraves do codigo(email)
     public ObjPerfil localizaadorLojas( String email){
-
         int ind;
         for ( int i = 0; i < listaPerfis.size(); i++) {
 

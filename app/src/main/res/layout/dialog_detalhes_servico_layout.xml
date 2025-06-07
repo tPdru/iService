@@ -62,18 +62,7 @@
                     android:textColor="@color/cor_texto"
                     android:textSize="@dimen/tamanho_grande" />
 
-                <Button
-                    android:id="@+id/btnDialogEntrarEmContato"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="15dp"
-                    android:background="@drawable/bordas_botoes"
-                    android:fontFamily="@font/textos"
-                    android:maxWidth="350dp"
-                    android:text="Entrar em Contato"
-                    android:textColor="@color/cor_texto"
-                    android:textSize="@dimen/tamanho_grande" />
+
 
 
             </LinearLayout>

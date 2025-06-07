@@ -24,6 +24,7 @@ public class DialogDetalhesServico extends DialogFragment {
     ObjCardServicoPp objCardServicoPp;
 
     //Variáveis de informação
+
     TextView txtNome, txtValor, txtDescricao;
     ImageView imgServ;
 
@@ -52,7 +53,6 @@ public class DialogDetalhesServico extends DialogFragment {
         txtNome = view.findViewById(R.id.txtDialogNomeServico);
         txtValor = view.findViewById(R.id.txtDialogPreco);
         imgServ = view.findViewById(R.id.imgDialogServico);
-        btnEntrarEmContato = view.findViewById(R.id.btnDialogEntrarEmContato);
 
 
         //Setando informações no dialog
@@ -63,13 +63,7 @@ public class DialogDetalhesServico extends DialogFragment {
         String valorFormatado = "R$: " + objCardServicoPp.getTxtValorServicoPp();
         txtValor.setText(valorFormatado);
         Intent intent = new Intent(Intent.ACTION_SENDTO);
-        btnEntrarEmContato.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                intent.setData(Uri.parse("mailto:"));
-                startActivity(intent);
-            }
-        });
+
 
 
 
