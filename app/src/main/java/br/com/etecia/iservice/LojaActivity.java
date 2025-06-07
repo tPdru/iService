@@ -35,7 +35,7 @@ public class LojaActivity extends AppCompatActivity {
     RecyclerView recServicosLoja;
     List<ObjCardServicoPp> listService;
     ControllerMaster contMaster = ControllerMaster.getControllerMaster();
-    Button btnContatar;
+    Button btnEntrarEmContato;
     MaterialToolbar topAppBarLoja;
 
     @Override
@@ -55,7 +55,7 @@ public class LojaActivity extends AppCompatActivity {
         txtDescricao = findViewById(R.id.txtDescricao);
         imgFotoLoja = findViewById(R.id.imgFotoLoja);
         recServicosLoja = findViewById(R.id.recServicosLoja);
-        btnContatar = findViewById(R.id.btnContatar);
+        btnEntrarEmContato = findViewById(R.id.btnContatar);
         topAppBarLoja = findViewById(R.id.topAppBarLoja);
 
 
@@ -102,6 +102,19 @@ public class LojaActivity extends AppCompatActivity {
                 Toast.makeText(LojaActivity.this, " " + listService.size(), Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(getApplicationContext(),HomeActivity.class));
                 finish();
+            }
+        });
+
+        btnEntrarEmContato.setOnClickListener(view -> new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (contMaster.getLoginOn()){
+                    String email = contMaster.getInformacoesPerfil().getEmail();
+                }
+                else{
+                    startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                }
+
             }
         });
 

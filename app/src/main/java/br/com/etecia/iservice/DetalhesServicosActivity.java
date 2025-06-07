@@ -11,7 +11,6 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class DetalhesServicosActivity extends AppCompatActivity {
 
-    Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
