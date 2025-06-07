@@ -48,6 +48,7 @@ public class CadastrarActivity extends AppCompatActivity implements DialogOpcaoC
     //Bancos
     DAOLocalPerfil daoLocalPerfil;
 
+    //converter imageView pra byte
     private byte[] imageViewToByte (ImageView imageView){
         // Pega o drawable (imagem) do ImageView e o converte para Bitmap
         Bitmap bitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
@@ -96,21 +97,33 @@ public class CadastrarActivity extends AppCompatActivity implements DialogOpcaoC
 
         // Inicializa o launcher para selecionar imagem
         imagePickerLauncher=registerForActivityResult(
+
+                // Define o tipo de contrato para iniciar uma Activity esperando um resultado
                 new ActivityResultContracts.StartActivityForResult(),
+
+                // Define o que fazer quando a Activity retornar um resultado
                 result->{
+
+                    // Verifica se o resultado foi OK e se os dados retornados não são nulos
                     if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+
+                        // Obtém a URI da imagem selecionada
                         Uri selectedImageUri = result.getData().getData();
+
+                        // Define essa URI como a imagem exibida no ImageView
                         imgCadUsuario.setImageURI(selectedImageUri);
 
                         // Verifica se há uma imagem no ImageView antes de converter
-
                         if (imgCadUsuario.getDrawable()!=null){
+
+                            // Converte a imagem do ImageView para um array de bytes
                             imageBytes = imageViewToByte(imgCadUsuario);
                             Toast.makeText(this, "Imagen selecionada!", Toast.LENGTH_SHORT).show();
                         }else {
                             Toast.makeText(this, "Erro: imagem inválida!", Toast.LENGTH_SHORT).show();
                         }
                     }else {
+                        // Caso a seleção falhe ou seja cancelada, exibe mensagem de erro
                         Toast.makeText(this, "Erro ao selecionar a imagem", Toast.LENGTH_SHORT).show();
                     }
                 });

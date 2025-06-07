@@ -191,7 +191,6 @@ public class CadastrarLojaActivity extends AppCompatActivity {
             // Lança a intent usando o launcher previamente registrado (imagePickerLauncher)
             imagePickerLauncher.launch(intent);
         });
-         
 
         //Botão de finalizar cadastro
         btnFinalizarCadLoja.setOnClickListener(new View.OnClickListener() {
