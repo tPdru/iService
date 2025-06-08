@@ -40,11 +40,10 @@ public class FragmentHome extends Fragment {
         //Instancias
         daoLocalPerfil = new DAOLocalPerfil(getContext());
         daoLocalLoja = new DAOLocalLoja(getContext());
-        listaCardLoja = new ArrayList<>(contMaster.getListaLojas());
+        listaCardLoja = new ArrayList<>(daoLocalLoja.readLojas());
         adpLojas = new AdaptadorModeloCardLoja(getContext(), listaCardLoja);
 
         //Configurações iniciais---------------------------------------
-
 
 
 
@@ -85,8 +84,7 @@ public class FragmentHome extends Fragment {
 
 
         /**adicionando lojas atravez do banco Local*/
-
-
+        listaCardLoja = new ArrayList<>(daoLocalLoja.readLojas());
 
     }
 }

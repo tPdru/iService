@@ -38,6 +38,11 @@ public class LojaActivity extends AppCompatActivity {
     Button btnEntrarEmContato;
     MaterialToolbar topAppBarLoja;
 
+    //Banco Local
+    DAOLocalLoja daoLocalLoja;
+    DAOLocalService daoLocalService ;
+    DAOLocalEndereco daoLocalEndereco;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,26 +66,41 @@ public class LojaActivity extends AppCompatActivity {
 
         //Instancias
         listService = new ArrayList<>();
+        daoLocalLoja = new DAOLocalLoja(getApplicationContext());
+        daoLocalService = new DAOLocalService(getApplicationContext());
+        daoLocalEndereco = new DAOLocalEndereco(getApplicationContext());
 
         //pegando string que foram salvas, na escolha da loja
         codigo = getIntent().getStringExtra("emailEscolhido");
 
+        long id = Long.parseLong(codigo);
+
+        Toast.makeText(this, " :" + id, Toast.LENGTH_SHORT).show();
+
+
+        //pegando as lojas do banco
+        List<ObjCardLoja> lojas = new ArrayList<>(daoLocalLoja.readLojas());
+
         //Metodo para coletar a loja correta
-        loja = contMaster.localizaadorLojas(codigo).getMinhaLoja();
-
-        String numero;
-
-        numero = String.valueOf(loja.getEnderecoLoja().getNumero());
+        for (int i = 0; i < lojas.size(); i++) {
+            if (id == lojas.get(i).getCodigLoja()) {
+                loja = lojas.get(i);
+                break;
+            }
+        }
 
 
         //Setando as imformaçoes de acordo com o card selecionado
         txtNomeLoja.setText(loja.getNomeLoja());
-        imgFotoLoja.setImageResource(loja.getImgLoja());
+        //imgFotoLoja.setImageResource(loja.getImgLoja());
         txtDescricao.setText(loja.getDescricao());
-        txtEnderecoLoja.setText(loja.getEnderecoLoja().getRua() + " " + numero);
+        if (loja.isTemEndereco()) {
+            txtEnderecoLoja.setText(loja.getEnderecoLoja().getRua());
+        }
+        if (loja.isTemServicos()) {
+            listService = new ArrayList<>(daoLocalService.readService());
+        }
 
-        //Passando a lista
-        listService = new ArrayList<>(loja.getListaServico());
 
         //Configurando recycleView
         adaptadorLoja = new AdaptadorLoja(getApplicationContext(), listService, new InComunicarServPp() {

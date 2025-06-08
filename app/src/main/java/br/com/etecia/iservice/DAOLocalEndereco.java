@@ -81,7 +81,7 @@ public class DAOLocalEndereco {
 
         // Faz a consulta no banco.
         Cursor cursor = db.query(
-                DbHelper.TABLE_LOJA, // tabela
+                DbHelper.TABLE_ENDERECO, // tabela
                 colunas,                 // colunas
                 null,                    // where
                 null,                    // whereArgs

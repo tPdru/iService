@@ -79,7 +79,7 @@ public class AdaptadorModeloCardLoja extends RecyclerView.Adapter<AdaptadorModel
                 Intent intent = new Intent(context, LojaActivity.class);
 
                 //salvando as informaçoes do serviço escolhido
-                intent.putExtra("emailEscolhido", listaCardLoja.get(pos).getEmailDono());
+                intent.putExtra("emailEscolhido", String.valueOf(listaCardLoja.get(pos).getCodigLoja()));
 
                 //iniciando a nova activity
                 context.startActivity(intent);

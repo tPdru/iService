@@ -38,10 +38,11 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
                 //Definindo que o app não possui conta logada no inicio
                 contMaster.setLoginOn(false);
-                addPerfis("pato.workes@gmail.com");
+
+                /*addPerfis("pato.workes@gmail.com");
                 addPerfis("teste2.barbeiro@exemplo.com");
                 addPerfis("teste3.barbeiro@exemplo.com");
-                addPerfis("teste4.barbeiro@exemplo.com");
+                addPerfis("teste4.barbeiro@exemplo.com");*/
 
                 /** Banco de dados online
                 // Inicializa o ApiRequest com o contexto da aplicação
@@ -65,7 +66,7 @@ public class SplashActivity extends AppCompatActivity {
                 });
                 */
 
-                /*Banco local
+                //Banco local
                 // Instancias
                 daoLocalPerfil = new DAOLocalPerfil(getApplicationContext());
                 daoLocalLoja = new DAOLocalLoja(getApplicationContext());
@@ -90,7 +91,6 @@ public class SplashActivity extends AppCompatActivity {
                     perfil.setEmail(emails.get(i));
                     perfil.setUsuario("Hugo");
                     perfil.setSenha("123456");
-                    perfil.setFotoUsuario(R.drawable.foto_usuario);
                     perfil.setTemLoja(true);
                     perfil.setCelular("184758963");
 
@@ -107,9 +107,9 @@ public class SplashActivity extends AppCompatActivity {
 
                     daoLocalLoja.inserirLoja(loja);
                     Toast.makeText(SplashActivity.this, "Insert: ", Toast.LENGTH_SHORT).show();
-                } */
+                }
 
-                contMaster.carregarLojas();
+                //contMaster.carregarLojas();
                 startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                 finish();
             }

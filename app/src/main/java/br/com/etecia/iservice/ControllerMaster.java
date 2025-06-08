@@ -127,6 +127,8 @@ public class ControllerMaster {
         return localizaadorLojas(email);
     }
 
+
+
     //Recarregando a lista de lojas
     public void carregarLojas(){
         listaLojas.clear();

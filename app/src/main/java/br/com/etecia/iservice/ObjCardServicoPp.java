@@ -4,6 +4,8 @@ public class ObjCardServicoPp {
     int imgServicoPp;
     String txtNomeServicoPp, txtDetalhesServicoPp;
     double txtValorServicoPp;
+    private long codigo;
+    private long codigoLoja;
 
 
     public ObjCardServicoPp(int imgServicoPp, String txtNomeServicoPp, String txtDetalhesServicoPp, double txtValorServicoPp) {
@@ -13,6 +15,26 @@ public class ObjCardServicoPp {
         this.txtValorServicoPp = txtValorServicoPp;
     }
 
+    public ObjCardServicoPp() {
+
+    }
+
+
+    public long getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(long codigo) {
+        this.codigo = codigo;
+    }
+
+    public long getCodigoLoja() {
+        return codigoLoja;
+    }
+
+    public void setCodigoLoja(long codigoLoja) {
+        this.codigoLoja = codigoLoja;
+    }
 
     public String getTxtDetalhesServicoPp() {
         return txtDetalhesServicoPp;
