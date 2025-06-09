@@ -181,7 +181,6 @@ public class CadastrarActivity extends AppCompatActivity implements DialogOpcaoC
                     //Testando se a senha e confirmação são iguais
                     if ( senha.equals(confirmarSenha) ) {
                         ObjPerfil perfil = new ObjPerfil(
-                                ControllerMaster.getControllerMaster().getCodigoList() + 1,
                                 email,
                                 nome,
                                 senha,

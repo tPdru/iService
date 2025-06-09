@@ -75,9 +75,6 @@ public class LojaActivity extends AppCompatActivity {
 
         long id = Long.parseLong(codigo);
 
-        Toast.makeText(this, " :" + id, Toast.LENGTH_SHORT).show();
-
-
         //pegando as lojas do banco
         List<ObjCardLoja> lojas = new ArrayList<>(daoLocalLoja.readLojas());
 

@@ -2,6 +2,7 @@ package br.com.etecia.iservice;
 
 import android.os.Bundle;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -23,6 +24,7 @@ public class FragmentPerfilLoja extends Fragment {
     //Variáveis de controle
     RecyclerView recyclerView;
     AdaptadorPerfilLojaServicos adpLojasServicos;
+    CardView cardAdicionarServico;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -38,6 +40,7 @@ public class FragmentPerfilLoja extends Fragment {
         txtRua = view.findViewById(R.id.txtRuaLoja);
         txtNumero = view.findViewById(R.id.txtNumeroLoja);
         txtComplemento = view.findViewById(R.id.txtComplementoLoja);
+        cardAdicionarServico = view.findViewById(R.id.cardAdicionarServico);
 
         imgLoja = view.findViewById(R.id.imgPerfilLoja);
 
@@ -72,7 +75,18 @@ public class FragmentPerfilLoja extends Fragment {
 
             }
         }
-        Toast.makeText(getContext(), "Tem: " + minhaLoja.isTemEndereco(), Toast.LENGTH_SHORT).show();
+
+        // Card adicionar novo serviço
+        cardAdicionarServico.setOnContextClickListener(new View.OnContextClickListener() {
+            @Override
+            public boolean onContextClick(View v) {
+                Toast.makeText(getContext(), "Adicionar", Toast.LENGTH_SHORT).show();
+
+                return false;
+            }
+        });
+
+
 
         return view;
     }

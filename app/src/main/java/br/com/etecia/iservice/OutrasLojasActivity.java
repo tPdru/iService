@@ -63,7 +63,7 @@ public class OutrasLojasActivity extends AppCompatActivity {
         codigo = getIntent().getStringExtra("emailEscolhido");
 
         //Metodo para coletar a loja correta
-        loja = contMaster.localizaadorLojas(codigo).getMinhaLoja();
+        //loja = contMaster.localizaadorLojas(codigo).getMinhaLoja();
 
         //Setando as imformaçoes de acordo com o card selecionado
         txtNome.setText(loja.getEmailDono());

@@ -98,7 +98,7 @@ public class DAOLocalLoja {
                 int temServ = cursor.getInt(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_TEM_SERV_LOJA));
                 int codUsu = cursor.getInt(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_ID_PERFIL_FK));
                 String cpfCnpj = cursor.getString(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_CPF_CNPJ_LOJA));
-                String img = cursor.getString(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_IMG_LOJA));
+                //byte[] img = cursor.getBlob(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_IMG_LOJA));
 
                 //Objeto Loja vazio
                 ObjCardLoja loja = new ObjCardLoja();

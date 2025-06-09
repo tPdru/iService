@@ -74,7 +74,7 @@ public class DbHelper extends SQLiteOpenHelper {
             "CREATE TABLE " + TABLE_PERFIL + " (" +
                     COLUMN_ID_PERFIL + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     COLUMN_NOME_PERFIL + " TEXT, " +
-                    COLUMN_IMG_PERFIL + " TEXT, " +
+                    COLUMN_IMG_PERFIL + " BLOB, " +
                     COLUMN_TEM_LOJA_PERFIL + " INTEGER, " +
                     COLUMN_EMAIL_PERFIL + " TEXT, " +
                     COLUMN_SENHA_PERFIL + " TEXT, " +
@@ -88,7 +88,7 @@ public class DbHelper extends SQLiteOpenHelper {
                     COLUMN_ID_LOJA + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     COLUMN_ID_PERFIL_FK + " INTEGER, " +
                     COLUMN_NOME_LOJA + " TEXT, " +
-                    COLUMN_IMG_LOJA + "     TEXT, " +
+                    COLUMN_IMG_LOJA + "     BLOB, " +
                     COLUMN_CPF_CNPJ_LOJA + " TEXT, " +
                     COLUMN_TEM_END_LOJA + " INTEGER, " +
                     COLUMN_TEM_SERV_LOJA + " INTEGER, " +
@@ -101,7 +101,7 @@ public class DbHelper extends SQLiteOpenHelper {
             "CREATE TABLE " + TABLE_SERVICO + " (" +
                     COLUMN_ID_SERV + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     COLUMN_ID_LOJA_FK + " INTEGER, " +
-                    COLUMN_IMG_SERV + " TEXT, " +
+                    COLUMN_IMG_SERV + " BLOB, " +
                     COLUMN_DESCRICAO_SERV + " TEXT, " +
                     COLUMN_NOME_SERV + " TEXT, " +
                     COLUMN_VALOR_SERV + " REAL, " +

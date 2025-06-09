@@ -99,7 +99,7 @@ public class DAOLocalPerfil {
                 String celular = cursor.getString(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_CELULAR_PERFIL));
                 String email = cursor.getString(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_EMAIL_PERFIL));
                 String senha = cursor.getString(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_SENHA_PERFIL));
-                String img = cursor.getString(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_IMG_PERFIL));
+                byte[] img = cursor.getBlob(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_IMG_PERFIL));
 
                 //Objeto Loja vazio
                 ObjPerfil perfil = new ObjPerfil();
@@ -108,7 +108,7 @@ public class DAOLocalPerfil {
                 perfil.setCodigo(id);
                 perfil.setNome(nome);
                 perfil.setUsuario(usuario);
-                perfil.setTemLoja(temLoja == 1 ? true:false);
+                perfil.setTemLoja(temLoja == 0 ? true:false);
                 perfil.setCelular(celular);
                 perfil.setEmail(email);
                 perfil.setSenha(senha);

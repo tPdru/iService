@@ -16,7 +16,7 @@ public class ObjPerfil {
 
 
     //Construtor sem loja
-    public ObjPerfil(long codigo, String email, String nome, String senha, String usuario, byte[] foto, boolean temLoja) {
+    public ObjPerfil(String email, String nome, String senha, String usuario, byte[] foto, boolean temLoja) {
         this.codigo = codigo;
         this.email = email;
         this.nome = nome;
@@ -29,7 +29,7 @@ public class ObjPerfil {
     }
 
     //Construtor com loja
-    public ObjPerfil(long codigo, String email, String nome, String senha, String usuario, byte[] imagem, boolean temLoja, ObjCardLoja minhaLoja) {
+    public ObjPerfil(String email, String nome, String senha, String usuario, byte[] imagem, boolean temLoja, ObjCardLoja minhaLoja) {
         this.codigo = codigo;
         this.email = email;
         this.nome = nome;
@@ -42,7 +42,7 @@ public class ObjPerfil {
     }
 
     //Construtor sem imagem
-    public ObjPerfil(long codigo, String email, String nome, String senha, String usuario, boolean temLoja, ObjCardLoja minhaLoja) {
+    public ObjPerfil(String email, String nome, String senha, String usuario, boolean temLoja, ObjCardLoja minhaLoja) {
         this.codigo = codigo;
         this.email = email;
         this.nome = nome;

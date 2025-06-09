@@ -23,11 +23,13 @@ public class AdaptadorModeloCardLoja extends RecyclerView.Adapter<AdaptadorModel
 
     Context context;
     List<ObjCardLoja> listaCardLoja;
+    DAOLocalService daoLocalService;
 
 
     public AdaptadorModeloCardLoja(Context context, List<ObjCardLoja> listaCardLoja) {
         this.context = context;
         this.listaCardLoja = listaCardLoja;
+        daoLocalService = new DAOLocalService(context);
     }
 
 
@@ -56,7 +58,17 @@ public class AdaptadorModeloCardLoja extends RecyclerView.Adapter<AdaptadorModel
         //Verifica se a loja tem serviços
         if ( loja.isTemServicos() ) {
 
-            List<ObjCardServicoPp> lista_servicos = new ArrayList<>(loja.getListaServico());
+            List<ObjCardServicoPp> lista_servicos = new ArrayList<>();
+
+            //Lista com todos os serviços do banco
+            List<ObjCardServicoPp> lista = new ArrayList<>(daoLocalService.readService());
+
+            // Coletando osserviços referentes a loja selecionada
+            for (int i = 0; i < lista.size(); i++) {
+                if (lista.get(i).getCodigoLoja() == listaCardLoja.get(position).getCodigLoja()) {
+                    lista_servicos.add(lista.get(i));
+                }
+            }
 
             //Liga o adaptador com os serviços
             AdaptadorServicoPp adpServicoPp = new AdaptadorServicoPp(context, lista_servicos);

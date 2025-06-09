@@ -16,6 +16,7 @@ public class ControllerMaster {
     private List<ObjCardLoja> listaLojas = new ArrayList<>();
     private boolean loginOn;
     private int indexConta;
+    private ObjPerfil perfilLogado;
 
 
     //Construtor privado que impede que outras classes criem novos objetos ControleDados
@@ -55,19 +56,21 @@ public class ControllerMaster {
 
     //passar informações do perfil para o app
     public ObjPerfil getInformacoesPerfil(){
-        return listaPerfis.get(indexConta);
+        return perfilLogado;
     }
+
+    //CArregar a lista de perfil
+    public void setCarregarListaPerfil(List<ObjPerfil> lista) {
+        listaPerfis = new ArrayList<>(lista);
+    }
+
     //Passa informações da loja se ouver
     public ObjCardLoja getInformacoesLoja(){
         return listaPerfis.get(indexConta).getMinhaLoja();
     }
 
     public boolean getLoginOn(){
-        if (loginOn){
-            return true;
-        }else {
-            return false;
-        }
+        return loginOn;
     }
 
     public List<ObjCardLoja> getListaLojas(){
@@ -94,6 +97,7 @@ public class ControllerMaster {
 
                 if (autenticandoSenha(senha, i)) {
                     indexConta = i;
+                    perfilLogado = listaPerfis.get(i);
                     setLoginOn(true);
                     break;
                 }
@@ -101,12 +105,7 @@ public class ControllerMaster {
         }
     }
     private boolean autenticandoSenha(String senha, int conta){
-        /*int tentativas = 3;
-        for (int i = 0; i < tentativas; i++){
-            if (listaPerfis.get(conta).getSenha().equals(senha)){
 
-            }
-        }*/
         if (listaPerfis.get(conta).getSenha().equals(senha)){
             return true;
         }
@@ -114,6 +113,7 @@ public class ControllerMaster {
     }
     //--------------------------------------------------------------------------}
 
+    /** obsoleto
     //metodo para encontrar a loja atraves do codigo(email)
     public ObjPerfil localizaadorLojas( String email){
         int ind;
@@ -126,8 +126,6 @@ public class ControllerMaster {
         }
         return localizaadorLojas(email);
     }
-
-
 
     //Recarregando a lista de lojas
     public void carregarLojas(){
@@ -145,9 +143,7 @@ public class ControllerMaster {
             listaLojas.add(lista.get(i));
         }
 
-    }
-
-    
+    }*/
 
 
 

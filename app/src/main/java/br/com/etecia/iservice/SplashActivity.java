@@ -109,18 +109,18 @@ public class SplashActivity extends AppCompatActivity {
                     Toast.makeText(SplashActivity.this, "Insert: ", Toast.LENGTH_SHORT).show();
                 }
 
+                // Coloca os perfis na lista do controleMaster
+                contMaster.setCarregarListaPerfil(daoLocalPerfil.readPerfil());
+
                 //contMaster.carregarLojas();
                 startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                 finish();
             }
         }, 2000);
 
-        //Adicionar elementos para teste-------------------------------------------
-        //Adicionando Perfis
-
-
-
     }
+
+    /*** obsoleto
     private void addPerfis(String email){
         //Criação de conta teste
 
@@ -194,4 +194,6 @@ public class SplashActivity extends AppCompatActivity {
 
         ControllerMaster.getControllerMaster().criarPerfil(perfil, email);
     }
+    */
+
 }

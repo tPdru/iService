@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.FileInputStream;
 
@@ -25,10 +26,9 @@ public class FragmentPerfilUsuario extends Fragment {
     //Pegando as informações do perfil
     ObjPerfil meuPerfil = ControllerMaster.getControllerMaster().getInformacoesPerfil();
 
-
-
     //carregando dados do perfil
     byte[] imageBytes = meuPerfil.getFoto();
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -44,6 +44,7 @@ public class FragmentPerfilUsuario extends Fragment {
         //Preenchendo as informações do perfil
         informacoesPerfil(meuPerfil);
 
+        Toast.makeText(getContext(), "perfil: " + meuPerfil.isTemLoja(), Toast.LENGTH_SHORT).show();
 
         return view;
     }
@@ -53,7 +54,7 @@ public class FragmentPerfilUsuario extends Fragment {
         txtNome.setText(meuPerfil.getNome());
         txtEmail.setText(meuPerfil.getEmail());
         txtNomeFt.setText(meuPerfil.getNome());
-        Bitmap bitmap = BitmapFactory.decodeByteArray(imageBytes, 0,imageBytes.length);
-        imgPerfil.setImageBitmap(bitmap);
+        //Bitmap bitmap = BitmapFactory.decodeByteArray(imageBytes, 0,imageBytes.length);
+        //imgPerfil.setImageBitmap(bitmap);
     }
 }
