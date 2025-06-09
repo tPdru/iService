@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -13,6 +14,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class FragmentPerfilLoja extends Fragment {
 
     //Variáveis de Informação
@@ -20,11 +24,27 @@ public class FragmentPerfilLoja extends Fragment {
     ControllerMaster cM = ControllerMaster.getControllerMaster();
     TextView txtNome, txtDescricao, txtEstado, txtCidade, txtLograd, txtRua, txtNumero, txtComplemento;
     ImageView imgLoja;
+    private long id;
 
     //Variáveis de controle
     RecyclerView recyclerView;
     AdaptadorPerfilLojaServicos adpLojasServicos;
     CardView cardAdicionarServico;
+    InCriarServ inCriarServ;
+
+    // Banco Local
+    DAOLocalEndereco daoLocalEndereco;
+    DAOLocalLoja daoLocalLoja;
+    DAOLocalService daoLocalService;
+
+    //Construtor com id
+    public FragmentPerfilLoja(long id) {
+        this.id = id;
+    }
+    //Construtor vazio
+    public FragmentPerfilLoja() {
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -47,13 +67,20 @@ public class FragmentPerfilLoja extends Fragment {
         recyclerView = view.findViewById(R.id.recPerfilLojaServicos);
 
         //Instancias
-        //adpLojasServicos = new AdaptadorPerfilLojaServicos();
+        daoLocalEndereco = new DAOLocalEndereco(getContext());
+        daoLocalLoja = new DAOLocalLoja(getContext());
+        daoLocalService = new DAOLocalService(getContext());
 
-        ObjEndereco endereco = minhaLoja.getEnderecoLoja();
+        //minha loja
+        minhaLoja = minhaLoja(id);
+        adpLojasServicos = new AdaptadorPerfilLojaServicos(getContext(), meusServicos(minhaLoja));
+
+
+        ObjEndereco endereco = meuEndereco(minhaLoja.getCodigLoja());
 
         //Controlando informaçoes-----------------------------------------
 
-        if ( cM.getInformacoesPerfil().isTemLoja() ) {
+        if ( endereco != null ) {
             //Colocando informações
             //Com endereço
             if ( minhaLoja.isTemEndereco() ) {
@@ -77,17 +104,84 @@ public class FragmentPerfilLoja extends Fragment {
         }
 
         // Card adicionar novo serviço
-        cardAdicionarServico.setOnContextClickListener(new View.OnContextClickListener() {
+        cardAdicionarServico.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onContextClick(View v) {
-                Toast.makeText(getContext(), "Adicionar", Toast.LENGTH_SHORT).show();
+            public void onClick(View v) {
+                DialogCriarServico dialog = new DialogCriarServico(minhaLoja.getCodigLoja(), new InCriarServ() {
+                    @Override
+                    public void salvar(ObjCardServicoPp servicoPp) {
+                        //guarda no banco
+                        daoLocalService.inserirService(servicoPp);
+                        //troca o tem service no banco
+                        if (!minhaLoja.isTemServicos()) {
+                            minhaLoja.setTemServicos(true);
+                            daoLocalLoja.atualizarLoja(minhaLoja);
+                        }
+                    }
+                });
+                dialog.show(getChildFragmentManager(), "criarServ");
 
-                return false;
+                Toast.makeText(getContext(), "Criar Serviço", Toast.LENGTH_SHORT).show();
             }
         });
 
-
-
         return view;
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        adpLojasServicos = new AdaptadorPerfilLojaServicos(getContext(), meusServicos(minhaLoja));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));;
+        recyclerView.setAdapter(adpLojasServicos);
+        adpLojasServicos.notifyDataSetChanged();
+    }
+
+    //busca endereço no banco
+    private ObjEndereco meuEndereco(long codigo) {
+
+
+
+        List<ObjEndereco> listaEnd = new ArrayList<>(daoLocalEndereco.readEndereco());
+        ObjEndereco endereco;
+
+        for (int i = 0; i < listaEnd.size(); i++) {
+            if(codigo == listaEnd.get(i).getCodigoLoja());{
+                return endereco = listaEnd.get(i);
+            }
+        }
+        return endereco = new ObjEndereco();
+    }
+
+    //Busca loja no banco
+    private ObjCardLoja minhaLoja(long codigo) {
+
+        List<ObjCardLoja> listaLoja = new ArrayList<>(daoLocalLoja.readLojas());
+        ObjCardLoja loja;
+
+        for (int i = 0; i < listaLoja.size(); i++) {
+            if (codigo == listaLoja.get(i).getCodUsuario()) {
+                loja = listaLoja.get(i);
+                return loja;
+            }
+        }
+        return  new ObjCardLoja();
+    }
+
+    // Busca os serviços no banco
+    private List<ObjCardServicoPp> meusServicos(ObjCardLoja loja) {
+        List<ObjCardServicoPp> list = new ArrayList<>(daoLocalService.readService());
+        List<ObjCardServicoPp> listFinal = new ArrayList<>();
+
+        for (int i = 0; i < list.size(); i++) {
+
+            if (loja.getCodigLoja() == list.get(i).getCodigoLoja()) {
+                listFinal.add(list.get(i));
+            }
+        }
+
+        return listFinal;
+    }
+
+
 }

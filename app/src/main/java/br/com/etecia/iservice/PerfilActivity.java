@@ -62,10 +62,10 @@ public class PerfilActivity extends AppCompatActivity {
                         break;
                     case 1:
                         //Mudando a pagina caso o usuario tenha ou não loja
-                        //verificando se o perfil esta lçogado antees
+                        //verificando se o perfil esta logado antes
                         if ( contMaster.getLoginOn() ){
                             if ( contMaster.getInformacoesPerfil().isTemLoja() ) {
-                                escolhido = new FragmentPerfilLoja();
+                                escolhido = new FragmentPerfilLoja(contMaster.getInformacoesPerfil().getCodigo());
                             } else {
                                 escolhido = new FragmentPerfilSemLoja();
                             }

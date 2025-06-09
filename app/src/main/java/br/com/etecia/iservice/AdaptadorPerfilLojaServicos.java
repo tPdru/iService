@@ -2,6 +2,7 @@ package br.com.etecia.iservice;
 
 import android.content.Context;
 import android.content.Intent;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -27,14 +28,17 @@ public class AdaptadorPerfilLojaServicos extends RecyclerView.Adapter<AdaptadorP
     @NonNull
     @Override
     public AdaptadorPerfilLojaServicos.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        View view;
+        LayoutInflater layInflater = LayoutInflater.from(context);
+        view = layInflater.inflate(R.layout.modelo_servico_pequeno_layout, parent, false);
+        return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull AdaptadorPerfilLojaServicos.ViewHolder holder, int position) {
 
         //Colocando as informaçoes nos itens
-        holder.imgfoto.setImageResource(listaServicos.get(position).getImgServicoPp());
+        //holder.imgfoto.setImageResource(listaServicos.get(position).getImgServicoPp());
         holder.txtNome.setText(listaServicos.get(position).getTxtNomeServicoPp());
         holder.txtValor.setText( String.valueOf(listaServicos.get(position).getTxtValorServicoPp()) );
 

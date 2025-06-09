@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/foto_imagem"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/imgCriarServico"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_margin="5dp"
+                android:layout_height="wrap_content"
+                android:hint="Nome Serviço"
+                android:textSize="@dimen/tamanho_grande"
+                android:layout_below="@id/imgCriarServico"
+                android:id="@+id/txtCriarServicoNome"/>
+            <EditText
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Valor Serviço"
+                android:textSize="@dimen/tamanho_grande"
+                android:layout_below="@id/txtCriarServicoNome"
+                android:id="@+id/txtCriarServicoValor"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_margin="5dp"
+                android:hint="Desdcrição Serviço"
+                android:layout_height="150dp"
+                android:textSize="@dimen/tamanho_grande"
+                android:layout_below="@id/txtCriarServicoValor"
+                android:id="@+id/txtCriarServicoDescricao"/>
+
+            <Button
+                android:layout_width="150dp"
+                android:layout_height="70dp"
+                android:layout_margin="5dp"
+                android:layout_below="@id/txtCriarServicoDescricao"
+                android:id="@+id/btnCriarServicoCancelar"/>
+
+            <Button
+                android:layout_width="150dp"
+                android:layout_height="70dp"
+                android:layout_alignParentRight="true"
+                android:layout_margin="5dp"
+                android:layout_below="@id/txtCriarServicoDescricao"
+                android:id="@+id/btnCriarServicoCriar"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

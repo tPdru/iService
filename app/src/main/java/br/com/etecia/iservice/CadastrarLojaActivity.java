@@ -50,6 +50,7 @@ public class CadastrarLojaActivity extends AppCompatActivity {
 
     //Banco
     DAOLocalLoja daoLocalLoja;
+    DAOLocalEndereco daoLocalEndereco;
 
     //converter imageView pra byte
     private byte[] imageViewToByte(ImageView imgCad) {
@@ -114,6 +115,7 @@ public class CadastrarLojaActivity extends AppCompatActivity {
         //Instacias
         listElementos = new ArrayList<>();
         daoLocalLoja = new DAOLocalLoja(getApplicationContext());
+        daoLocalEndereco = new DAOLocalEndereco(getApplicationContext());
 
         //Configurações iniciais
         listElementos.add(lnlCep);
@@ -256,6 +258,8 @@ public class CadastrarLojaActivity extends AppCompatActivity {
                         loja.setCodUsuario(cm.getInformacoesPerfil().getCodigo());
                         // criando a loja e adicionando ocodigo da loja oa controlemaster
                         loja.setCodigLoja(daoLocalLoja.inserirLoja(loja));
+                        /** Salvando o endereço no banco local **/
+                        end.setCodigoLoja(daoLocalEndereco.inserirEndereco(end));
 
                         //ControllerMaster.getControllerMaster().carregarLojas();
 
@@ -312,6 +316,8 @@ public class CadastrarLojaActivity extends AppCompatActivity {
             return true;
         }
     }
+
+
 
 
 }
