@@ -67,10 +67,11 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/txtCadLojaNome"
                         android:layout_width="match_parent"
-                        android:layout_height="65sp"
+                        android:layout_height="70sp"
                         android:fontFamily="@font/textos"
                         android:hint="Nome da loja"
                         android:inputType="text"
+                        android:maxLength="30"
                         android:maxWidth="230sp"
                         android:textColor="@color/cor_texto"
                         android:textSize="@dimen/tamanho_medio" />
@@ -101,10 +102,11 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/txtCadLojaDescricao"
                     android:layout_width="match_parent"
-                    android:layout_height="60sp"
+                    android:layout_height="70sp"
                     android:fontFamily="@font/textos"
                     android:hint="Descrição"
                     android:inputType="text"
+                    android:maxLength="30"
                     android:maxWidth="300sp"
                     android:maxHeight="300sp"
                     android:textColor="@color/cor_texto"
@@ -132,10 +134,11 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/txtCadLojaEmail"
                     android:layout_width="match_parent"
-                    android:layout_height="60sp"
+                    android:layout_height="70sp"
                     android:fontFamily="@font/textos"
                     android:hint="Email"
                     android:inputType="text"
+                    android:maxLength="30"
                     android:maxWidth="300sp"
                     android:maxHeight="300sp"
                     android:textColor="@color/cor_texto"
@@ -163,7 +166,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/txtCadLojaCnpj"
                     android:layout_width="match_parent"
-                    android:layout_height="60sp"
+                    android:layout_height="70sp"
+                    android:maxLength="30"
                     android:fontFamily="@font/textos"
                     android:inputType="number"
                     android:textColor="@color/cor_texto"
@@ -215,9 +219,10 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/txtCadLojaCep"
                             android:layout_width="match_parent"
-                            android:layout_height="60sp"
+                            android:layout_height="70sp"
                             android:fontFamily="@font/textos"
                             android:inputType="number"
+                            android:maxLength="30"
                             android:textColor="@color/cor_texto"
                             android:textSize="@dimen/tamanho_medio" />
 
@@ -241,9 +246,10 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/txtCadLojaEstado"
                             android:layout_width="match_parent"
-                            android:layout_height="60sp"
+                            android:layout_height="70sp"
                             android:fontFamily="@font/textos"
                             android:inputType="text"
+                            android:maxLength="30"
                             android:textColor="@color/cor_texto"
                             android:textSize="@dimen/tamanho_medio" />
 
@@ -267,9 +273,10 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/txtCadLojaCidade"
                             android:layout_width="match_parent"
-                            android:layout_height="60sp"
+                            android:layout_height="70sp"
                             android:fontFamily="@font/textos"
                             android:inputType="text"
+                            android:maxLength="30"
                             android:textColor="@color/cor_texto"
                             android:textSize="@dimen/tamanho_medio" />
 
@@ -293,9 +300,10 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/txtCadLojaLogradouro"
                             android:layout_width="match_parent"
-                            android:layout_height="60sp"
+                            android:layout_height="70sp"
                             android:fontFamily="@font/textos"
                             android:inputType="text"
+                            android:maxLength="30"
                             android:textColor="@color/cor_texto"
                             android:textSize="@dimen/tamanho_medio" />
 
@@ -319,9 +327,10 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/txtCadLojaRua"
                             android:layout_width="match_parent"
-                            android:layout_height="60sp"
+                            android:layout_height="70sp"
                             android:fontFamily="@font/textos"
                             android:inputType="text"
+                            android:maxLength="30"
                             android:textColor="@color/cor_texto"
                             android:textSize="@dimen/tamanho_medio" />
 
@@ -345,9 +354,10 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/txtCadLojaNumero"
                             android:layout_width="match_parent"
-                            android:layout_height="60sp"
+                            android:layout_height="70sp"
                             android:fontFamily="@font/textos"
                             android:inputType="number"
+                            android:maxLength="30"
                             android:textColor="@color/cor_texto"
                             android:textSize="@dimen/tamanho_medio" />
 
@@ -371,9 +381,10 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/txtCadLojaComplemento"
                             android:layout_width="match_parent"
-                            android:layout_height="60sp"
+                            android:layout_height="70sp"
                             android:fontFamily="@font/textos"
                             android:inputType="text"
+                            android:maxLength="30"
                             android:textColor="@color/cor_texto"
                             android:textSize="@dimen/tamanho_medio" />
 

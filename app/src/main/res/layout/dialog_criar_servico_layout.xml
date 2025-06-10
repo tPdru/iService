@@ -1,65 +1,172 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@color/cor_fundo"
         android:orientation="vertical"
         android:padding="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <androidx.coordinatorlayout.widget.CoordinatorLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/imgCriarServico"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="20dp"
+                        android:src="@drawable/foto_imagem" />
+
+                    <Button
+                        android:id="@+id/btnAdcFotoServ"
+                        style="@style/ThemeOverlay.Material3.Button.ElevatedButton"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="right|bottom"
+                        android:backgroundTint="@color/cor_principal"
+                        android:fontFamily="@font/titulos"
+                        android:text="+"
+                        android:textSize="25sp" />
+
+                </androidx.coordinatorlayout.widget.CoordinatorLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
 
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-            <ImageView
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:layout_margin="10dp"
-                android:src="@drawable/foto_imagem"
-                android:layout_centerHorizontal="true"
-                android:id="@+id/imgCriarServico"/>
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_margin="5dp"
-                android:layout_height="wrap_content"
-                android:hint="Nome Serviço"
-                android:textSize="@dimen/tamanho_grande"
-                android:layout_below="@id/imgCriarServico"
-                android:id="@+id/txtCriarServicoNome"/>
-            <EditText
-                android:layout_margin="5dp"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Valor Serviço"
-                android:textSize="@dimen/tamanho_grande"
-                android:layout_below="@id/txtCriarServicoNome"
-                android:id="@+id/txtCriarServicoValor"/>
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_margin="5dp"
-                android:hint="Desdcrição Serviço"
-                android:layout_height="150dp"
-                android:textSize="@dimen/tamanho_grande"
-                android:layout_below="@id/txtCriarServicoValor"
-                android:id="@+id/txtCriarServicoDescricao"/>
+                android:orientation="vertical">
 
-            <Button
-                android:layout_width="150dp"
-                android:layout_height="70dp"
-                android:layout_margin="5dp"
-                android:layout_below="@id/txtCriarServicoDescricao"
-                android:id="@+id/btnCriarServicoCancelar"/>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/txtLayoutCriarServ"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:hint="Nome do Serviço"
+                    android:textColorHint="@color/cor_texto"
+                    android:textSize="@dimen/tamanho_medio"
+                    app:boxBackgroundColor="@color/cor_detalhes"
+                    app:boxStrokeColor="@color/cor_texto"
+                    app:cursorColor="@color/cor_texto"
+                    app:endIconMode="clear_text"
+                    app:hintTextColor="@color/cor_texto">
 
-            <Button
-                android:layout_width="150dp"
-                android:layout_height="70dp"
-                android:layout_alignParentRight="true"
-                android:layout_margin="5dp"
-                android:layout_below="@id/txtCriarServicoDescricao"
-                android:id="@+id/btnCriarServicoCriar"/>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtCriarServicoNome"
+                        android:layout_width="match_parent"
+                        android:layout_height="70sp"
+                        android:fontFamily="@font/textos"
+                        android:hint="Nome do Serviço"
+                        android:inputType="text"
+                        android:maxWidth="230sp"
+                        android:maxLength="30"
+                        android:textColor="@color/cor_texto"
+                        android:textSize="@dimen/tamanho_medio" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/txtLayoutCriarServValor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:hint="Valor Serviço"
+                    android:textColorHint="@color/cor_texto"
+                    android:textSize="@dimen/tamanho_medio"
+                    app:boxBackgroundColor="@color/cor_detalhes"
+                    app:boxStrokeColor="@color/cor_texto"
+                    app:cursorColor="@color/cor_texto"
+                    app:endIconMode="clear_text"
+                    app:hintTextColor="@color/cor_texto">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtCriarServicoValor"
+                        android:layout_width="match_parent"
+                        android:layout_height="70sp"
+                        android:fontFamily="@font/textos"
+                        android:hint="Valor Serviço"
+                        android:inputType="text"
+                        android:maxWidth="230sp"
+                        android:maxLength="30"
+                        android:textColor="@color/cor_texto"
+                        android:textSize="@dimen/tamanho_medio" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/txtLayoutCriarServDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:hint="Desdcrição Serviço"
+                    android:textColorHint="@color/cor_texto"
+                    android:textSize="@dimen/tamanho_medio"
+                    app:boxBackgroundColor="@color/cor_detalhes"
+                    app:boxStrokeColor="@color/cor_texto"
+                    app:cursorColor="@color/cor_texto"
+                    app:endIconMode="clear_text"
+                    app:hintTextColor="@color/cor_texto">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtCriarServicoDescricao"
+                        android:layout_width="match_parent"
+                        android:layout_height="70sp"
+                        android:fontFamily="@font/textos"
+                        android:hint="Desdcrição Serviço"
+                        android:inputType="text"
+                        android:maxWidth="230sp"
+                        android:maxLength="30"
+                        android:textColor="@color/cor_texto"
+                        android:textSize="@dimen/tamanho_medio" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnCriarServicoCancelar"
+                        android:layout_width="150dp"
+                        android:layout_height="70dp"
+                        android:layout_below="@id/txtCriarServicoDescricao"
+                        android:layout_margin="5dp" />
+
+                    <Button
+                        android:id="@+id/btnCriarServicoCriar"
+                        android:layout_width="150dp"
+                        android:layout_height="70dp"
+                        android:layout_below="@id/txtCriarServicoDescricao"
+                        android:layout_alignParentRight="true"
+                        android:layout_margin="5dp" />
+                </LinearLayout>
+
+            </LinearLayout>
 
         </RelativeLayout>
 

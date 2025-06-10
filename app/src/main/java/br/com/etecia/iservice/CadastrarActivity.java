@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 import android.graphics.drawable.BitmapDrawable;
+
 import androidx.activity.EdgeToEdge;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -40,16 +41,16 @@ public class CadastrarActivity extends AppCompatActivity implements DialogOpcaoC
     //Variáveis de informação
     TextInputEditText txtNome, txtemail, txtSenha, txtReSenha, txtUsuario, txtCelular;
 
-    ActivityResultLauncher <Intent> imagePickerLauncher;
+    ActivityResultLauncher<Intent> imagePickerLauncher;
 
-    byte[]imageBytes;
+    byte[] imageBytes;
 
     int codigoImagem;
     //Bancos
     DAOLocalPerfil daoLocalPerfil;
 
     //converter imageView pra byte
-    private byte[] imageViewToByte (ImageView imageView){
+    private byte[] imageViewToByte(ImageView imageView) {
         // Pega o drawable (imagem) do ImageView e o converte para Bitmap
         Bitmap bitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
 
@@ -76,7 +77,6 @@ public class CadastrarActivity extends AppCompatActivity implements DialogOpcaoC
         });
 
 
-
         // Apresentação Java + XML----------------------------------------------------------
         btnCriarConta = findViewById(R.id.btnCriarConta);
         txtemail = findViewById(R.id.txtEmailUsuario);
@@ -93,16 +93,16 @@ public class CadastrarActivity extends AppCompatActivity implements DialogOpcaoC
         DAOUsuario daoUsuario = new DAOUsuario();//Banco online (desativado)
         daoLocalPerfil = new DAOLocalPerfil(getApplicationContext());
 
-        codigoImagem=getIntent().getIntExtra("getCodigo", 0);
+        codigoImagem = getIntent().getIntExtra("getCodigo", 0);
 
         // Inicializa o launcher para selecionar imagem
-        imagePickerLauncher=registerForActivityResult(
+        imagePickerLauncher = registerForActivityResult(
 
                 // Define o tipo de contrato para iniciar uma Activity esperando um resultado
                 new ActivityResultContracts.StartActivityForResult(),
 
                 // Define o que fazer quando a Activity retornar um resultado
-                result->{
+                result -> {
 
                     // Verifica se o resultado foi OK e se os dados retornados não são nulos
                     if (result.getResultCode() == RESULT_OK && result.getData() != null) {
@@ -114,20 +114,20 @@ public class CadastrarActivity extends AppCompatActivity implements DialogOpcaoC
                         imgCadUsuario.setImageURI(selectedImageUri);
 
                         // Verifica se há uma imagem no ImageView antes de converter
-                        if (imgCadUsuario.getDrawable()!=null){
+                        if (imgCadUsuario.getDrawable() != null) {
 
                             // Converte a imagem do ImageView para um array de bytes
                             imageBytes = imageViewToByte(imgCadUsuario);
                             Toast.makeText(this, "Imagen selecionada!", Toast.LENGTH_SHORT).show();
-                        }else {
-                            Toast.makeText(this, "Erro: imagem inválida!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            // Caso a seleção falhe ou seja cancelada, salva a imagem padrão
+                            imageBytes = imageViewToByte(imgCadUsuario);
                         }
-                    }else {
-                        // Caso a seleção falhe ou seja cancelada, exibe mensagem de erro
-                        Toast.makeText(this, "Erro ao selecionar a imagem", Toast.LENGTH_SHORT).show();
+                    } else {
+                        // Caso a seleção falhe ou seja cancelada, salva a imagem padrão
+                        imageBytes = imageViewToByte(imgCadUsuario);
                     }
                 });
-
 
 
         //Botões----------------------------------------------------------------------------
@@ -142,7 +142,7 @@ public class CadastrarActivity extends AppCompatActivity implements DialogOpcaoC
         });
 
         // Botão para escolher imagem
-        btnAdicionarFoto.setOnClickListener(v->{
+        btnAdicionarFoto.setOnClickListener(v -> {
             // Cria uma intent para abrir o seletor de imagens do dispositivo
             Intent intent = new Intent(Intent.ACTION_PICK);
 
@@ -153,8 +153,6 @@ public class CadastrarActivity extends AppCompatActivity implements DialogOpcaoC
             imagePickerLauncher.launch(intent);
 
         });
-
-
 
 
         //Botão criar conta chama o dialog para o usuário decidir se quer ir para a criação
@@ -170,16 +168,16 @@ public class CadastrarActivity extends AppCompatActivity implements DialogOpcaoC
                 String usuario = txtUsuario.getText().toString().trim();
                 String confirmarSenha = txtReSenha.getText().toString().trim();
 
-                imageBytes=imageViewToByte(imgCadUsuario);
+                imageBytes = imageViewToByte(imgCadUsuario);
 
 
                 //Testar os textos
                 if (checkCampo(usuario, txtUsuario) && checkCampo(nome, txtNome) &&
-                    checkCampo(email, txtemail) && checkCampo(senha, txtSenha) &&
-                    checkCampo(confirmarSenha, txtReSenha)){
+                        checkCampo(email, txtemail) && checkCampo(senha, txtSenha) &&
+                        checkCampo(confirmarSenha, txtReSenha)) {
 
                     //Testando se a senha e confirmação são iguais
-                    if ( senha.equals(confirmarSenha) ) {
+                    if (senha.equals(confirmarSenha)) {
                         ObjPerfil perfil = new ObjPerfil(
                                 email,
                                 nome,
@@ -190,7 +188,7 @@ public class CadastrarActivity extends AppCompatActivity implements DialogOpcaoC
                         );
 
                         //Adicionando o celular ao objeto
-                        if (!TextUtils.isEmpty(txtCelular.getText().toString().trim())){
+                        if (!TextUtils.isEmpty(txtCelular.getText().toString().trim())) {
                             perfil.setCelular(txtCelular.getText().toString().trim());
                         }
 
@@ -206,15 +204,14 @@ public class CadastrarActivity extends AppCompatActivity implements DialogOpcaoC
 
 
                         /** Adiciona oa banco online
-                        DAOUsuario daoUsu = new DAOUsuario();
-                        daoUsu.creatPerfil(perfil, getApplicationContext(),imageBytes);
-                        */
+                         DAOUsuario daoUsu = new DAOUsuario();
+                         daoUsu.creatPerfil(perfil, getApplicationContext(),imageBytes);
+                         */
 
                         //chama o dialog fragment para decidir sobre a criação da loja
                         DialogOpcaoCadastrarLoja dialog = new DialogOpcaoCadastrarLoja();
-                        dialog.show(getSupportFragmentManager(),"Cadastrar loja?");
-                    }
-                    else{
+                        dialog.show(getSupportFragmentManager(), "Cadastrar loja?");
+                    } else {
                         msgConfirmacaoSenha(txtReSenha);
                     }
                 }
@@ -224,18 +221,17 @@ public class CadastrarActivity extends AppCompatActivity implements DialogOpcaoC
     }
 
 
-
-
     // Metodo de checar se os campos estão preenchidos
-    private boolean checkCampo(String texto, TextInputEditText inputEditText){
-        if ( TextUtils.isEmpty(texto) ) {
+    private boolean checkCampo(String texto, TextInputEditText inputEditText) {
+        if (TextUtils.isEmpty(texto)) {
             inputEditText.setError("Preencha todos os campos!");
             inputEditText.requestFocus();
             return false;
-        }else {
+        } else {
             return true;
         }
     }
+
     // Metodo teste senha e confirmação
     private void msgConfirmacaoSenha(TextInputEditText inputEditText) {
         inputEditText.setError("A senha e a confirmação são diferentes!");

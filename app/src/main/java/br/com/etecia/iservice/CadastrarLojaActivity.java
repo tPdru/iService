@@ -148,16 +148,16 @@ public class CadastrarLojaActivity extends AppCompatActivity {
                         // Verifica se há uma imagem no ImageView antes de converter
                         if (imgCadLoja.getDrawable() != null) {
 
-                            // Converte a imagem do ImageView para um array de bytes
+                            // Caso a seleção falhe ou seja cancelada, salva a imagem padrão
                             imageBytes = imageViewToByte(imgCadLoja);
                             Toast.makeText(this, "Imagen selecionada!", Toast.LENGTH_SHORT).show();
                         } else {
-                            Toast.makeText(this, "Erro: imagem inválida", Toast.LENGTH_SHORT).show();
+                            imageBytes = imageViewToByte(imgCadLoja);
                         }
 
                     } else {
-                        // Caso a seleção falhe ou seja cancelada, exibe mensagem de erro
-                        Toast.makeText(this, "Erro ao selecionar a imagem", Toast.LENGTH_SHORT).show();
+                        // Caso a seleção falhe ou seja cancelada, salva a imagem padrão
+                        imageBytes = imageViewToByte(imgCadLoja);
                     }
                 }
         );
