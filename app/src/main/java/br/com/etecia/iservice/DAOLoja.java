@@ -67,7 +67,7 @@ public class DAOLoja {
                             loja.setNomeLoja(obj.getString("nome_loja"));
                             loja.setDescricao(obj.getString("desc_loja"));
                             loja.setEmailDono(obj.getString("email_loja"));
-                            loja.setImgLoja(R.drawable.foto_imagem);
+                            //loja.setImgLoja(R.drawable.foto_imagem);
                             loja.setCodigLoja(obj.getInt("cod_loja"));
                             loja.setCodUsuario(obj.getInt("cod_usua"));
 

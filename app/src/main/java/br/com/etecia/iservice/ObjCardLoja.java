@@ -6,7 +6,7 @@ public class ObjCardLoja {
 
     private List<ObjCardServicoPp> listaServico;
     private String nomeLoja;
-    private int imgLoja;
+    private byte[] imgLoja;
     private double txtNota;
     private ObjEndereco enderecoLoja;
     private String descricao;
@@ -17,7 +17,7 @@ public class ObjCardLoja {
     private long codUsuario;
     private String cpfCnpj;
 
-    public ObjCardLoja(String emailDono, int imgLoja, List<ObjCardServicoPp> listaServico, String nomeLoja, double txtNota, ObjEndereco enderecoLoja) {
+    public ObjCardLoja(String emailDono, byte[] imgLoja, List<ObjCardServicoPp> listaServico, String nomeLoja, double txtNota, ObjEndereco enderecoLoja) {
         this.emailDono = emailDono;
         this.imgLoja = imgLoja;
         this.listaServico = listaServico;
@@ -26,7 +26,7 @@ public class ObjCardLoja {
         this.enderecoLoja = enderecoLoja;
     }
 
-    public ObjCardLoja(String emailDono, int imgLoja, List<ObjCardServicoPp> listaServico, String nomeLoja, double txtNota) {
+    public ObjCardLoja(String emailDono, byte[] imgLoja, List<ObjCardServicoPp> listaServico, String nomeLoja, double txtNota) {
         this.emailDono = emailDono;
         this.imgLoja = imgLoja;
         this.listaServico = listaServico;
@@ -96,11 +96,11 @@ public class ObjCardLoja {
         this.enderecoLoja = enderecoLoja;
     }
 
-    public int getImgLoja() {
+    public byte[] getImgLoja() {
         return imgLoja;
     }
 
-    public void setImgLoja(int imgLoja) {
+    public void setImgLoja(byte[] imgLoja) {
         this.imgLoja = imgLoja;
     }
 

@@ -152,12 +152,18 @@ public class CadastrarLojaActivity extends AppCompatActivity {
                             imageBytes = imageViewToByte(imgCadLoja);
                             Toast.makeText(this, "Imagen selecionada!", Toast.LENGTH_SHORT).show();
                         } else {
-                            imageBytes = imageViewToByte(imgCadLoja);
+                            //Define a imagem padrão
+                            imgCadLoja.setImageResource(R.drawable.foto_imagem);
+
+                            //converter a imagem para byte[]
+                            imageBytes=imageViewToByte(imgCadLoja);
+                            Toast.makeText(this, "Imagem padrão selecionada", Toast.LENGTH_SHORT).show();
+
                         }
 
                     } else {
                         // Caso a seleção falhe ou seja cancelada, salva a imagem padrão
-                        imageBytes = imageViewToByte(imgCadLoja);
+                        Toast.makeText(this, "Erro ao selecionar a imagem", Toast.LENGTH_SHORT).show();
                     }
                 }
         );
@@ -222,7 +228,10 @@ public class CadastrarLojaActivity extends AppCompatActivity {
                 List<ObjCardServicoPp> listServicos = new ArrayList<>();
 
                 //Imagem e nota
-                int imgFoto = R.drawable.foto_imagem;
+                //Define a imagem padrão
+
+
+                byte[] imgFoto = imageBytes ;
                 double nota = 5;
 
                 if (lojaFisica) {

@@ -124,8 +124,12 @@ public class CadastrarActivity extends AppCompatActivity implements DialogOpcaoC
                             imageBytes = imageViewToByte(imgCadUsuario);
                         }
                     } else {
-                        // Caso a seleção falhe ou seja cancelada, salva a imagem padrão
+                        //Define a imagem padrão
+                        imgCadUsuario.setImageResource(R.drawable.foto_imagem);
+
+                        //converter a imagem para byte[]
                         imageBytes = imageViewToByte(imgCadUsuario);
+                        Toast.makeText(this, "Imagem padrão selecionada", Toast.LENGTH_SHORT).show();
                     }
                 });
 

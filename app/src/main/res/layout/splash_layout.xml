@@ -10,6 +10,7 @@
     android:orientation="vertical"
     tools:context=".SplashActivity">
 
+
     <ImageView
         android:layout_width="300dp"
         android:layout_height="200dp"
@@ -23,5 +24,12 @@
         android:layout_marginTop="30dp"
         app:indicatorColor="@color/cor_principal"
         android:indeterminate="true" />
+
+    <ImageView
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:id="@+id/imgLojaInicial"
+        android:background="@color/cor_fundo"
+        />
 
 </LinearLayout>

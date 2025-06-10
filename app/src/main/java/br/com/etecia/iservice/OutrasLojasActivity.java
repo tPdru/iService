@@ -68,7 +68,7 @@ public class OutrasLojasActivity extends AppCompatActivity {
         //Setando as imformaçoes de acordo com o card selecionado
         txtNome.setText(loja.getEmailDono());
         txtDescricao.setText(loja.getDescricao());
-        imgFotoLoja.setImageResource(loja.getImgLoja());
+        //imgFotoLoja.setImageResource(loja.getImgLoja());
 
         //Passando a lista
         listService = new ArrayList<>(loja.getListaServico());

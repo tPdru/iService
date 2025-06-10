@@ -1,6 +1,8 @@
 package br.com.etecia.iservice;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import androidx.cardview.widget.CardView;
@@ -87,12 +89,14 @@ public class FragmentPerfilLoja extends Fragment {
         //Controlando informaçoes-----------------------------------------
 
         if ( endereco != null ) {
+            Bitmap bitmap = BitmapFactory.decodeByteArray(minhaLoja.getImgLoja(), 0, minhaLoja.getImgLoja().length);
             //Colocando informações
             //Com endereço
             if ( minhaLoja.isTemEndereco() ) {
+
                 txtNome.setText(minhaLoja.getNomeLoja());
                 txtDescricao.setText(minhaLoja.getDescricao());
-                imgLoja.setImageResource(minhaLoja.getImgLoja());
+                imgLoja.setImageBitmap(bitmap);
 
                 txtEstado.setText(endereco.getEstado());
                 txtCidade.setText(endereco.getCidade());
@@ -104,7 +108,7 @@ public class FragmentPerfilLoja extends Fragment {
                 //Sem endereço
                 txtNome.setText(minhaLoja.getNomeLoja());
                 txtDescricao.setText(minhaLoja.getDescricao());
-                imgLoja.setImageResource(minhaLoja.getImgLoja());
+                imgLoja.setImageBitmap(bitmap);
 
             }
         }

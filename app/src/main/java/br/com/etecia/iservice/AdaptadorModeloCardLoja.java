@@ -2,6 +2,8 @@ package br.com.etecia.iservice;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,8 +47,10 @@ public class AdaptadorModeloCardLoja extends RecyclerView.Adapter<AdaptadorModel
     @Override
     public void onBindViewHolder(@NonNull AdaptadorModeloCardLoja.ViewHolder holder, int position) {
 
+        Bitmap bitmap = BitmapFactory.decodeByteArray(listaCardLoja.get(position).getImgLoja(), 0, listaCardLoja.get(position).getImgLoja().length);
+
         holder.nome_loja.setText(listaCardLoja.get(position).getNomeLoja());
-        holder.img_loja.setImageResource(listaCardLoja.get(position).getImgLoja());
+        holder.img_loja.setImageBitmap(bitmap);
         holder.nota_loja.setText(String.valueOf(listaCardLoja.get(position).getTxtNota()));
 
 

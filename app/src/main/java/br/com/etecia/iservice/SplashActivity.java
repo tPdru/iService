@@ -1,8 +1,11 @@
 package br.com.etecia.iservice;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -11,16 +14,35 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 public class SplashActivity extends AppCompatActivity {
 
     ControllerMaster contMaster = ControllerMaster.getControllerMaster();
+    ImageView imgLojaInicial;
+    byte[] imageBytes;
 
     //Banco local
     DAOLocalPerfil daoLocalPerfil;
     DAOLocalLoja daoLocalLoja;
+
+    private byte[] imageViewToByte(ImageView imgLojaInicial) {
+        // Pega o drawable (imagem) do ImageView e o converte para Bitmap
+        Bitmap bitmap = ((BitmapDrawable) imgLojaInicial.getDrawable()).getBitmap();
+
+        // Cria um fluxo de bytes na memória para armazenar a imagem comprimida
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+
+        // Comprime o bitmap em formato PNG com qualidade 100% e escreve no stream
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+
+        // Retorna o array de bytes com os dados da imagem comprimida
+        return stream.toByteArray();
+    }
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +53,10 @@ public class SplashActivity extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+
         });
+
+        imgLojaInicial = findViewById(R.id.imgLojaInicial);
 
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -97,8 +122,15 @@ public class SplashActivity extends AppCompatActivity {
                     perfil.setCodigo(daoLocalPerfil.inserirPerfil(perfil));
 
 
+
+                    imgLojaInicial.setImageResource(R.drawable.foto_imagem);
+                    imageBytes = imageViewToByte(imgLojaInicial);
+
+
+
+
                     loja.setNomeLoja("Oficina");
-                    loja.setImgLoja(R.drawable.foto_imagem);
+                    loja.setImgLoja(imageBytes);
                     loja.setCpfCnpj("55577733");
                     loja.setDescricao("Reparos em carros");
                     loja.setTemEndereco(false);
