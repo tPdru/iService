@@ -1,5 +1,6 @@
 package br.com.etecia.iservice;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.cardview.widget.CardView;
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,6 +33,8 @@ public class FragmentPerfilLoja extends Fragment {
     AdaptadorPerfilLojaServicos adpLojasServicos;
     CardView cardAdicionarServico;
     InCriarServ inCriarServ;
+    Button btnSairConta;
+    ControllerMaster contMaster = ControllerMaster.getControllerMaster();
 
     // Banco Local
     DAOLocalEndereco daoLocalEndereco;
@@ -61,6 +65,8 @@ public class FragmentPerfilLoja extends Fragment {
         txtNumero = view.findViewById(R.id.txtNumeroLoja);
         txtComplemento = view.findViewById(R.id.txtComplementoLoja);
         cardAdicionarServico = view.findViewById(R.id.cardAdicionarServico);
+
+        btnSairConta = view.findViewById(R.id.btnSairDaConta);
 
         imgLoja = view.findViewById(R.id.imgPerfilLoja);
 
@@ -122,6 +128,16 @@ public class FragmentPerfilLoja extends Fragment {
                 dialog.show(getChildFragmentManager(), "criarServ");
 
                 Toast.makeText(getContext(), "Criar Serviço", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        //Botões ---------------------
+        //Botão sair da conta
+        btnSairConta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                contMaster.setLoginOn(false);
+                startActivity(new Intent(getContext(), HomeActivity.class));
             }
         });
 

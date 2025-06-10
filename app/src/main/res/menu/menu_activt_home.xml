@@ -5,15 +5,6 @@
         android:title="Home"
         android:enabled="true"
         android:id="@+id/itemMenuBotHome"/>
-    <item
-        android:icon="@drawable/ic_android_black"
-        android:title="Favoritos"
-        android:enabled="true"
-        android:id="@+id/itemMenuBotFavoritos"/>
-    <item
-        android:icon="@drawable/ic_android_black"
-        android:title="Menssagens"
-        android:enabled="true"
-        android:id="@+id/itemMenuBotMenssagens"/>
+
 
 </menu>

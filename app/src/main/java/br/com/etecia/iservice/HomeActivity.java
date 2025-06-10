@@ -41,7 +41,7 @@ public class HomeActivity extends AppCompatActivity {
 
         //Apresentação XML + Java
         materialToolbar = findViewById(R.id.matTooBarActivtHome);
-        bottomNavigationView = findViewById(R.id.botNavgationTelaPrincipal);
+        //bottomNavigationView = findViewById(R.id.botNavgationTelaPrincipal);
 
         //Informações iniciais --------------------------------
         getSupportFragmentManager().beginTransaction().replace(R.id.frmLayoutConteiner, new FragmentHome()).commit();
@@ -69,7 +69,7 @@ public class HomeActivity extends AppCompatActivity {
 
 
         //Controle bot navigation
-        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+        /*bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
 
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -80,16 +80,7 @@ public class HomeActivity extends AppCompatActivity {
 
                     fragment = new FragmentHome();
 
-                } else if (item.getItemId() == R.id.itemMenuBotFavoritos) {
-
-                    fragment = new FragmentFavoritos();
-
-                } else if (item.getItemId() == R.id.itemMenuBotMenssagens) {
-
-                    fragment = new FragmentChat();
-
                 }
-
 
                 if (fragment != null) {
                     getSupportFragmentManager().beginTransaction().replace(R.id.frmLayoutConteiner, fragment).commit();
@@ -97,7 +88,7 @@ public class HomeActivity extends AppCompatActivity {
 
                 return true;
             }
-        });
+        });*/
 
     }
 

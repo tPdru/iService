@@ -28,18 +28,9 @@
    <FrameLayout
        android:layout_width="match_parent"
        android:layout_height="match_parent"
-       android:layout_above="@id/botNavgationTelaPrincipal"
        android:layout_below="@id/appBarActivitHome"
        android:id="@+id/frmLayoutConteiner"/>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/botNavgationTelaPrincipal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        app:itemTextColor="@color/cor_texto_claro"
-        app:itemRippleColor="@color/cor_detalhes"
-        android:background="@color/cor_secundaria"
-        app:menu="@menu/menu_activt_home" />
+
 
 </RelativeLayout>

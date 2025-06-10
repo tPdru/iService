@@ -57,17 +57,6 @@ public class AdaptadorLoja extends RecyclerView.Adapter <AdaptadorLoja.ViewHolde
                 //verificar se a posição é válida
                 if (numServ == RecyclerView.NO_POSITION) return;
 
-                //pegando infofrmações do item clicado
-                Intent intent = new Intent(contexto, DetalhesServicosActivity.class);
-
-                //salvando as informaçoes do serviço escolhido
-                intent.putExtra("imgServ", listaServicos.get(numServ).getImgServicoPp());
-                intent.putExtra("nomeServ", listaServicos.get(numServ).getTxtNomeServicoPp());
-                intent.putExtra("valorServ", listaServicos.get(numServ).getTxtValorServicoPp());
-                intent.putExtra("detalhesServ", listaServicos.get(numServ).getTxtDetalhesServicoPp());
-
-                //iniciando a nova activity
-                //contexto.startActivity(intent);
 
                 //ObjetoServiço que vai receber as informações do selecionado
                 ObjCardServicoPp objServ = new ObjCardServicoPp(
