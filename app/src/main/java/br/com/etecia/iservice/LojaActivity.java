@@ -1,6 +1,7 @@
 package br.com.etecia.iservice;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -39,6 +40,7 @@ public class LojaActivity extends AppCompatActivity {
     MaterialToolbar topAppBarLoja;
 
     //Banco Local
+    DAOLocalPerfil daoLocalPerfil;
     DAOLocalLoja daoLocalLoja;
     DAOLocalService daoLocalService ;
     DAOLocalEndereco daoLocalEndereco;
@@ -66,6 +68,7 @@ public class LojaActivity extends AppCompatActivity {
 
         //Instancias
         listService = new ArrayList<>();
+        daoLocalPerfil = new DAOLocalPerfil(getApplicationContext());
         daoLocalLoja = new DAOLocalLoja(getApplicationContext());
         daoLocalService = new DAOLocalService(getApplicationContext());
         daoLocalEndereco = new DAOLocalEndereco(getApplicationContext());
@@ -95,9 +98,9 @@ public class LojaActivity extends AppCompatActivity {
             txtEnderecoLoja.setText(loja.getEnderecoLoja().getRua());
         }
         if (loja.isTemServicos()) {
-            listService = new ArrayList<>(daoLocalService.readService());
-        }
 
+        }
+        listService = new ArrayList<>(daoLocalService.readService());
 
         //Configurando recycleView
         adaptadorLoja = new AdaptadorLoja(getApplicationContext(), listService, new InComunicarServPp() {
@@ -122,18 +125,30 @@ public class LojaActivity extends AppCompatActivity {
             }
         });
 
-        btnEntrarEmContato.setOnClickListener(view -> new View.OnClickListener() {
+        /**btnEntrarEmContato.setOnClickListener(view -> new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String whatsapp = "";
                 if (contMaster.getLoginOn()){
-                    String email = contMaster.getInformacoesPerfil().getEmail();
+                    List<ObjPerfil> list = new ArrayList<>(daoLocalPerfil.readPerfil());
+                    for (int i=0; i < list.size();i++){
+                        if (loja.getCodUsuario()==list.get(i).getCodigo()){
+                            whatsapp = list.get(i).getCelular();
+                            break;
+                        }
+
+                    }
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    String url = "https://wa.me/" + whatsapp;
+                    intent.setData(Uri.parse(url));
+                    startActivity(intent);
                 }
                 else{
                     startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                 }
 
             }
-        });
+        });**/
 
 
     }

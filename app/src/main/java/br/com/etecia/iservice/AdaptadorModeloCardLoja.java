@@ -115,7 +115,7 @@ public class AdaptadorModeloCardLoja extends RecyclerView.Adapter<AdaptadorModel
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             img_loja = itemView.findViewById(R.id.imgModeloCardLoja);
-            nota_loja = itemView.findViewById(R.id.txtModeloCardLojaNota);
+            nota_loja = itemView.findViewById(R.id.txtModeloCardLojaDesc);
             nome_loja = itemView.findViewById(R.id.txtModeloCardLojaNomLoja);
             rec_servicos = itemView.findViewById(R.id.recModeloCardsLojas);
         }

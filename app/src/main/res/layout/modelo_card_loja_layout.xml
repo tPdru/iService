@@ -47,19 +47,14 @@
                     android:orientation="horizontal"
                     android:padding="3dp">
 
-                    <ImageView
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:src="@drawable/ic_android_black" />
-
                     <TextView
-                        android:id="@+id/txtModeloCardLojaNota"
+                        android:id="@+id/txtModeloCardLojaDesc"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/textos"
-                        android:text="4.7"
-                        android:textColor="@color/cor_texto"
-                        android:textSize="@dimen/tamanho_grande" />
+                        android:text="DEscricap"
+                        android:textColor="#7B2F312F"
+                        android:textSize="@dimen/tamanho_medio" />
 
                 </LinearLayout>
 
