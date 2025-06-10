@@ -29,7 +29,6 @@ public class DialogDetalhesServico extends DialogFragment {
     ImageView imgServ;
 
     //Variáveis de controle
-    Button btnEntrarEmContato;
 
     //Construtor
     public DialogDetalhesServico(ObjCardServicoPp objCardServicoPp){

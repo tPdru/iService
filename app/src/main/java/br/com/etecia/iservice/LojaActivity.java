@@ -42,7 +42,7 @@ public class LojaActivity extends AppCompatActivity {
     //Banco Local
     DAOLocalPerfil daoLocalPerfil;
     DAOLocalLoja daoLocalLoja;
-    DAOLocalService daoLocalService ;
+    DAOLocalService daoLocalService;
     DAOLocalEndereco daoLocalEndereco;
 
     @Override
@@ -112,43 +112,43 @@ public class LojaActivity extends AppCompatActivity {
         });
 
 
-
-        recServicosLoja.setLayoutManager(new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.HORIZONTAL,false));
+        recServicosLoja.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false));
         recServicosLoja.setAdapter(adaptadorLoja);
 
         topAppBarLoja.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(LojaActivity.this, " " + listService.size(), Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getApplicationContext(),HomeActivity.class));
+                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                 finish();
             }
         });
 
-        /**btnEntrarEmContato.setOnClickListener(view -> new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String whatsapp = "";
-                if (contMaster.getLoginOn()){
-                    List<ObjPerfil> list = new ArrayList<>(daoLocalPerfil.readPerfil());
-                    for (int i=0; i < list.size();i++){
-                        if (loja.getCodUsuario()==list.get(i).getCodigo()){
-                            whatsapp = list.get(i).getCelular();
-                            break;
-                        }
+        btnEntrarEmContato.setOnClickListener(view -> {
+            String btn_whatsapp = "";
 
+            if (contMaster.getLoginOn()) {
+                List<ObjPerfil> list = new ArrayList<>(daoLocalPerfil.readPerfil());
+                for (ObjPerfil perfil : list) {
+                    if (loja.getCodUsuario() == perfil.getCodigo()) {
+                        btn_whatsapp = perfil.getCelular();
+                        break;
                     }
+                }
+
+                if (!btn_whatsapp.isEmpty()) {
                     Intent intent = new Intent(Intent.ACTION_VIEW);
-                    String url = "https://wa.me/" + whatsapp;
+                    String url = "https://api.whatsapp.com/send?phone=+55" + btn_whatsapp + "&text=Olá, gostaria de saber mais sobre...";
                     intent.setData(Uri.parse(url));
                     startActivity(intent);
-                }
-                else{
-                    startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                } else {
+                    Toast.makeText(getApplicationContext(), "Número de WhatsApp não encontrado", Toast.LENGTH_SHORT).show();
                 }
 
+            } else {
+                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
             }
-        });**/
+        });
 
 
     }
