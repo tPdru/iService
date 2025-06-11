@@ -53,7 +53,13 @@ public class FragmentPerfilUsuario extends Fragment {
         txtNome.setText(meuPerfil.getNome());
         txtEmail.setText(meuPerfil.getEmail());
         txtNomeFt.setText(meuPerfil.getNome());
-        Bitmap bitmap = BitmapFactory.decodeByteArray(imageBytes, 0,imageBytes.length);
-        imgPerfil.setImageBitmap(bitmap);
+        if ( meuPerfil.getFoto() != null ) {
+            Bitmap bitmap = BitmapFactory.decodeByteArray(imageBytes, 0,imageBytes.length);
+            imgPerfil.setImageBitmap(bitmap);
+        }else {
+            imgPerfil.setImageResource(R.drawable.foto_usuario);
+        }
+
+
     }
 }

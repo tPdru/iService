@@ -88,15 +88,24 @@ public class FragmentPerfilLoja extends Fragment {
 
         //Controlando informaçoes-----------------------------------------
 
-        if ( endereco != null ) {
+        txtNome.setText(minhaLoja.getNomeLoja());
+        txtDescricao.setText(minhaLoja.getDescricao());
+
+        if (minhaLoja.getImgLoja() != null) {
             Bitmap bitmap = BitmapFactory.decodeByteArray(minhaLoja.getImgLoja(), 0, minhaLoja.getImgLoja().length);
+            imgLoja.setImageBitmap(bitmap);
+        }else {
+            imgLoja.setImageResource(R.drawable.foto_imagem);
+        }
+
+
+
+
+        if ( endereco != null ) {
             //Colocando informações
             //Com endereço
             if ( minhaLoja.isTemEndereco() ) {
 
-                txtNome.setText(minhaLoja.getNomeLoja());
-                txtDescricao.setText(minhaLoja.getDescricao());
-                imgLoja.setImageBitmap(bitmap);
 
                 txtEstado.setText(endereco.getEstado());
                 txtCidade.setText(endereco.getCidade());
@@ -104,12 +113,6 @@ public class FragmentPerfilLoja extends Fragment {
                 txtRua.setText(endereco.getRua());
                 txtNumero.setText(endereco.getNumero());
                 txtComplemento.setText(endereco.getComplemento());
-            }else {
-                //Sem endereço
-                txtNome.setText(minhaLoja.getNomeLoja());
-                txtDescricao.setText(minhaLoja.getDescricao());
-                imgLoja.setImageBitmap(bitmap);
-
             }
         }
 

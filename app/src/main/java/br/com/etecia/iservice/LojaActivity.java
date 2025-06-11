@@ -1,6 +1,8 @@
 package br.com.etecia.iservice;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -89,10 +91,18 @@ public class LojaActivity extends AppCompatActivity {
             }
         }
 
-
         //Setando as imformaçoes de acordo com o card selecionado
+
+        if ( loja.getImgLoja() != null ) {
+
+            Bitmap bitmap = BitmapFactory.decodeByteArray(loja.getImgLoja(), 0, loja.getImgLoja().length);
+            imgFotoLoja.setImageBitmap(bitmap);
+        }else {
+            imgFotoLoja.setImageResource(R.drawable.foto_imagem);
+        }
+
+
         txtNomeLoja.setText(loja.getNomeLoja());
-        //imgFotoLoja.setImageResource(loja.getImgLoja());
         txtDescricao.setText(loja.getDescricao());
         if (loja.isTemEndereco()) {
             txtEnderecoLoja.setText(loja.getEnderecoLoja().getRua());
@@ -118,7 +128,6 @@ public class LojaActivity extends AppCompatActivity {
         topAppBarLoja.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(LojaActivity.this, " " + listService.size(), Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                 finish();
             }
