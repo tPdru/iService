@@ -3,14 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FragmentPerfilSemLoja"
-    android:background="@color/cor_fundo">
+    tools:context=".FragmentPerfilSemLoja">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/fundao"
+        android:scaleType="centerCrop"/>
 
     <Button
         android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_height="200dp"
         android:text="Crie sua loja"
         android:id="@+id/btnPerfilLojaSemLoja"
+        android:backgroundTint="@color/cor_principal"
         android:layout_centerVertical="true"
         android:textSize="@dimen/tamanho_maior"
         android:layout_centerHorizontal="true"/>

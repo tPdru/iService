@@ -27,6 +27,8 @@
 
                 <ImageView
                     android:id="@+id/imgPerfilLoja"
+                    android:padding="5dp"
+                    android:background="@color/cor_principal"
                     android:layout_width="200dp"
                     android:layout_height="200dp"
                     android:src="@drawable/foto_imagem" />

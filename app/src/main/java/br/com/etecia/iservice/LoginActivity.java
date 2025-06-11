@@ -22,9 +22,12 @@ public class LoginActivity extends AppCompatActivity {
     Button btnLogin, btnCadastrar;
     MaterialToolbar materialToolbar;
     int tentativas = 0;
+    ControllerMaster controllerMaster;
+
 
     //Variáveis de informação
     EditText txtEmail, txtSenha;
+    DAOLocalPerfil daoLocalPerfil;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +46,14 @@ public class LoginActivity extends AppCompatActivity {
         btnCadastrar = findViewById(R.id.btnCadastrar);
         txtEmail = findViewById(R.id.txtEmailUsuario);
         txtSenha = findViewById(R.id.txtSenhaUsuario);
+
+        controllerMaster = ControllerMaster.getControllerMaster();
+
+        daoLocalPerfil = new DAOLocalPerfil(getApplicationContext());
+
+        controllerMaster.carregarperfis(daoLocalPerfil.readPerfil());
+
+
 
         //Botões ---------------------------------------------
 

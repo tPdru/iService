@@ -93,6 +93,11 @@ public class ControllerMaster {
     }
     //--------------------------------------------------------------------------}
 
+    public void carregarperfis(List<ObjPerfil> list) {
+        listaPerfis.clear();
+        listaPerfis = new ArrayList<>(list);
+    }
+
     public void logout() {
         perfilLogado = null;
         indexConta = -1;  // índice inválido, indicando "nenhum usuário logado"
