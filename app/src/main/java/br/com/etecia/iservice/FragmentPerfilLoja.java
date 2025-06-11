@@ -35,7 +35,6 @@ public class FragmentPerfilLoja extends Fragment {
     AdaptadorPerfilLojaServicos adpLojasServicos;
     CardView cardAdicionarServico;
     InCriarServ inCriarServ;
-    Button btnSairConta;
     ControllerMaster contMaster = ControllerMaster.getControllerMaster();
 
     // Banco Local
@@ -68,7 +67,6 @@ public class FragmentPerfilLoja extends Fragment {
         txtComplemento = view.findViewById(R.id.txtComplementoLoja);
         cardAdicionarServico = view.findViewById(R.id.cardAdicionarServico);
 
-        btnSairConta = view.findViewById(R.id.btnSairDaConta);
 
         imgLoja = view.findViewById(R.id.imgPerfilLoja);
 
@@ -125,28 +123,13 @@ public class FragmentPerfilLoja extends Fragment {
                     public void salvar(ObjCardServicoPp servicoPp) {
                         //guarda no banco
                         daoLocalService.inserirService(servicoPp);
-                        //troca o tem service no banco
-                        if (!minhaLoja.isTemServicos()) {
-                            minhaLoja.setTemServicos(true);
-                            daoLocalLoja.atualizarLoja(minhaLoja);
-                        }
+                        Toast.makeText(getContext(),  id + " : " + servicoPp.getCodigoLoja(), Toast.LENGTH_SHORT).show();
                     }
                 });
                 dialog.show(getChildFragmentManager(), "criarServ");
-
-                Toast.makeText(getContext(), "Criar Serviço", Toast.LENGTH_SHORT).show();
             }
         });
 
-        //Botões ---------------------
-        //Botão sair da conta
-        btnSairConta.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                contMaster.setLoginOn(false);
-                startActivity(new Intent(getContext(), HomeActivity.class));
-            }
-        });
 
         return view;
     }

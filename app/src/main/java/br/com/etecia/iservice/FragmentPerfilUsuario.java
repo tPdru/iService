@@ -1,5 +1,6 @@
 package br.com.etecia.iservice;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,6 +24,8 @@ public class FragmentPerfilUsuario extends Fragment {
 
     ImageView imgPerfil;
 
+    Button btnSairConta;
+    ControllerMaster contMaster = ControllerMaster.getControllerMaster();
 
     //Pegando as informações do perfil
     ObjPerfil meuPerfil = ControllerMaster.getControllerMaster().getInformacoesPerfil();
@@ -40,9 +44,20 @@ public class FragmentPerfilUsuario extends Fragment {
         txtEmail = view.findViewById(R.id.txtPerfilEmail);
         txtNomeFt = view.findViewById(R.id.txtPerfilNomeFt);
         imgPerfil = view.findViewById(R.id.imgPerfil);
+        btnSairConta = view.findViewById(R.id.btnSairDaConta);
 
         //Preenchendo as informações do perfil
         informacoesPerfil(meuPerfil);
+
+        //Botões ---------------------
+        //Botão sair da conta
+        btnSairConta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                contMaster.setLoginOn(false);
+                startActivity(new Intent(getContext(), SplashActivity.class));
+            }
+        });
 
 
         return view;

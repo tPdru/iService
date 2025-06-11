@@ -58,8 +58,11 @@ public class DialogDetalhesServico extends DialogFragment {
 
 
         //Setando informações no dialog
-        Bitmap bitmap = BitmapFactory.decodeByteArray(objCardServicoPp.getImgServicoPp(),0,objCardServicoPp.getImgServicoPp().length);
-        imgServ.setImageBitmap(bitmap);
+        if (objCardServicoPp.getImgServicoPp() != null) {
+            Bitmap bitmap = BitmapFactory.decodeByteArray(objCardServicoPp.getImgServicoPp(),0,objCardServicoPp.getImgServicoPp().length);
+            imgServ.setImageBitmap(bitmap);
+        }
+
         txtNome.setText(objCardServicoPp.getTxtNomeServicoPp());
         txtDescricao.setText(objCardServicoPp.getTxtDetalhesServicoPp());
         //Formatando o valor

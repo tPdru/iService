@@ -33,7 +33,6 @@ public class LojaActivity extends AppCompatActivity {
     ObjCardLoja loja;
 
     //Variáveis de controle
-
     AdaptadorLoja adaptadorLoja;
     RecyclerView recServicosLoja;
     List<ObjCardServicoPp> listService;
@@ -67,7 +66,6 @@ public class LojaActivity extends AppCompatActivity {
         btnEntrarEmContato = findViewById(R.id.btnContatar);
         topAppBarLoja = findViewById(R.id.topAppBarLoja);
 
-
         //Instancias
         listService = new ArrayList<>();
         daoLocalPerfil = new DAOLocalPerfil(getApplicationContext());
@@ -91,28 +89,49 @@ public class LojaActivity extends AppCompatActivity {
             }
         }
 
-        //Setando as imformaçoes de acordo com o card selecionado
+        //Setando as informações de acordo com o card selecionado
 
-        if ( loja.getImgLoja() != null ) {
+        try {
+            // Decodifica os bytes da imagem da loja
+            Bitmap originalBitmap = BitmapFactory.decodeByteArray(loja.getImgLoja(), 0, loja.getImgLoja().length);
 
-            Bitmap bitmap = BitmapFactory.decodeByteArray(loja.getImgLoja(), 0, loja.getImgLoja().length);
-            imgFotoLoja.setImageBitmap(bitmap);
-        }else {
+            // Redimensiona a imagem para 300x300 pixels
+            Bitmap resizedBitmap = Bitmap.createScaledBitmap(originalBitmap, 300, 300, true);
+
+            // Exibe a imagem redimensionada no ImageView
+            imgFotoLoja.setImageBitmap(resizedBitmap);
+        } catch (Exception e) {
+            // Caso ocorra erro, aplica uma imagem padrão
             imgFotoLoja.setImageResource(R.drawable.foto_imagem);
         }
 
-
         txtNomeLoja.setText(loja.getNomeLoja());
         txtDescricao.setText(loja.getDescricao());
+
         if (loja.isTemEndereco()) {
             txtEnderecoLoja.setText(loja.getEnderecoLoja().getRua());
+        } else {
+            txtEnderecoLoja.setText("  ");
         }
-        if (loja.isTemServicos()) {
 
+        // ----------------- AQUI COMEÇA O FILTRO DE SERVIÇOS DA LOJA -----------------
+
+        // Limpa a lista para garantir que está vazia
+        listService.clear();
+
+        // Recupera todos os serviços salvos localmente
+        List<ObjCardServicoPp> todosServicos = daoLocalService.readService();
+
+        // Filtra os serviços que pertencem à loja atual e adiciona à listService
+        for (ObjCardServicoPp servico : todosServicos) {
+            if (servico.getCodigoLoja() == loja.getCodigLoja()) {
+                listService.add(servico);
+            }
         }
-        listService = new ArrayList<>(daoLocalService.readService());
 
-        //Configurando recycleView
+        // ----------------- FIM DO FILTRO -----------------
+
+        //Configurando RecyclerView com os serviços filtrados
         adaptadorLoja = new AdaptadorLoja(getApplicationContext(), listService, new InComunicarServPp() {
             @Override
             public void enviarServico(ObjCardServicoPp objServ) {
@@ -121,10 +140,11 @@ public class LojaActivity extends AppCompatActivity {
             }
         });
 
-
+        // Configura o layout horizontal para o RecyclerView de serviços
         recServicosLoja.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false));
         recServicosLoja.setAdapter(adaptadorLoja);
 
+        // Botão voltar na toolbar
         topAppBarLoja.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -158,7 +178,6 @@ public class LojaActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), LoginActivity.class));
             }
         });
-
 
     }
 }

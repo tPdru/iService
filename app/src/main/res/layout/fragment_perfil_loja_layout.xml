@@ -313,14 +313,7 @@
                         android:contentDescription="Lista de serviços da sua loja" />
                 </LinearLayout>
             </LinearLayout>
-            <Button
-                android:layout_gravity="center_horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="Sair da conta"
-                android:textSize="@dimen/tamanho_medio"
-                android:id="@+id/btnSairDaConta"/>
+
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

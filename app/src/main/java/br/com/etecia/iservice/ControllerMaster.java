@@ -28,11 +28,6 @@ public class ControllerMaster {
         return CONTROLLER_MASTER;
     }
 
-    //lista de perfil para testes
-    public static List<ObjPerfil> getListaPerfis() {
-        return new ArrayList<>(listaPerfis);
-    }
-
     //Metodo para criar um perfil garantindo que o email é unico
     public boolean criarPerfil(ObjPerfil perfil, String email){
         if (listaPerfis.size() > 0) {
@@ -50,9 +45,6 @@ public class ControllerMaster {
     }
 
     //Getters -----------------------------------------------------------------------
-    public int getCodigoList(){
-        return listaPerfis.size();
-    }
 
     //passar informações do perfil para o app
     public ObjPerfil getInformacoesPerfil(){
@@ -64,18 +56,11 @@ public class ControllerMaster {
         listaPerfis = new ArrayList<>(lista);
     }
 
-    //Passa informações da loja se ouver
-    public ObjCardLoja getInformacoesLoja(){
-        return listaPerfis.get(indexConta).getMinhaLoja();
-    }
 
     public boolean getLoginOn(){
         return loginOn;
     }
 
-    public List<ObjCardLoja> getListaLojas(){
-        return listaLojas;
-    }
 
     //Upgrade Perfil
     public void addLojaPerfil(ObjCardLoja loja){
@@ -112,39 +97,6 @@ public class ControllerMaster {
         return false;
     }
     //--------------------------------------------------------------------------}
-
-    /** obsoleto
-    //metodo para encontrar a loja atraves do codigo(email)
-    public ObjPerfil localizaadorLojas( String email){
-        int ind;
-        for ( int i = 0; i < listaPerfis.size(); i++) {
-
-           if (listaPerfis.get(i).getEmail().equals(email)){
-               return listaPerfis.get(i);
-           }
-
-        }
-        return localizaadorLojas(email);
-    }
-
-    //Recarregando a lista de lojas
-    public void carregarLojas(){
-        listaLojas.clear();
-        for (int i = 0; i < listaPerfis.size(); i++){
-            if (listaPerfis.get(i).isTemLoja()){
-                listaLojas.add(listaPerfis.get(i).getMinhaLoja());
-            }
-        }
-    }
-
-    public void carregarLojasBanco(List<ObjCardLoja> lista) {
-
-        for (int i = 0; i < lista.size(); i++) {
-            listaLojas.add(lista.get(i));
-        }
-
-    }*/
-
 
 
 }

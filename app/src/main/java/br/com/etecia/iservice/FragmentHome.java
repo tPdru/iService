@@ -57,34 +57,11 @@ public class FragmentHome extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        // Pega lista atualizada
+        List<ObjCardLoja> novaLista = daoLocalLoja.readLojas();
 
-        //adicionando lojas atravez do banco
-        /** Atualizaçaõ via banco online
-        DAOLoja daoLoja = new DAOLoja();
-        daoLoja.readLojas(requireContext(), new InRespostaPerfil() {
-            @Override
-            public void listaReadPerfil(List<ObjPerfil> listaPerfils) {
-
-            }
-            @Override
-            public void listaReadLoja(List<ObjCardLoja> listaLojas) {
-
-                if (listaLojas != null) {
-                    if (listaCardLoja != null) {
-                        listaCardLoja.clear();
-                    }
-                    listaCardLoja.addAll(listaLojas);
-                    adpLojas.atualizarListaAgendados(listaLojas);
-                    Toast.makeText(getContext(), listaLojas.get(0).getNomeLoja(), Toast.LENGTH_SHORT).show();
-                }
-
-            }
-        });
-         */
-
-
-        /**adicionando lojas atravez do banco Local*/
-        listaCardLoja = new ArrayList<>(daoLocalLoja.readLojas());
+        // Atualiza o adaptador com a nova lista
+        adpLojas.atualizarListaAgendados(novaLista);
 
     }
 }

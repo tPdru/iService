@@ -2,6 +2,8 @@ package br.com.etecia.iservice;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,9 +40,16 @@ public class AdaptadorPerfilLojaServicos extends RecyclerView.Adapter<AdaptadorP
     public void onBindViewHolder(@NonNull AdaptadorPerfilLojaServicos.ViewHolder holder, int position) {
 
         //Colocando as informaçoes nos itens
-        //holder.imgfoto.setImageResource(listaServicos.get(position).getImgServicoPp());
+
+        if (listaServicos.get(position).getImgServicoPp() != null) {
+            Bitmap bitmap = BitmapFactory.decodeByteArray(listaServicos.get(position).getImgServicoPp(), 0, listaServicos.get(position).getImgServicoPp().length);
+            holder.imgfoto.setImageBitmap(bitmap);
+        } else {
+            holder.imgfoto.setImageResource(R.drawable.foto_imagem);
+        }
         holder.txtNome.setText(listaServicos.get(position).getTxtNomeServicoPp());
         holder.txtValor.setText( String.valueOf(listaServicos.get(position).getTxtValorServicoPp()) );
+
 
         //Captando o item que foi clicado
         holder.itemView.setOnClickListener(new View.OnClickListener() {

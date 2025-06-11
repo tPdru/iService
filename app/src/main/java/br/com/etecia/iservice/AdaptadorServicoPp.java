@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AdaptadorServicoPp extends RecyclerView.Adapter<AdaptadorServicoPp.ViewHolder> {
@@ -23,7 +24,7 @@ public class AdaptadorServicoPp extends RecyclerView.Adapter<AdaptadorServicoPp.
 
     public AdaptadorServicoPp(Context context, List<ObjCardServicoPp> listaServicoPp) {
         this.context = context;
-        this.listaServicoPp = listaServicoPp;
+        this.listaServicoPp =listaServicoPp;
     }
 
     @NonNull
