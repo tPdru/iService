@@ -2,6 +2,8 @@ package br.com.etecia.iservice;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,7 +41,12 @@ public class AdaptadorLoja extends RecyclerView.Adapter <AdaptadorLoja.ViewHolde
     @Override
     public void onBindViewHolder(@NonNull AdaptadorLoja.ViewHolder holder, int position) {
 
-        holder.imgServ.setImageResource(listaServicos.get(position).getImgServicoPp());
+        if (listaServicos.get(position).getImgServicoPp() != null) {
+            Bitmap bitmap = BitmapFactory.decodeByteArray(listaServicos.get(position).getImgServicoPp(), 0, listaServicos.get(position).getImgServicoPp().length);
+            holder.imgServ.setImageBitmap(bitmap);
+
+        }
+
         holder.nomeServ.setText(listaServicos.get(position).getTxtNomeServicoPp());
 
         //Ajustando a formatação do valor

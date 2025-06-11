@@ -2,6 +2,10 @@ package br.com.etecia.iservice;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -11,18 +15,25 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
+
+import java.io.ByteArrayOutputStream;
 
 public class DialogCriarServico extends DialogFragment {
 
     // Variáveis de informação
     EditText txtNome, txtValor, txtDescriacao;
     private long idLoja;
+    ImageView imgCriarServico;
+    ActivityResultLauncher<Intent> imagePickerLauncher;
+    byte [] imageBytes;
 
     // Variaveis de controle
-    Button btnCancelar, btnCriar;
+    Button btnCancelar, btnCriar, btnAdcFotoServ;
 
     //Interface
     InCriarServ inCriarServ;
@@ -33,6 +44,19 @@ public class DialogCriarServico extends DialogFragment {
         this.inCriarServ = inCriarServ;
     }
 
+    private byte[] imageViewToByte(ImageView imgCriarServico) {
+        // Pega o drawable (imagem) do ImageView e o converte para Bitmap
+        Bitmap bitmap = ((BitmapDrawable) imgCriarServico.getDrawable()).getBitmap();
+
+        // Cria um fluxo de bytes na memória para armazenar a imagem comprimida
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+
+        // Comprime o bitmap em formato PNG com qualidade 100% e escreve no stream
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+
+        // Retorna o array de bytes com os dados da imagem comprimida
+        return stream.toByteArray();
+    }
 
 
     @NonNull
@@ -46,15 +70,67 @@ public class DialogCriarServico extends DialogFragment {
         AlertDialog dialog = bilder.setView(view).create();
         //----------------------------------------------------------------------------------
 
+        imagePickerLauncher = registerForActivityResult(
+                // Define o tipo de contrato para iniciar uma Activity esperando um resultado
+                new ActivityResultContracts.StartActivityForResult(),
+
+                // Define o que fazer quando a Activity retornar um resultado
+                result -> {
+                    // Verifica se o resultado foi OK e se os dados retornados não são nulos
+                    if (result.getResultCode() == -1 && result.getData() != null){
+
+                        // Obtém a URI da imagem selecionada
+                        Uri selectedImageUri = result.getData().getData();
+
+                        // Define essa URI como a imagem exibida no ImageView
+                        imgCriarServico.setImageURI(selectedImageUri);
+
+                        // Verifica se há uma imagem no ImageView antes de converter
+                        if (imgCriarServico.getDrawable() != null) {
+
+                            // Caso a seleção falhe ou seja cancelada, salva a imagem padrão
+                            imageBytes = imageViewToByte(imgCriarServico);
+                        } else {
+                            //Define a imagem padrão
+                            imgCriarServico.setImageResource(R.drawable.foto_imagem);
+
+                            //converter a imagem para byte[]
+                            imageBytes=imageViewToByte(imgCriarServico);
+                        }
+
+                    } else {
+                        //Define a imagem padrão
+                        imgCriarServico.setImageResource(R.drawable.foto_imagem);
+
+                        //converter a imagem para byte[]
+                        imageBytes=imageViewToByte(imgCriarServico);
+                    }
+                });
+
         // apresentação Java + XML
         btnCriar = view.findViewById(R.id.btnCriarServicoCriar);
         btnCancelar = view.findViewById(R.id.btnCriarServicoCancelar);
         txtNome = view.findViewById(R.id.txtCriarServicoNome);
         txtValor = view.findViewById(R.id.txtCriarServicoValor);
         txtDescriacao = view.findViewById(R.id.txtCriarServicoDescricao);
+        btnAdcFotoServ = view.findViewById(R.id.btnAdcFotoServ);
+        imgCriarServico = view.findViewById(R.id.imgCriarServico);
 
 
         /** ------------------------------- Botões ------------------------------- **/
+
+        // Botão para escolher imagem
+        btnAdcFotoServ.setOnClickListener(v -> {
+            // Cria uma intent para abrir o seletor de imagens do dispositivo
+            Intent intent = new Intent(Intent.ACTION_PICK);
+
+            // Define que o tipo de conteúdo a ser selecionado é imagem
+            intent.setType("image/*");
+
+            // Lança a intent usando o launcher previamente registrado (imagePickerLauncher)
+            imagePickerLauncher.launch(intent);
+        });
+
         //Botão Criar
         btnCriar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +147,7 @@ public class DialogCriarServico extends DialogFragment {
                     serv.setTxtNomeServicoPp(String.valueOf(txtNome.getText()));
                     serv.setTxtValorServicoPp(Long.parseLong(String.valueOf(txtValor.getText())));
                     serv.setTxtDetalhesServicoPp(String.valueOf(txtDescriacao.getText()));
+                    serv.setImgServicoPp(imageBytes);
 
                     inCriarServ.salvar(serv);
                     dialog.dismiss();
