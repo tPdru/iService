@@ -2,17 +2,17 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    android:background="@drawable/borda"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
     android:layout_marginBottom="15dp"
     app:cardCornerRadius="15dp"
     app:cardBackgroundColor="@color/cor_texto"
-
     >
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="150dp"
         android:background="@color/cor_detalhes_secundarios"
         android:orientation="vertical"
         android:padding="20dp">
@@ -55,6 +55,7 @@
                         android:id="@+id/txtModeloCardLojaDesc"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
                         android:fontFamily="@font/textos"
                         android:layout_marginStart="10dp"
                         android:text="Descrição do produto"
