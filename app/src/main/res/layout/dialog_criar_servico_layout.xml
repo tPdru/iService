@@ -108,7 +108,7 @@
                         android:layout_height="70sp"
                         android:fontFamily="@font/textos"
                         android:hint="Valor Serviço"
-                        android:inputType="text"
+                        android:inputType="numberDecimal"
                         android:maxWidth="230sp"
                         android:maxLength="30"
                         android:textColor="@color/cor_texto"

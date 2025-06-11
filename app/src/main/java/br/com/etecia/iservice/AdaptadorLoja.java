@@ -41,14 +41,19 @@ public class AdaptadorLoja extends RecyclerView.Adapter <AdaptadorLoja.ViewHolde
     @Override
     public void onBindViewHolder(@NonNull AdaptadorLoja.ViewHolder holder, int position) {
 
-        if (listaServicos.get(position).getImgServicoPp() != null) {
-            Bitmap bitmap = BitmapFactory.decodeByteArray(listaServicos.get(position).getImgServicoPp(), 0, listaServicos.get(position).getImgServicoPp().length);
-            holder.imgServ.setImageBitmap(bitmap);
-
+        byte[] imgBytes = listaServicos.get(position).getImgServicoPp();
+        if (imgBytes != null && imgBytes.length > 0) {
+            Bitmap bitmap = BitmapFactory.decodeByteArray(imgBytes, 0, imgBytes.length);
+            if (bitmap != null) {
+                holder.imgServ.setImageBitmap(bitmap);
+            } else {
+                holder.imgServ.setImageResource(R.drawable.foto_imagem); // imagem padrão
+            }
+        } else {
+            holder.imgServ.setImageResource(R.drawable.foto_imagem); // imagem padrão
         }
 
         holder.nomeServ.setText(listaServicos.get(position).getTxtNomeServicoPp());
-
         //Ajustando a formatação do valor
         String valorFormatado = "R$: " + listaServicos.get(position).getTxtValorServicoPp();
 

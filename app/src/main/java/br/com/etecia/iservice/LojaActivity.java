@@ -167,7 +167,7 @@ public class LojaActivity extends AppCompatActivity {
 
                 if (!btn_whatsapp.isEmpty()) {
                     Intent intent = new Intent(Intent.ACTION_VIEW);
-                    String url = "https://api.whatsapp.com/send?phone=+55" + btn_whatsapp + "&text=Olá, gostaria de saber mais sobre...";
+                    String url = "https://api.whatsapp.com/send?phone=+55" + btn_whatsapp + "&text=Olá, vi seus serviços pelo Quack Workes e fiquei interessado. Pode me ajudar?...";
                     intent.setData(Uri.parse(url));
                     startActivity(intent);
                 } else {

@@ -54,16 +54,13 @@ public class CadastrarLojaActivity extends AppCompatActivity {
 
     //converter imageView pra byte
     private byte[] imageViewToByte(ImageView imgCad) {
-        // Pega o drawable (imagem) do ImageView e o converte para Bitmap
         Bitmap bitmap = ((BitmapDrawable) imgCad.getDrawable()).getBitmap();
 
-        // Cria um fluxo de bytes na memória para armazenar a imagem comprimida
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
 
-        // Comprime o bitmap em formato PNG com qualidade 100% e escreve no stream
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        // Usando JPEG (mais leve que PNG) com qualidade de 70%
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 70, stream);
 
-        // Retorna o array de bytes com os dados da imagem comprimida
         return stream.toByteArray();
     }
 
@@ -129,62 +126,64 @@ public class CadastrarLojaActivity extends AppCompatActivity {
         //*lojaFisica = false;
 
 
-        // Inicializa o launcher para selecionar imagem
+        // Inicializa o launcher para selecionar imagem da galeria
         imagePickerLauncher = registerForActivityResult(
-                // Define o tipo de contrato para iniciar uma Activity esperando um resultado
                 new ActivityResultContracts.StartActivityForResult(),
 
-                // Define o que fazer quando a Activity retornar um resultado
                 result -> {
-                    // Verifica se o resultado foi OK e se os dados retornados não são nulos
+                    // Checa se a seleção foi bem-sucedida e os dados não são nulos
                     if (result.getResultCode() == RESULT_OK && result.getData() != null) {
 
-                        // Obtém a URI da imagem selecionada
+                        // Pega a URI da imagem selecionada
                         Uri selectedImageUri = result.getData().getData();
 
-                        // Define essa URI como a imagem exibida no ImageView
+                        // Define essa URI no ImageView para mostrar a imagem escolhida
                         imgCadLoja.setImageURI(selectedImageUri);
 
-                        // Verifica se há uma imagem no ImageView antes de converter
+                        // Verifica se o ImageView tem uma imagem carregada
                         if (imgCadLoja.getDrawable() != null) {
-
-                            // Caso a seleção falhe ou seja cancelada, salva a imagem padrão
+                            // Converte a imagem exibida no ImageView para byte[]
                             imageBytes = imageViewToByte(imgCadLoja);
-                            Toast.makeText(this, "Imagen selecionada!", Toast.LENGTH_SHORT).show();
+
+                            Toast.makeText(this, "Imagem selecionada!", Toast.LENGTH_SHORT).show();
+
                         } else {
-                            //Define a imagem padrão
+                            // Caso não tenha imagem (falha), seta uma imagem padrão
                             imgCadLoja.setImageResource(R.drawable.foto_imagem);
 
-                            //converter a imagem para byte[]
-                            imageBytes=imageViewToByte(imgCadLoja);
-                            Toast.makeText(this, "Imagem padrão selecionada", Toast.LENGTH_SHORT).show();
+                            // Converte imagem padrão para byte[]
+                            imageBytes = imageViewToByte(imgCadLoja);
 
+                            Toast.makeText(this, "Imagem padrão selecionada", Toast.LENGTH_SHORT).show();
                         }
 
                     } else {
-                        //Define a imagem padrão
+                        // Se o usuário cancelou ou não selecionou, seta imagem padrão
                         imgCadLoja.setImageResource(R.drawable.foto_imagem);
 
-                        //converter a imagem para byte[]
-                        imageBytes=imageViewToByte(imgCadLoja);
+                        // Converte imagem padrão para byte[]
+                        imageBytes = imageViewToByte(imgCadLoja);
+
                         Toast.makeText(this, "Imagem padrão selecionada", Toast.LENGTH_SHORT).show();
                     }
-                });
+                }
+        );
 
 
-        //CheckBox, ativar e desativar área de endereço
+        // Listener para o CheckBox que ativa/desativa a área de endereço
         cbxAreaEndereco.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (cbxAreaEndereco.isChecked()) {
-                    lnlAreaEndereco.setEnabled(false);
-                    ativacaoElementos(listElementos, false);
-                    lojaFisica = false;
+                if (isChecked) {
+                    // Quando marcado, desativa a área de endereço e seus elementos
+                    lnlAreaEndereco.setEnabled(false);          // Desativa o layout que contém o endereço
+                    ativacaoElementos(listElementos, false);    // Desativa todos os elementos do endereço
+                    lojaFisica = false;                          // Marca que não é loja física
                 } else {
-                    lnlAreaEndereco.setEnabled(true);
-                    ativacaoElementos(listElementos, true);
-                    lojaFisica = true;
+                    // Quando desmarcado, ativa a área de endereço e seus elementos
+                    lnlAreaEndereco.setEnabled(true);           // Ativa o layout que contém o endereço
+                    ativacaoElementos(listElementos, true);     // Ativa todos os elementos do endereço
+                    lojaFisica = true;                           // Marca que é loja física
                 }
             }
         });
@@ -311,16 +310,25 @@ public class CadastrarLojaActivity extends AppCompatActivity {
 
     }
 
-    //Função para desativar ou ativar os elemento de endereço
+    // Função para ativar ou desativar os elementos da lista de endereço
     private void ativacaoElementos(List<TextInputLayout> listElemento, boolean enable) {
+        // Percorre todos os elementos da lista
         for (int i = 0; i < listElemento.size(); i++) {
-            listElemento.get(i).setVisibility(enable ? View.GONE : View.VISIBLE);
+            // Ativa ou desativa o elemento conforme o parâmetro 'enable'
+            // Use setEnabled para ativar/desativar entrada do usuário
+            listElemento.get(i).setEnabled(enable);
+
+            // Se quiser esconder o campo quando desativar, pode usar setVisibility, mas aqui ativamos/desativamos
+            // Exemplo para esconder em vez de desativar:
+            // listElemento.get(i).setVisibility(enable ? View.VISIBLE : View.GONE);
         }
     }
 
-    // Metodo de checar se os campos estão preenchidos
+    // Método para verificar se o campo está preenchido (não vazio)
+// Retorna true se preenchido, false se vazio e já mostra erro no campo
     private boolean checkCampo(String texto, TextInputEditText inputEditText) {
         if (TextUtils.isEmpty(texto)) {
+            // Caso campo vazio, mostra mensagem de erro no campo e foca nele
             inputEditText.setError("Preencha todos os campos!");
             inputEditText.requestFocus();
             return false;
@@ -328,6 +336,7 @@ public class CadastrarLojaActivity extends AppCompatActivity {
             return true;
         }
     }
+
 
 
 

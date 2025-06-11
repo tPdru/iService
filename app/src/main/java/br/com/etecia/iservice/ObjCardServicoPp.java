@@ -3,12 +3,12 @@ package br.com.etecia.iservice;
 public class ObjCardServicoPp {
     byte[] imgServicoPp;
     String txtNomeServicoPp, txtDetalhesServicoPp;
-    double txtValorServicoPp;
+    String txtValorServicoPp;
     private long codigo;
     private long codigoLoja;
 
 
-    public ObjCardServicoPp(byte[] imgServicoPp, String txtNomeServicoPp, String txtDetalhesServicoPp, double txtValorServicoPp) {
+    public ObjCardServicoPp(byte[] imgServicoPp, String txtNomeServicoPp, String txtDetalhesServicoPp, String txtValorServicoPp) {
         this.imgServicoPp = imgServicoPp;
         this.txtNomeServicoPp = txtNomeServicoPp;
         this.txtDetalhesServicoPp =txtDetalhesServicoPp;
@@ -60,11 +60,11 @@ public class ObjCardServicoPp {
         this.txtNomeServicoPp = txtNomeServicoPp;
     }
 
-    public double getTxtValorServicoPp() {
+    public String getTxtValorServicoPp() {
         return txtValorServicoPp;
     }
 
-    public void setTxtValorServicoPp(double txtValorServicoPp) {
+    public void setTxtValorServicoPp(String txtValorServicoPp) {
         this.txtValorServicoPp = txtValorServicoPp;
     }
 }

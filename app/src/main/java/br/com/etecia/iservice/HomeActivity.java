@@ -68,27 +68,6 @@ public class HomeActivity extends AppCompatActivity {
         });
 
 
-        //Controle bot navigation
-        /*bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                //Recebe o fragmento correspondete ao item selecionado
-                Fragment fragment = null;
-
-                if (item.getItemId() == R.id.itemMenuBotHome) {
-
-                    fragment = new FragmentHome();
-
-                }
-
-                if (fragment != null) {
-                    getSupportFragmentManager().beginTransaction().replace(R.id.frmLayoutConteiner, fragment).commit();
-                }
-
-                return true;
-            }
-        });*/
 
     }
 

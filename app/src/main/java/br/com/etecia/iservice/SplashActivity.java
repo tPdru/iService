@@ -93,7 +93,7 @@ public class SplashActivity extends AppCompatActivity {
 
                 //Banco local
                 // Instancias
-                daoLocalPerfil = new DAOLocalPerfil(getApplicationContext());
+                /*daoLocalPerfil = new DAOLocalPerfil(getApplicationContext());
                 daoLocalLoja = new DAOLocalLoja(getApplicationContext());
 
 
@@ -141,7 +141,7 @@ public class SplashActivity extends AppCompatActivity {
                 }
 
                 // Coloca os perfis na lista do controleMaster
-                contMaster.setCarregarListaPerfil(daoLocalPerfil.readPerfil());
+                contMaster.setCarregarListaPerfil(daoLocalPerfil.readPerfil());*/
 
                 //contMaster.carregarLojas();
                 startActivity(new Intent(getApplicationContext(), HomeActivity.class));
@@ -150,81 +150,5 @@ public class SplashActivity extends AppCompatActivity {
         }, 2000);
 
     }
-
-    /*** obsoleto
-    private void addPerfis(String email){
-        //Criação de conta teste
-
-        ObjCardLoja novaLoja;
-        List<ObjCardServicoPp> listaServicos = new ArrayList<>();
-
-        //Criando serviços
-        ObjCardServicoPp servicoPp = new ObjCardServicoPp(
-                R.drawable.foto_imagem,
-                "Corte",
-                "Qualquer corte mesmo valor",
-                35.00);
-        listaServicos.add(servicoPp);
-
-        servicoPp = new ObjCardServicoPp(
-                R.drawable.foto_imagem,
-                "Barba",
-                "Qualque estilo é o mesmo valor",
-                30.00);
-        listaServicos.add(servicoPp);
-
-        servicoPp = new ObjCardServicoPp(
-                R.drawable.foto_imagem,
-                "Sombrancelhas",
-                "Escolha como quer sua sombrancelha valores não mudão",
-                20.00);
-        listaServicos.add(servicoPp);
-
-        servicoPp = new ObjCardServicoPp(
-                R.drawable.foto_imagem,
-                "Pintura",
-                "Com sua tintura é mais barato",
-                40.00);
-        listaServicos.add(servicoPp);
-
-
-        //Criando um endereço
-        ObjEndereco endere = new ObjEndereco(
-                111,
-                "São Paulo",
-                "BLoco B",
-                "São Paulo",
-                "Satelite",
-                23,
-                "Laranjeiras"
-        );
-
-
-        ObjPerfil perfil = new ObjPerfil(
-                ControllerMaster.getControllerMaster().getCodigoList() + 1,
-                email,
-                "Neymar Júnior",
-                "Senha",
-                "Ney",
-
-                true,
-                novaLoja = new ObjCardLoja(
-                        email,
-                        R.drawable.foto_imagem,
-                        listaServicos,
-                        "Barbearia",
-                        4.5,
-                        endere
-                )
-
-        );
-
-        // avisando que tem servisos e endereço
-        perfil.getMinhaLoja().setTemServicos(true);
-        perfil.getMinhaLoja().setTemEndereco(true);
-
-        ControllerMaster.getControllerMaster().criarPerfil(perfil, email);
-    }
-    */
 
 }

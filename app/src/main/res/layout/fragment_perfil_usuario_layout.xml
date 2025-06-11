@@ -28,13 +28,16 @@
                     android:layout_height="100dp"
                     android:background="@color/cor_principal" />
 
+
                 <ImageView
                     android:id="@+id/imgPerfil"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="40dp"
-                    android:src="@drawable/foto_usuario" />
+                    android:background="@color/cor_principal"
+                    android:src="@drawable/foto_usuario"
+                    android:padding="5dp"/>
 
                 <LinearLayout
                     android:layout_width="100dp"
@@ -55,7 +58,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:fontFamily="@font/textos"
-                        android:text="4.75"
+                        android:text="N/A"
                         android:textColor="@color/cor_secundaria"
                         android:textSize="@dimen/tamanho_grande" />
 
@@ -89,7 +92,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:fontFamily="@font/textos"
-                        android:text="128"
+                        android:text="N/A"
                         android:textColor="@color/cor_secundaria"
                         android:textSize="@dimen/tamanho_grande" />
 

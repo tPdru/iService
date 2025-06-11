@@ -54,7 +54,7 @@ public class FragmentPerfilUsuario extends Fragment {
         btnSairConta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                contMaster.setLoginOn(false);
+                contMaster.logout();
                 startActivity(new Intent(getContext(), SplashActivity.class));
             }
         });

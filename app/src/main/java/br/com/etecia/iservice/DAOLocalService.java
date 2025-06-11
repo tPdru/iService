@@ -92,7 +92,7 @@ public class DAOLocalService {
                 long id = cursor.getInt(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_ID_SERV));
                 String nome = cursor.getString(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_NOME_SERV));
                 String descricao =  cursor.getString(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_DESCRICAO_SERV));
-                double valor = cursor.getInt(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_VALOR_SERV));
+                String valor = cursor.getString(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_VALOR_SERV));
                 long idLoja = cursor.getInt(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_ID_LOJA_FK));
 
                 //Objeto Loja vazio

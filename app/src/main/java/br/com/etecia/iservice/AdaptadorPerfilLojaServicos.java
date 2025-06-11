@@ -61,7 +61,6 @@ public class AdaptadorPerfilLojaServicos extends RecyclerView.Adapter<AdaptadorP
                 //Verifica se a posição do item clicado e valida
                 if ( pos == RecyclerView.NO_POSITION )  return;
 
-                Toast.makeText(context, "Teste", Toast.LENGTH_SHORT).show();
             }
         });
 

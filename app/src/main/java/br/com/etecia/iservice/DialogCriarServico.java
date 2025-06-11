@@ -44,17 +44,14 @@ public class DialogCriarServico extends DialogFragment {
         this.inCriarServ = inCriarServ;
     }
 
-    private byte[] imageViewToByte(ImageView imgCriarServico) {
-        // Pega o drawable (imagem) do ImageView e o converte para Bitmap
-        Bitmap bitmap = ((BitmapDrawable) imgCriarServico.getDrawable()).getBitmap();
+    private byte[] imageViewToByte(ImageView imgCad) {
+        Bitmap bitmap = ((BitmapDrawable) imgCad.getDrawable()).getBitmap();
 
-        // Cria um fluxo de bytes na memória para armazenar a imagem comprimida
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
 
-        // Comprime o bitmap em formato PNG com qualidade 100% e escreve no stream
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        // Usando JPEG (mais leve que PNG) com qualidade de 70%
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 70, stream);
 
-        // Retorna o array de bytes com os dados da imagem comprimida
         return stream.toByteArray();
     }
 
@@ -145,9 +142,10 @@ public class DialogCriarServico extends DialogFragment {
 
                     serv.setCodigoLoja(idLoja);
                     serv.setTxtNomeServicoPp(String.valueOf(txtNome.getText()));
-                    serv.setTxtValorServicoPp(Long.parseLong(String.valueOf(txtValor.getText())));
+                    serv.setTxtValorServicoPp(String.valueOf(txtValor.getText()));
                     serv.setTxtDetalhesServicoPp(String.valueOf(txtDescriacao.getText()));
                     serv.setImgServicoPp(imageBytes);
+
 
                     inCriarServ.salvar(serv);
                     dialog.dismiss();

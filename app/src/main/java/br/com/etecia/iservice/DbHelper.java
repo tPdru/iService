@@ -104,7 +104,7 @@ public class DbHelper extends SQLiteOpenHelper {
                     COLUMN_IMG_SERV + " BLOB, " +
                     COLUMN_DESCRICAO_SERV + " TEXT, " +
                     COLUMN_NOME_SERV + " TEXT, " +
-                    COLUMN_VALOR_SERV + " REAL, " +
+                    COLUMN_VALOR_SERV + " TEXT, " +
                     "FOREIGN KEY (" + COLUMN_ID_LOJA_FK + ") REFERENCES " + TABLE_LOJA + "(" + COLUMN_ID_LOJA + ")" +
                     ");";
 

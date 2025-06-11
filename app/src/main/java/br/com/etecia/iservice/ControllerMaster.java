@@ -51,12 +51,6 @@ public class ControllerMaster {
         return perfilLogado;
     }
 
-    //CArregar a lista de perfil
-    public void setCarregarListaPerfil(List<ObjPerfil> lista) {
-        listaPerfis = new ArrayList<>(lista);
-    }
-
-
     public boolean getLoginOn(){
         return loginOn;
     }
@@ -97,6 +91,12 @@ public class ControllerMaster {
         return false;
     }
     //--------------------------------------------------------------------------}
+
+    public void logout() {
+        perfilLogado = null;
+        indexConta = -1;  // índice inválido, indicando "nenhum usuário logado"
+        loginOn = false;
+    }
 
 
 }

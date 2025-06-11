@@ -123,7 +123,6 @@ public class FragmentPerfilLoja extends Fragment {
                     public void salvar(ObjCardServicoPp servicoPp) {
                         //guarda no banco
                         daoLocalService.inserirService(servicoPp);
-                        Toast.makeText(getContext(),  id + " : " + servicoPp.getCodigoLoja(), Toast.LENGTH_SHORT).show();
                     }
                 });
                 dialog.show(getChildFragmentManager(), "criarServ");
