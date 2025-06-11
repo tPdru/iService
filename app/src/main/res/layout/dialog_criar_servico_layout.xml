@@ -148,12 +148,19 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:gravity="center|top"
+                    android:layout_marginTop="@dimen/tamanho_medio"
+                    >
 
                     <Button
                         android:id="@+id/btnCriarServicoCancelar"
                         android:layout_width="150dp"
                         android:layout_height="70dp"
+                        android:hint="Cancelar"
+                        android:backgroundTint="@color/cor_recusar"
+                        android:textSize="@dimen/tamanho_medio"
+                        android:textColorHint="@color/cor_texto_claro"
                         android:layout_below="@id/txtCriarServicoDescricao"
                         android:layout_margin="5dp" />
 
@@ -161,6 +168,10 @@
                         android:id="@+id/btnCriarServicoCriar"
                         android:layout_width="150dp"
                         android:layout_height="70dp"
+                        android:hint="Criar"
+                        android:backgroundTint="@color/cor_confirmar"
+                        android:textSize="@dimen/tamanho_medio"
+                        android:textColorHint="@color/cor_texto_claro"
                         android:layout_below="@id/txtCriarServicoDescricao"
                         android:layout_alignParentRight="true"
                         android:layout_margin="5dp" />
