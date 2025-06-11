@@ -3,6 +3,9 @@ package br.com.etecia.iservice;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -55,7 +58,8 @@ public class DialogDetalhesServico extends DialogFragment {
 
 
         //Setando informações no dialog
-        imgServ.setImageResource(objCardServicoPp.getImgServicoPp());
+        Bitmap bitmap = BitmapFactory.decodeByteArray(objCardServicoPp.getImgServicoPp(),0,objCardServicoPp.getImgServicoPp().length);
+        imgServ.setImageBitmap(bitmap);
         txtNome.setText(objCardServicoPp.getTxtNomeServicoPp());
         txtDescricao.setText(objCardServicoPp.getTxtDetalhesServicoPp());
         //Formatando o valor

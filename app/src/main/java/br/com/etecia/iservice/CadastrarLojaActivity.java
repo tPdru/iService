@@ -169,8 +169,7 @@ public class CadastrarLojaActivity extends AppCompatActivity {
                         imageBytes=imageViewToByte(imgCadLoja);
                         Toast.makeText(this, "Imagem padrão selecionada", Toast.LENGTH_SHORT).show();
                     }
-                }
-        );
+                });
 
 
         //CheckBox, ativar e desativar área de endereço

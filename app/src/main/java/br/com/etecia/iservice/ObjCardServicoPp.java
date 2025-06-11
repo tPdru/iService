@@ -1,14 +1,14 @@
 package br.com.etecia.iservice;
 
 public class ObjCardServicoPp {
-    int imgServicoPp;
+    byte[] imgServicoPp;
     String txtNomeServicoPp, txtDetalhesServicoPp;
     double txtValorServicoPp;
     private long codigo;
     private long codigoLoja;
 
 
-    public ObjCardServicoPp(int imgServicoPp, String txtNomeServicoPp, String txtDetalhesServicoPp, double txtValorServicoPp) {
+    public ObjCardServicoPp(byte[] imgServicoPp, String txtNomeServicoPp, String txtDetalhesServicoPp, double txtValorServicoPp) {
         this.imgServicoPp = imgServicoPp;
         this.txtNomeServicoPp = txtNomeServicoPp;
         this.txtDetalhesServicoPp =txtDetalhesServicoPp;
@@ -44,11 +44,11 @@ public class ObjCardServicoPp {
         this.txtDetalhesServicoPp = txtDetalhesServicoPp;
     }
 
-    public int getImgServicoPp() {
+    public byte[] getImgServicoPp() {
         return imgServicoPp;
     }
 
-    public void setImgServicoPp(int imgServicoPp) {
+    public void setImgServicoPp(byte[] imgServicoPp) {
         this.imgServicoPp = imgServicoPp;
     }
 

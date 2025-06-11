@@ -1,6 +1,8 @@
 package br.com.etecia.iservice;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,7 +39,12 @@ public class AdaptadorServicoPp extends RecyclerView.Adapter<AdaptadorServicoPp.
     @Override
     public void onBindViewHolder(@NonNull AdaptadorServicoPp.ViewHolder holder, int position) {
 
-        holder.img_servico_pp.setImageResource(listaServicoPp.get(position).getImgServicoPp());
+        if (listaServicoPp.get(position).getImgServicoPp() != null) {
+            Bitmap bitmap = BitmapFactory.decodeByteArray(listaServicoPp.get(position).getImgServicoPp(), 0, listaServicoPp.get(position).getImgServicoPp().length);
+            holder.img_servico_pp.setImageBitmap(bitmap);
+
+        }
+
         holder.txt_nome_servico_pp.setText(listaServicoPp.get(position).getTxtNomeServicoPp());
         holder.txt_valor_servico_pp.setText(String.valueOf(listaServicoPp.get(position).getTxtValorServicoPp()));
 
