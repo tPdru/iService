@@ -85,9 +85,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/textos"
-                        android:text="Rua Bobo Alegre"
+                        android:text="Meus Serviços"
                         android:textColor="@color/cor_texto"
-                        android:textSize="@dimen/tamanho_grande" />
+                        android:textSize="@dimen/tamanho_medio" />
 
                 </LinearLayout>
 

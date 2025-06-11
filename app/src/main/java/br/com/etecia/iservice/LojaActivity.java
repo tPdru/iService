@@ -108,11 +108,11 @@ public class LojaActivity extends AppCompatActivity {
         txtNomeLoja.setText(loja.getNomeLoja());
         txtDescricao.setText(loja.getDescricao());
 
-        if (loja.isTemEndereco()) {
+        /*if (loja.isTemEndereco()) {
             txtEnderecoLoja.setText(loja.getEnderecoLoja().getRua());
         } else {
             txtEnderecoLoja.setText("  ");
-        }
+        }*/
 
         // ----------------- AQUI COMEÇA O FILTRO DE SERVIÇOS DA LOJA -----------------
 
