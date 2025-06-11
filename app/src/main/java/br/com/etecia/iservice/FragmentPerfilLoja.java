@@ -99,19 +99,34 @@ public class FragmentPerfilLoja extends Fragment {
 
 
 
-        if ( endereco != null ) {
+        if ( minhaLoja.isTemEndereco() ) {
+
+            List<ObjEndereco> enderecoList = new ArrayList<>(daoLocalEndereco.readEndereco());
+
+            for (int i = 0; i < enderecoList.size(); i++) {
+                if (enderecoList.get(i).getCodigoLoja() == minhaLoja.getCodigLoja()) {
+                    endereco = enderecoList.get(i);
+                    break;
+                }
+            }
+
             //Colocando informações
             //Com endereço
-            if ( minhaLoja.isTemEndereco() ) {
-
+            txtEstado.setText(endereco.getEstado());
+            txtCidade.setText(endereco.getCidade());
+            txtLograd.setText(endereco.getBairro());
+            txtRua.setText(endereco.getRua());
+            txtNumero.setText(String.valueOf(endereco.getNumero()));
+            txtComplemento.setText(endereco.getComplemento());
+            /*if ( minhaLoja.isTemEndereco() ) {
 
                 txtEstado.setText(endereco.getEstado());
                 txtCidade.setText(endereco.getCidade());
                 txtLograd.setText(endereco.getBairro());
                 txtRua.setText(endereco.getRua());
-                txtNumero.setText(endereco.getNumero());
+                txtNumero.setText(String.valueOf(endereco.getNumero()));
                 txtComplemento.setText(endereco.getComplemento());
-            }
+            }*/
         }
 
         // Card adicionar novo serviço

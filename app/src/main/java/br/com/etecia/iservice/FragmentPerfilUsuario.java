@@ -54,8 +54,17 @@ public class FragmentPerfilUsuario extends Fragment {
         btnSairConta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                contMaster.logout();
-                startActivity(new Intent(getContext(), SplashActivity.class));
+
+                DialogTemCerteza dialog = new DialogTemCerteza(new IntEnviaEmail() {
+                    @Override
+                    public void enviaEmail(boolean confirmacao) {
+                        if ( confirmacao ) {
+                            contMaster.logout();
+                            startActivity(new Intent(getContext(), SplashActivity.class));
+                        }
+                    }
+                });
+                dialog.show(getChildFragmentManager(), "TemCerteza");
             }
         });
 

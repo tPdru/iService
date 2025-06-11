@@ -69,6 +69,7 @@
                     android:gravity="center"
                     android:text="Descrição: Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor "
                     android:textColor="@color/cor_texto"
+                    android:maxLength="150"
                     android:textSize="@dimen/tamanho_grande" />
 
                 <LinearLayout
@@ -76,11 +77,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
                     android:orientation="horizontal">
-
-                    <ImageButton
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:src="@drawable/ic_android_black" />
 
                     <TextView
                         android:id="@+id/txtEnderecoLoja"

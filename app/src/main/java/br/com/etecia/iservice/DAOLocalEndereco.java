@@ -60,13 +60,10 @@ public class DAOLocalEndereco {
      */
     public List<ObjEndereco> readEndereco() {
 
-        // Instanciando a lista que vai ser retornada
         List<ObjEndereco> lista = new ArrayList<>();
 
-        // Obtém o banco no modo de leitura.
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
-        // Define as colunas que queremos consultar.
         String[] colunas = {
                 dbHelper.COLUMN_ID_ENDERECO,
                 dbHelper.COLUMN_CEP_ENDERECO,
@@ -79,55 +76,48 @@ public class DAOLocalEndereco {
                 dbHelper.COLUMN_ID_LOJA_END_FK
         };
 
-        // Faz a consulta no banco.
         Cursor cursor = db.query(
-                DbHelper.TABLE_ENDERECO, // tabela
-                colunas,                 // colunas
-                null,                    // where
-                null,                    // whereArgs
-                null,                    // groupBy
-                null,                    // having
-                null                     // orderBy
+                DbHelper.TABLE_ENDERECO,
+                colunas,
+                null,
+                null,
+                null,
+                null,
+                null
         );
 
-        // Percorre o Cursor e cria objetos ObjServico.
         if (cursor.moveToFirst()) {
-
             do {
-                long id = cursor.getInt(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_ID_ENDERECO));
-                String nome = cursor.getString(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_CEP_ENDERECO));
-                String descricao =  cursor.getString(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_ESTADO_ENDERECO));
-                int temEnd = cursor.getInt(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_CIDADE_ENDERECO));
-                int temServ = cursor.getInt(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_BAIRRO_ENDERECO));
-                int codUsu = cursor.getInt(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_RUA_ENDERECO));
-                String cpfCnpj = cursor.getString(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_NUMERO_ENDERECO));
-                String img = cursor.getString(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_COMPLEMENTO_ENDERECO));
-                long idLoja = cursor.getInt(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_ID_LOJA_END_FK));
+                long idEndereco = cursor.getLong(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_ID_ENDERECO));
+                int cep = cursor.getInt(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_CEP_ENDERECO));
+                String estado = cursor.getString(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_ESTADO_ENDERECO));
+                String cidade = cursor.getString(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_CIDADE_ENDERECO));
+                String bairro = cursor.getString(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_BAIRRO_ENDERECO));
+                String rua = cursor.getString(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_RUA_ENDERECO));
+                int numero = cursor.getInt(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_NUMERO_ENDERECO));
+                String complemento = cursor.getString(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_COMPLEMENTO_ENDERECO));
+                long idLoja = cursor.getLong(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_ID_LOJA_END_FK));
 
-                //Objeto Loja vazio
                 ObjEndereco endereco = new ObjEndereco();
+                endereco.setCodigo(idEndereco);
+                endereco.setCepCnpj(cep);
+                endereco.setEstado(estado);
+                endereco.setCidade(cidade);
+                endereco.setBairro(bairro);
+                endereco.setRua(rua);
+                endereco.setNumero(numero);
+                endereco.setComplemento(complemento);
+                endereco.setCodigoLoja(idLoja);
 
-                // setando as informaçoes
-                //endereco.setCodigLoja(id);
-                //endereco.setNomeLoja(nome);
-                //endereco.setDescricao(descricao);
-                //endereco.setTemEndereco(temEnd == 1 ? true:false);
-                //endereco.setTemServicos(temServ == 1 ? true:false);
-                //endereco.setCodUsuario(codUsu);
-                //endereco.setCpfCnpj(cpfCnpj);
+                lista.add(endereco);
 
-                //Adicionando a lista
-                //lista.add(loja);
-
-            }while (cursor.moveToNext());
+            } while (cursor.moveToNext());
         }
 
-        // Fecha o cursor e o banco.
         cursor.close();
         db.close();
 
-        return lista;  // Retorna a lista
-
+        return lista;
     }
 
 

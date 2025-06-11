@@ -20,11 +20,13 @@ public class AdaptadorServicoPp extends RecyclerView.Adapter<AdaptadorServicoPp.
     //Variáveis
     Context context;
     List<ObjCardServicoPp> listaServicoPp;
+    ControllerMaster contMaster;
 
 
     public AdaptadorServicoPp(Context context, List<ObjCardServicoPp> listaServicoPp) {
         this.context = context;
         this.listaServicoPp =listaServicoPp;
+        contMaster = ControllerMaster.getControllerMaster();
     }
 
     @NonNull
@@ -41,8 +43,12 @@ public class AdaptadorServicoPp extends RecyclerView.Adapter<AdaptadorServicoPp.
     public void onBindViewHolder(@NonNull AdaptadorServicoPp.ViewHolder holder, int position) {
 
         if (listaServicoPp.get(position).getImgServicoPp() != null) {
+
             Bitmap bitmap = BitmapFactory.decodeByteArray(listaServicoPp.get(position).getImgServicoPp(), 0, listaServicoPp.get(position).getImgServicoPp().length);
-            holder.img_servico_pp.setImageBitmap(bitmap);
+
+            Bitmap bit = contMaster.getResizedBitmap(bitmap,90);
+
+            holder.img_servico_pp.setImageBitmap(bit);
 
         }
 

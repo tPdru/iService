@@ -123,6 +123,7 @@ public class CadastrarLojaActivity extends AppCompatActivity {
         listElementos.add(lnlNumero);
         listElementos.add(lnlComplemento);
         ativacaoElementos(listElementos, true);
+        lojaFisica = true;
         //*lojaFisica = false;
 
 
@@ -270,6 +271,7 @@ public class CadastrarLojaActivity extends AppCompatActivity {
                         // criando a loja e adicionando ocodigo da loja oa controlemaster
                         loja.setCodigLoja(daoLocalLoja.inserirLoja(loja));
                         /** Salvando o endereço no banco local **/
+                        end.setCodigoLoja(loja.getCodigLoja());
                         end.setCodigoLoja(daoLocalEndereco.inserirEndereco(end));
 
                         //ControllerMaster.getControllerMaster().carregarLojas();

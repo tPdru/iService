@@ -1,6 +1,7 @@
 package br.com.etecia.iservice;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -96,6 +97,21 @@ public class ControllerMaster {
         perfilLogado = null;
         indexConta = -1;  // índice inválido, indicando "nenhum usuário logado"
         loginOn = false;
+    }
+
+    public Bitmap getResizedBitmap(Bitmap image, int maxSize) {
+        int width = image.getWidth();
+        int height = image.getHeight();
+
+        float ratio = (float) width / height;
+        if (ratio > 1) {
+            width = maxSize;
+            height = (int) (width / ratio);
+        } else {
+            height = maxSize;
+            width = (int) (height * ratio);
+        }
+        return Bitmap.createScaledBitmap(image, width, height, true);
     }
 
 

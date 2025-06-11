@@ -130,6 +130,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:padding="7dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/textoAbaixoImg"
@@ -196,7 +197,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:backgroundTint="@color/cor_principal"
+                    android:backgroundTint="@color/cor_recusar"
                     android:text="Sair da conta"
                     android:textSize="@dimen/tamanho_medio"
                     android:id="@+id/btnSairDaConta"/>

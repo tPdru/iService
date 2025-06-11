@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="10dp"
+    app:cardCornerRadius="@dimen/tamanho_medio"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:gravity="center_horizontal"
+            android:fontFamily="@font/titulos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/tamanho_grande"
+            android:text="Tem Certeza que deseja Sair ?"
+            android:layout_marginBottom="25dp"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_margin="10dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:text="Cancelar"
+                android:layout_alignParentLeft="true"
+                android:id="@+id/btnTemCertCancelar"
+                android:backgroundTint="@color/cor_recusar"
+                android:textSize="@dimen/tamanho_medio"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:text="Confirmar"
+                android:layout_alignParentRight="true"
+                android:id="@+id/btnTemCertConfirmar"
+                android:backgroundTint="@color/cor_confirmar"
+                android:textSize="@dimen/tamanho_medio"/>
+
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+
+
+
+</androidx.cardview.widget.CardView>

@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:padding="7dp"
     android:layout_height="match_parent"
     tools:context=".FragmentPerfilLoja">
 
@@ -102,7 +103,7 @@
                     android:gravity="center_horizontal"
                     android:maxHeight="200sp"
                     android:minHeight="70sp"
-                    android:text="XXXXXXXXXXXXXXXXXXXXXXXXXXX"
+                    android:text="----------"
                     android:textColor="@color/cor_texto"
                     android:textSize="@dimen/tamanho_medio" />
 
@@ -134,7 +135,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="2dp"
                     android:fontFamily="@font/textos"
-                    android:text="Estado: XXXXXXXXXXXXX"
+                    android:text="Estado: ------"
                     android:textColor="@color/cor_texto"
                     android:textSize="@dimen/tamanho_medio" />
 
@@ -150,7 +151,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="2dp"
                     android:fontFamily="@font/textos"
-                    android:text="Cidade: XXXXXXXXXXXXX"
+                    android:text="Cidade: --------"
                     android:textColor="@color/cor_texto"
                     android:textSize="@dimen/tamanho_medio" />
 
@@ -166,7 +167,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="2dp"
                     android:fontFamily="@font/textos"
-                    android:text="Bairro: XXXXXXXXXXXXX"
+                    android:text="Bairro: -------------"
                     android:textColor="@color/cor_texto"
                     android:textSize="@dimen/tamanho_medio" />
 
@@ -182,7 +183,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="2dp"
                     android:fontFamily="@font/textos"
-                    android:text="Rua: XXXXXXXXXXXXXXXXXX"
+                    android:text="Rua: --------------"
                     android:textColor="@color/cor_texto"
                     android:textSize="@dimen/tamanho_medio" />
 
@@ -204,7 +205,7 @@
                         android:layout_margin="2dp"
                         android:fontFamily="@font/textos"
                         android:gravity="center_horizontal"
-                        android:text="Número: XXXX"
+                        android:text="Número: ------"
                         android:textColor="@color/cor_texto"
                         android:textSize="@dimen/tamanho_medio" />
 
@@ -222,7 +223,7 @@
                         android:layout_margin="2dp"
                         android:fontFamily="@font/textos"
                         android:gravity="center_horizontal"
-                        android:text="Complemento: XXXX"
+                        android:text="Complemento: -------"
                         android:textColor="@color/cor_texto"
                         android:textSize="@dimen/tamanho_medio" />
 
@@ -279,7 +280,7 @@
                                     android:layout_width="50dp"
                                     android:layout_height="50dp"
                                     android:layout_gravity="center_horizontal"
-                                    android:src="@drawable/foto_imagem" />
+                                    android:src="@drawable/plus" />
 
                                 <LinearLayout
                                     android:layout_width="match_parent"

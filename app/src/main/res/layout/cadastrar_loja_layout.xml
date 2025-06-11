@@ -106,7 +106,7 @@
                     android:fontFamily="@font/textos"
                     android:hint="Descrição"
                     android:inputType="text"
-                    android:maxLength="30"
+                    android:maxLength="200"
                     android:maxWidth="300sp"
                     android:maxHeight="300sp"
                     android:textColor="@color/cor_texto"
@@ -186,7 +186,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="Ativar endereço Loja fisica"
+                    android:text="Desativar endereço Loja fisica"
                     android:textSize="@dimen/tamanho_medio" />
 
                 <CheckBox
@@ -288,7 +288,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="10dp"
-                        android:hint="Logradouro: "
+                        android:hint="Bairro: "
                         android:textColorHint="@color/cor_texto"
                         android:textSize="@dimen/tamanho_medio"
                         app:boxBackgroundColor="@color/cor_detalhes"

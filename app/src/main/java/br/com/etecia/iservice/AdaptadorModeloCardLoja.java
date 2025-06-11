@@ -23,11 +23,13 @@ public class AdaptadorModeloCardLoja extends RecyclerView.Adapter<AdaptadorModel
     Context context;
     List<ObjCardLoja> listaCardLoja;
     DAOLocalService daoLocalService;
+    ControllerMaster contMaster;
 
     public AdaptadorModeloCardLoja(Context context, List<ObjCardLoja> listaCardLoja) {
         this.context = context;
         this.listaCardLoja = listaCardLoja;
         daoLocalService = new DAOLocalService(context);
+        contMaster = ControllerMaster.getControllerMaster();
     }
 
     @NonNull
@@ -45,7 +47,11 @@ public class AdaptadorModeloCardLoja extends RecyclerView.Adapter<AdaptadorModel
 
         // Redimensionar o bitmap antes de setar
         if (loja.getImgLoja() != null) {
-            Bitmap bitmap = decodeSampledBitmapFromByteArray(loja.getImgLoja(), 200, 200);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(listaCardLoja.get(position).getImgLoja(),
+                    0, listaCardLoja.get(position).getImgLoja().length);
+
+            //Bitmap bit = contMaster.getResizedBitmap(bitmap, 200);
+
             holder.img_loja.setImageBitmap(bitmap);
         }
         holder.nome_loja.setText(loja.getNomeLoja());
