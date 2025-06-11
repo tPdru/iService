@@ -138,7 +138,6 @@ public class SplashActivity extends AppCompatActivity {
                     loja.setCodUsuario(perfil.getCodigo());
 
                     daoLocalLoja.inserirLoja(loja);
-                    Toast.makeText(SplashActivity.this, "Insert: ", Toast.LENGTH_SHORT).show();
                 }
 
                 // Coloca os perfis na lista do controleMaster

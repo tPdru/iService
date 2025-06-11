@@ -47,12 +47,15 @@ public class AdaptadorModeloCardLoja extends RecyclerView.Adapter<AdaptadorModel
     @Override
     public void onBindViewHolder(@NonNull AdaptadorModeloCardLoja.ViewHolder holder, int position) {
 
-        Bitmap bitmap = BitmapFactory.decodeByteArray(listaCardLoja.get(position).getImgLoja(), 0, listaCardLoja.get(position).getImgLoja().length);
+        if (listaCardLoja.get(position).getImgLoja() != null) {
+            Bitmap bitmap = BitmapFactory.decodeByteArray(listaCardLoja.get(position).getImgLoja(), 0, listaCardLoja.get(position).getImgLoja().length);
+            holder.img_loja.setImageBitmap(bitmap);
+
+        }
+
 
         holder.nome_loja.setText(listaCardLoja.get(position).getNomeLoja());
-        holder.img_loja.setImageBitmap(bitmap);
         holder.nota_loja.setText(String.valueOf(listaCardLoja.get(position).getTxtNota()));
-
 
 
         //Configurar o recycleView Interno-------------------------------------------
@@ -60,7 +63,7 @@ public class AdaptadorModeloCardLoja extends RecyclerView.Adapter<AdaptadorModel
 
 
         //Verifica se a loja tem serviços
-        if ( loja.isTemServicos() ) {
+        if (loja.isTemServicos()) {
 
             List<ObjCardServicoPp> lista_servicos = new ArrayList<>();
 
@@ -89,7 +92,7 @@ public class AdaptadorModeloCardLoja extends RecyclerView.Adapter<AdaptadorModel
                 int pos = holder.getAdapterPosition();
 
                 //Verifica se a posição do item clicado e valida
-                if ( pos == RecyclerView.NO_POSITION )  return;
+                if (pos == RecyclerView.NO_POSITION) return;
 
                 //pegando o contexto do item clicado
                 Intent intent = new Intent(context, LojaActivity.class);
@@ -106,10 +109,10 @@ public class AdaptadorModeloCardLoja extends RecyclerView.Adapter<AdaptadorModel
     @Override
     public int getItemCount() {
         // operador ternario verificando se alista esta null antes de passar
-        return listaCardLoja != null? listaCardLoja.size() : 0;
+        return listaCardLoja != null ? listaCardLoja.size() : 0;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
         //Declaração das variaveis que vão setar informações
         ImageView img_loja;
         TextView nota_loja, nome_loja;
@@ -126,9 +129,9 @@ public class AdaptadorModeloCardLoja extends RecyclerView.Adapter<AdaptadorModel
     }
 
     //Atualizar lista
-    public void atualizarListaAgendados(List<ObjCardLoja> lista_atualizada){
+    public void atualizarListaAgendados(List<ObjCardLoja> lista_atualizada) {
 
-        if (lista_atualizada != null){
+        if (lista_atualizada != null) {
             listaCardLoja.clear();
             listaCardLoja.addAll(lista_atualizada);
         } else {

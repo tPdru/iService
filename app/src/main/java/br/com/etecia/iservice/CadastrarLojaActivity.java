@@ -162,8 +162,12 @@ public class CadastrarLojaActivity extends AppCompatActivity {
                         }
 
                     } else {
-                        // Caso a seleção falhe ou seja cancelada, salva a imagem padrão
-                        Toast.makeText(this, "Erro ao selecionar a imagem", Toast.LENGTH_SHORT).show();
+                        //Define a imagem padrão
+                        imgCadLoja.setImageResource(R.drawable.foto_imagem);
+
+                        //converter a imagem para byte[]
+                        imageBytes=imageViewToByte(imgCadLoja);
+                        Toast.makeText(this, "Imagem padrão selecionada", Toast.LENGTH_SHORT).show();
                     }
                 }
         );

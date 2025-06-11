@@ -16,7 +16,7 @@
         android:layout_height="200dp"
         android:contentDescription="@string/logo_pato"
         android:scaleType="centerCrop"
-        android:src="@drawable/logo" />
+        android:src="#2c2c2c" />
 
     <com.google.android.material.progressindicator.CircularProgressIndicator
         android:layout_width="150dp"
